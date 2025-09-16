@@ -15,10 +15,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.github.tommyettinger.textra.Font;
-import com.github.tommyettinger.textra.Styles;
-import com.github.tommyettinger.textra.TextraLabel;
-import com.github.tommyettinger.textra.TypingLabel;
+import com.github.tommyettinger.textra.*;
 
 // By extending ScreenAdapter, we only have to implement the methods we actually need.
 public class LyricsScreen extends ScreenAdapter {
@@ -56,7 +53,9 @@ public class LyricsScreen extends ScreenAdapter {
         // Load our .ttf font file from the assets folder.
         //FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("Roboto-Regular.ttf")); // <-- MAKE SURE YOUR FONT FILE IS HERE!
         //FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("PressStart2P-Regular.ttf"));
-        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("GreatVibes-Regular.ttf"));
+        //FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("GreatVibes-Regular.ttf"));
+        //FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("Lato-Regular.ttf"));
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("PlaywriteES-VariableFont_wght.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter.size = 56;//48
         parameter.color = Color.WHITE;
@@ -91,12 +90,84 @@ public class LyricsScreen extends ScreenAdapter {
         skin.add("default", labelStyle);
         // --- 3. Lyrics Data Setup ---
         // We define our array of marked-up phrases.
+
+        KnownFonts.addEmoji(textraFont);
+        KnownFonts.addGameIcons(textraFont);
+        KnownFonts.addNotoEmoji(textraFont);
+        KnownFonts.addMaterialDesignIcons(textraFont);
+        KnownFonts.addOpenMoji(textraFont,true);
         lyrics = new Array<>();
+
+        // --- 3. THE MARKED-UP LYRICS ---
+        // This is the artistic core. Each line uses a combination of effects to match the mood.
+        lyrics = new Array<>();
+        lyrics.add("[%?SHINY][%150]Echoes In The Room, Suno[%][%]");
+        // [Verse 1]
+        lyrics.add("{FADE}A [%75]single[%] [%150]note[%] {HANG=1.0;6}[+musical notes]{ENDHANG} [%75]hangs in the air[%]{ENDFADE}");
+        lyrics.add("{FADE}Like a {WAVE=0.05;0.8;1.5}thought{ENDWAVE} I can't [%125]{SHAKE=1.0;0.5}repair{ENDSHAKE}[%]...{ENDFADE} [+broken-heart]");
+        lyrics.add("{FADE}It {WIND=0.1;1.0;2.0;0.5}echoes{ENDWIND} softly then it's {FADE=1;0;1.2}[%125]gone[%]{ENDFADE}{ENDFADE}");//[+dotted line face]
+        // [Pre-Chorus]
+        lyrics.add("{FADE}The [%150]walls[%] are {SICK=0.5}speaking...{ENDSICK}{ENDFADE}");
+        lyrics.add("{FADE}But [%75]I can't hear[%] [+hear-no-evil monkey]{SPEED=0.5}...{SPEED} {ENDFADE}");
+        lyrics.add("{FADE}Their voices [%50]fading...[%]{ENDFADE} [+ghost-ally]");
+        lyrics.add("{FADE}[%200]Crystal clear[%]   [+crystal-ball]{ENDFADE}");
+        // [Chorus] - More dramatic effects here
+        lyrics.add("{FADE}[%150]Echoes[%] in the room {WAVE=0.05;0.1;0.7}[+musical notes]{ENDWAVE}{ENDFADE}");
+        lyrics.add("{FADE}They {JUMP}sing{ENDJUMP}{ENDFADE}");
+        lyrics.add("{FADE}{EMERGE}They bloom{ENDEMERGE}{SPEED=0.5}{EMERGE}   [+lotus]{ENDEMERGE}{ENDFADE}");
+        lyrics.add("{FADE}A {SPIN=1;1}loop{ENDSPIN}...{ENDFADE}");
+        lyrics.add("{FADE}A {WAVE=0.05;5.0;5.0}hum{ENDWAVE}...{ENDFADE}");
+        lyrics.add("{FADE}I come {SHAKE}[RED]undone{CLEARCOLOR}{ENDSHAKE}   [+falling]{ENDFADE}");
+
+        // [Verse 2]
+        lyrics.add("{FADE}Your [%150]shadow[%] {WIND=0.05;0.5;3;0.2}lingers{ENDWIND} by the door{ENDFADE}  [+hooded-figure]");
+        lyrics.add("{FADE}A ghost of us... a [%175]quiet roar[%]... [+lion]{ENDFADE}");
+        lyrics.add("{FADE}The {BLINK=838181ff;000000;1.5;0.5}light flickers{ENDBLINK}, I count the {HEARTBEAT=1.5}beats{ENDHEARTBEAT}{ENDFADE} {BLINK=838181ff;ffffff;1.5;0.5}[+light-bulb]{ENDBLINK}[+heart-beats]");
+        // [Pre-Chorus 2]
+        lyrics.add("{FADE}The [%150]space[%] [+left-right arrow] between us...{ENDFADE}");
+        lyrics.add("{FADE}{SPEED=0.2}Grows so{SPEED}{ENDFADE}");
+        lyrics.add("{FADE} [%200]{SHRINK}{SPEED=0.2}w i  d  e{SPEED}{ENDSHRINK}[%]{ENDSHRINK}");
+        lyrics.add("{SPEED=0.5}{FADE}I [%125]reach...[%] [+palm down hand, medium skin tone]{ENDFADE}{SPEED}");
+        lyrics.add("{SPEED=0.5}{FADE}I {SICK=0.8}falter...{ENDSICK} [+woman facepalming, light skin tone]{ENDFADE}{SPEED}");
+        lyrics.add("{FADE}But {SLAM}you{ENDSLAM} {JOLT=0.5;10;0.5}collide{ENDJOLT}.{ENDFADE} [+collision]");
+
+        // [Chorus] - Repeat with slight variations if desired
+        lyrics.add("{FADE}[%150]Echoes[%] in the room {WAVE=0.05;0.1;0.7}[+musical notes]{ENDWAVE}{ENDFADE}");
+        lyrics.add("{FADE}They {JUMP}sing{ENDJUMP}{ENDFADE}");
+        lyrics.add("{FADE}{EMERGE}They bloom{ENDEMERGE}{SPEED=0.5}{EMERGE}   [+lotus]{ENDEMERGE}{ENDFADE}");
+        lyrics.add("{FADE}A {SPIN=1;1}loop{ENDSPIN}...{ENDFADE}");
+        lyrics.add("{FADE}A {WAVE=0.02;5.0;5.0}hum{ENDWAVE}...{ENDFADE}");
+        lyrics.add("{FADE}I come {SHAKE}[RED]undone{CLEARCOLOR}{ENDSHAKE}   [+falling]{ENDFADE}");
+        lyrics.add("{FADE}[%150]Echoes[%] in the room {WAVE=0.05;0.1;0.7}[+musical notes]{ENDWAVE}{ENDFADE}");
+        lyrics.add("{FADE}They {JUMP}sing{ENDJUMP}{ENDFADE}");
+        lyrics.add("{FADE}{EMERGE}They bloom{ENDEMERGE}{SPEED=0.5}{EMERGE}   [+lotus]{ENDEMERGE}{ENDFADE}");
+        lyrics.add("{FADE}A {SPIN=1;1}loop{ENDSPIN}...{ENDFADE}");
+        lyrics.add("{FADE}A {WAVE=0.02;5.0;5.0}hum{ENDWAVE}...{ENDFADE}");
+        lyrics.add("{FADE}I come {SHAKE}[RED]undone{CLEARCOLOR}{ENDSHAKE}   [+falling]{ENDFADE}");
+//        lyrics.add("{FADE}[%150]Echoes[%] in the room [+sound-waves]{ENDFADE}");
+//        lyrics.add("{FADE}They {JUMP}sing{ENDJUMP}, They {EMERGE}bloom{ENDEMERGE}... [+sing][+sprout]{ENDFADE}");
+//        lyrics.add("{FADE}A {SPIN=1;1}loop{ENDSPIN}... A {WAVE=0.02;5.0;5.0}hum{ENDWAVE}... [+loop]{ENDFADE}");
+//        lyrics.add("{FADE}I come {SHAKE;RED}undone{ENDSHAKE}.{ENDFADE} [+falling]");
+        lyrics.add("[%?NOTE][%?SHINY][%150]Echoes In The Room, Suno[%][%][%]");
+        //tests
+        lyrics.add("{FADE=0.5;1.0}The {WAVE=0.05;0.8;2.0}[SKY]ocean{CLEARCOLOR}{ENDWAVE} breathes, a {ENDFADE}{SLOW}slow and steady beat...");
+        lyrics.add("{FADE}A sudden {JOLT=0.2;20.0;0.5}[YELLOW]flash[/]!{ENDFADE} a crackle in the air!");
+        lyrics.add("{FADE}The old machine {SICK=0.5}shudders[/] to a halt, a final, dying bleat.{ENDFADE}");
+        lyrics.add("{FADE}And in the silence, a {HEARTBEAT}single pulse{ENDHEARTBEAT}... a fear beyond compare.{ENDFADE}");
+        lyrics.add("{FADE}{VAR=FIRE}Burning with a new intensity!{VAR=ENDFIRE}{ENDFADE}");
+        lyrics.add("{FADE}A {SPIRAL=1.5;0.5}whisper[/] lost in the code, a ghost within the wire.{ENDFADE}");
+        lyrics.add("{FADE}From {GRADIENT=BLUE;MAGENTA;1.0}binary{ENDGRADIENT} to a full spectrum {RAINBOW}reality.{ENDRAINBOW}{ENDFADE}");
+        lyrics.add("{FADE}The {WAVE=1.0;0.4;0.3}[BLUE]ocean{CLEARCOLOR}{ENDWAVE} breathes, a {ENDFADE}{SLOW}slow and steady beat...");
+        lyrics.add("{VAR=FIRE}Burning with a new intensity!{VAR=ENDFIRE}");
+        lyrics.add("[+evergreen tree] Welcome to the [GREEN]forest[]!");
+        lyrics.add("Feeling strong! [+flexed biceps, medium-light skin tone]");
+        lyrics.add("Let's make some music! [+saxophone][+drum][+guitar]");
+        lyrics.add("{CAROUSEL=0.3}Banner effect built in...{ENDCAROUSEL}");
         lyrics.add("{SPIN}This is the first phrase...{ENDSPIN}");
         lyrics.add("[%250]The[%] {ATTENTION}quick{ENDATTENTION} [BROWN]brown{CLEARCOLOR} [%200]fox[%] {JUMP}jumped{ENDJUMP} [^][%200]over[%][^] {SQUASH=0.8;true}{ATTENTION}the [/][%300]lazy[%][/] [%150]dog.[%].{ENDATTENTION}{ENDSQUASH}");
-        lyrics.add("{HEARTBEAT}Let's spruce  this up!{ENDHEARTBEAT}"); // Note: Bold uses [*] in textra
-        lyrics.add("{FADE}[BROWN]Does any of this work{CLEARCOLOR}{ENDFADE}");
-        lyrics.add("Press [BUMP;RED]SPACEBAR[/BUMP] to cycle through the lyrics.");
+        lyrics.add("{HEARTBEAT}Let's [+evergreen tree] spruce this up!{ENDHEARTBEAT}"); // Note: Bold uses [*] in textra
+        lyrics.add("{FADE}{CAROUSEL=0.3}GO [YELLOW]NAVI{CLEARCOLOR}!{ENDCAROUSEL}{ENDFADE}");
+        lyrics.add("Press [BUMP;RED]SPACEBAR[/BUMP;] to cycle through the lyrics.");
         lyrics.add("{EASE=-8.0;1.35;true}We know this works{ENDEASE}  {SLIDE}Let's try some of this!{ENDSLIDE}");
         lyrics.add("Tap [BLUE]{LINK=https://www.instagram.com/pikapix2025/}here{ENDLINK}{CLEARCOLOR} for the tickets!");
 
