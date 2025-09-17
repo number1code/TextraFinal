@@ -44,7 +44,7 @@ public class LyricsScreen extends ScreenAdapter {
         // --- 1. Scene2D Setup ---
         // A Stage is an invisible container for our UI elements ("Actors").
         // A FitViewport maintains our virtual resolution (e.g., 1280x720) on any screen size.
-        stage = new Stage(new FitViewport(1280, 720));
+        stage = new Stage(new FitViewport(1080, 1920));
 
         // --- 2. Programmatic Font and Skin Creation (The FreeTypist Core) ---
         // A Skin is like a stylesheet for our UI, holding fonts, colors, etc.
@@ -55,7 +55,8 @@ public class LyricsScreen extends ScreenAdapter {
         //FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("PressStart2P-Regular.ttf"));
         //FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("GreatVibes-Regular.ttf"));
         //FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("Lato-Regular.ttf"));
-        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("PlaywriteES-VariableFont_wght.ttf"));
+        //FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("PlaywriteES-VariableFont_wght.ttf"));
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("ShareTech-Regular.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter.size = 56;//48
         parameter.color = Color.WHITE;
@@ -101,7 +102,62 @@ public class LyricsScreen extends ScreenAdapter {
         // --- 3. THE MARKED-UP LYRICS ---
         // This is the artistic core. Each line uses a combination of effects to match the mood.
         lyrics = new Array<>();
-        lyrics.add("[%?SHINY][%150]Echoes In The Room, Suno[%][%]");
+        lyrics.add("[%?SHINY][%150]High Voltage, Suno[%][%]");
+
+        lyrics.add("{FADE}Let's see if we can go over this...{ENDFADE}");
+        lyrics.add("{FADE}Fend for myself, I don't need no {JUMP}[+shield]assist{ENDJUMP}.{ENDFADE}");
+        lyrics.add("{FADE}I'ma go pull up with [%150]twins[%], that's a {HEARTBEAT}[+kiss]{ENDHEARTBEAT}.{ENDFADE}");
+        lyrics.add("{FADE}And I ain't even talking 'bout [@pixel]Mary-Kate[@sans].{ENDFADE}");
+
+        lyrics.add("{FADE}{FASTER}Get the  [+money-stack]bag, {SPIN=1;1}flip it{ENDSPIN}, go check my [%125]flip rate[%].{ENDFADE}");
+        lyrics.add("{FADE}If I don't make it back, then I {SPIRAL=1;0.5}[PURPLE]reincarnate[ENDCOLOR]{ENDSPIRAL}. [+coffin]{ENDFADE}");
+        lyrics.add("{FADE}And I'm back in this bitch, new [%125]hair[%], new [%125]'fit[%]! [+man getting haircut, medium-dark skin tone] [+necktie] [+man's shoe] {ENDFADE}");//[+t-shirt]
+        lyrics.add("{FADE}Back in this bitch, don't need a new whip. {WAVE=0.1;2;1} [+automobile]{ENDWAVE}{ENDFADE}");
+
+        lyrics.add("{FADE}Pull up to the scene with a {SHAKE}[CYAN]ice cold[ENDCOLOR]{ENDSHAKE} sip... [+cup with straw]{ENDFADE}");
+        lyrics.add("{FADE}{SLOWER}gulp, gulp, gulp, gulp, gulp...{ENDFADE} ");
+        lyrics.add("{FADE}Everywhere I go, all these hoes tryna fuck.{ENDFADE}");
+        lyrics.add("{FADE}I just want a [%150]nut[%] like the [+acorn]squirrel on the cup.{ENDFADE}");
+
+        lyrics.add("{FADE}{SLOW}Told the ho, [*]You better gimme some [%200]space[%]...[*]{ENDFADE}");
+        lyrics.add("{FADE}[*]...Or I'ma send you to {VAR=FIRE}outer space{VAR=ENDFIRE}[*]. [+rocket]{ENDFADE}");
+        lyrics.add("{FADE}They gon' remember my name, they gon' call me [@pixel]what's his face[@sans].{ENDFADE}");
+        lyrics.add("{FADE}And they gon' {WAVE=0.1;1;5}[RED]wish I was replaced{ENDWAVE}.{ENDFADE} [+cancel]");
+
+        lyrics.add("{FADE}{FASTER}Just got a new [+credit card] card, 'boutta [%150]max it out[%].{ENDFADE}");
+        lyrics.add("{FADE}{FASTER}And I just got some {WIND=0.1;2;3;0.5}[GREEN]gas{ENDWIND}, 'boutta [%150]pass it out[%].{ENDFADE}");
+        lyrics.add("{FADE}{FASTER}And I just hit a{HANG=0.2;0.2} [+money bag] {ENDHANG}stain, 'boutta [%150]cash it out[%].{ENDFADE}");
+        lyrics.add("{FADE}I'm a [%125]white man[%] in a [%125]black man house[%].{ENDFADE}");
+
+        lyrics.add("{FADE}And you know I gotta make it out, can't go without..{ENDFADE}");
+        lyrics.add("{FADE}{FAST}Got a new [%150]piece[%], 'boutta go put on some {SHAKE}[WHITE]teeth{ENDSHAKE}. [+grinning face with big eyes]{ENDFADE}");
+        lyrics.add("{FADE}Got a new [%150]crib[%], 'boutta go invite some  [+people holding hands, light skin tone, medium-dark skin tone] friends.{ENDFADE}");
+        lyrics.add("{FADE}{FAST}Gettin' bored of this {SPIN=1;1} [+earth-america]Earth{ENDSPIN}, 'boutta go create some ends.{ENDFADE}");
+
+        lyrics.add("{FADE}They don't want me to {EMERGE}begin{ENDEMERGE}, they just want me to {ENDFADE}{SHRINK=1.0;1.0;true}end.{ENDSHRINK}");
+        lyrics.add("{FADE}I ain't 'boutta pretend, 'boutta go call the [BLUE][%?JOSTLE]feds[%]{CLEARCOLOR}. [+man police officer, light skin tone]{ENDFADE}");
+        lyrics.add("{FADE}I don't like these hoes, 'boutta go call they friends.{ENDFADE}");
+        lyrics.add("{FADE}And the plug call me, he 'boutta send a [+cardboard-box]care package.{ENDFADE}");
+
+        lyrics.add("{FADE}{SPEED=0.95}I'ma open that bitch and go {JUMP}grab it{ENDJUMP}.{ENDFADE}");
+        lyrics.add("{FADE}{SPEED=0.5}I just get to it, I gotta have it.{ENDFADE}");
+        lyrics.add("{FADE}They gon' need a [%250]big casket[%]. [+coffin]{ENDFADE}");
+        lyrics.add("{FADE}And the hoes wanna meet, wanna know my [%150]status[%].{ENDFADE}");
+
+        lyrics.add("{FADE}{FASTER}They wanna know what I eat, wanna know my habits[+repeat button]{ENDFADE}");
+        lyrics.add("{FADE}{FASTER}They wanna see what I do, wanna know my patterns[+poultry leg]{ENDFADE}");
+        lyrics.add("{FADE}{FASTER}They wanna see what I wear, wanna see my fabrics [+t-shirt]{ENDFADE}");
+        lyrics.add("{FADE}And I'm {EMERGE}fresh out the box{ENDEMERGE} like I was a [+rabbit]rabbit.{ENDFADE}");
+
+        lyrics.add("{FADE}And the plug came through, he was wrapped in {SHAKE}[WHITE]plastic{ENDSHAKE}.{ENDFADE}");
+        lyrics.add("{FADE}I ain't even know what was in the [%150]package[%].{ENDFADE}");
+        lyrics.add("{FADE}We was like a {RAINBOW}band{ENDRAINBOW} the way we came in with...{ENDFADE}");
+
+
+
+
+        //Completed echoe in the room lyric markup
+        lyrics.add("[%?SHINY][%150]High Voltage, Suno[%][%]");
         // [Verse 1]
         lyrics.add("{FADE}A [%75]single[%] [%150]note[%] {HANG=1.0;6}[+musical notes]{ENDHANG} [%75]hangs in the air[%]{ENDFADE}");
         lyrics.add("{FADE}Like a {WAVE=0.05;0.8;1.5}thought{ENDWAVE} I can't [%125]{SHAKE=1.0;0.5}repair{ENDSHAKE}[%]...{ENDFADE} [+broken-heart]");

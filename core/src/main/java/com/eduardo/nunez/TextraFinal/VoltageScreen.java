@@ -56,15 +56,15 @@ public class VoltageScreen extends ScreenAdapter {
         sansGenerator.dispose();
 
         // Register the Game Icons with our default sans-serif font.
-        KnownFonts.addGameIcons(sansFont);
+        //KnownFonts.addGameIcons(pixelFont);
 
         // Create the FontFamily
         Font.FontFamily fontFamily = new Font.FontFamily();
 //        fontFamily.add(sansFont, "sans", true); // Set sans-serif as the default
 //        fontFamily.add(pixelFont, "pixel");     // Add the pixel font with the name "pixel"
 //        skin.add("default", fontFamily);
-        skin.add("default", sansFont);
-        //skin.add("default", pixelFont);
+        //skin.add("default", sansFont);
+        skin.add("default", pixelFont);
         // --- 2. Create the LabelStyle (Unchanged logic) ---
         Styles.LabelStyle labelStyle = new Styles.LabelStyle();
         labelStyle.font = skin.get("default", Font.class);
@@ -73,7 +73,7 @@ public class VoltageScreen extends ScreenAdapter {
         // --- 3. THE MARKED-UP "VOLTAGE" LYRICS ---
         lyrics = new Array<>();
 
-        lyrics.add("{FADE;FAST}Let's see if we can go over this...{ENDFADE}");
+        lyrics.add("{FADE}Let's see if we can go over this...{ENDFADE}");
         lyrics.add("{FADE}Fend for myself, I don't need no {JUMP}[+shield]assist{ENDJUMP}.{ENDFADE}");
         lyrics.add("{FADE}I'ma go pull up with [%150]twins[%], that's a {HEARTBEAT}[+kiss]{ENDHEARTBEAT}.{ENDFADE}");
         lyrics.add("{FADE}And I ain't even talking 'bout [@pixel]Mary-Kate[@sans].{ENDFADE}");
