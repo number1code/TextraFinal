@@ -225,6 +225,9 @@ public class ProductionScreen extends ScreenAdapter {
             // In tommyettinger's textra, setText() is overridden to restart the typing animation with new text.
             typingLabel.setText(lyrics.get(currentLyricIndex));
         }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.S)){
+            game.setScreen(new VfxProductionScreen(game));
+        }
 
         // --- 2. Clear the Screen ---
         ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);

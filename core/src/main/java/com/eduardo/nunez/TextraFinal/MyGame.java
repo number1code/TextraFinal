@@ -6,8 +6,8 @@ import com.badlogic.gdx.Game;
 public class MyGame extends Game {
     @Override
     public void create() {
-        setScreen(new ProductionScreen(this));
-        //setScreen(new VoltageScreen(this));
+        //setScreen(new VfxProductionSquareScreen(this));
+        setScreen(new VfxProductionScreen(this));
     }
 
 }
