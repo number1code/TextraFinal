@@ -1,0 +1,36 @@
+lyrics.add("[%?SHINY][%150]Objective Reality, Suno[%][%]");
+
+        lyrics.add("{FADE}{FAST}[RED]{JOLT=0.3;50.0;inf;0.5;ff0000ff;ffffffff}Bloodshot eyes{ENDJOLT}{CLEARCOLOR}, {SPIN=0.5;1.0}spreadsheets bleeding{ENDSPIN}, [RED][+eyes]{CLEARCOLOR} [+drop of blood]");
+        lyrics.add("{FADE}{HEARTBEAT=1.5;0.8}[GREEN]Stock price pumping[/], {WAVE=0.05;2;2}dopamine feeding{ENDWAVE}. [+chart increasing]   [+brain]");
+        lyrics.add("{FADE}{EMERGE}Algorithm's my [PURPLE]Ouija board[/], {SLIDE=1;0.5;true}ghosts of data{ENDSLIDE}, [+crystal-ball][+ghost-ally]");
+        lyrics.add("{FADE}[%125]{SHAKE}[ORANGE]Whispers in code[CLEARCOLOR]{ENDSHAKE}, sharper than a  [+crocodile]  gator.{ENDFADE}");
+
+        lyrics.add("{FADE}{FASTER}[RED]No time for sleep[CLEARCOLOR], just {WIND=0.1;1;3;0.3}caffeine drip{ENDWIND}, [+sleeping face] [+teacup without handle]");
+        lyrics.add("{FADE}[GREEN]Profit margins stretch[CLEARCOLOR], {EASE=-8.0;1.65;true}tight as a whip{ENDEASE}. [+money with wings] [+chart decreasing] [+bar chart]");
+        lyrics.add("{FADE}I'm the {JUMP}[%150]architect[/]{ENDJUMP}, {SPIRAL=1;0.5}[CYAN]blueprint{CLEARCOLOR} savage[/]{ENDSPIRAL}, [+building construction] ");
+        lyrics.add("{FADE}{EASE=-8.0;1.35;true}[%175]Reality bending[/]{ENDEASE}, {VAR=FIRE}Tesla package{VAR=ENDFIRE}. [+collision][+oncoming automobile]");
+
+// Chorus - Build-up to the core message
+        lyrics.add("{FADE}{GRADIENT=RED;BLACK;0.5}Survive or die no middle ground{ENDGRADIENT}, [+skull]");
+        lyrics.add("{FADE}{CAROUSEL=0.3}[%175]The only way is the hustle sound [+money bag] [+loudspeaker]{ENDCAROUSEL}");
+        lyrics.add("{FADE}[%125]{ATTENTION}Objective focus{ENDATTENTION}, keep it [BLUE]clean{CLEARCOLOR},  [+bullseye] [+sparkles]");
+        lyrics.add("[%175]{SLAM}Cold logic cuts[%] through the {SHRINK}dream{ENDSHRINK}. [+thought balloon] [+kitchen knife]{ENDSLAM}");
+
+// Verse 2
+        lyrics.add("{FADE}{FAST}[%150][BLACK]Deadlines circling[%],{CLEARCOLOR} {WAVE=0.05;0.8;1.5}vultures on the roof{ENDWAVE}, [+spiral calendar] [+exploding head]");
+        lyrics.add("{FADE}{JOLT=0.2;20.0;inf;0.5;ff0000ff;ffffffff}Numbers don't lie{ENDJOLT}, that's the {SPIN}hard truth [+chart decreasing] [+bomb]{ENDSPIN}.");
+        lyrics.add("{FADE}Elevator pitch with a {SHAKE}[PURPLE]guillotine swing{ENDSHAKE}, [+scissors][CLEARCOLOR][+money bag]"); // Guillotine emoji is tricky, using scissors+money-bag for cutting wealth
+        lyrics.add("{FADE}[%125]Bet the farm[%] on the {HEARTBEAT}[GREEN][150%]next big thing[CLEARCOLOR]{ENDHEARTBEAT}. [+tractor][+chart increasing]");
+
+        lyrics.add("{FADE}{FAST}Keyboard clicking like a {BLINK=000000;838181ff;1.5;0.5}[GRAY]metronome[CLEARCOLOR]{ENDBLINK},  [+keyboard] [+maracas]");
+        lyrics.add("{FADE}This is my [BLUE]church[ENDCOLOR], this is my {SLAM}[%150]throne[%]{ENDSLAM}.  [+church] [+crown]");
+        lyrics.add("{FADE}{VAR=FIRE}Crypto mining[/] in the {HANG=0.8;0.5;true}basement heat{ENDHANG}, [+money with wings]  [+fire]"); // Crypto is abstract, money-wings works
+        lyrics.add("{FADE}{RAINBOW}[%150]Dollar signs dripping[/] off my {SICK}teeth{ENDSICK}. [+money-mouth face][+vampire]");
+
+// Bridge
+        lyrics.add("{FADE}{FAST}{SPIN}Laugh like a villain{ENDSPIN},{SICK=0.8;0.5}cry like a bot{ENDSICK},[+ogre][+robot]");
+        lyrics.add("{FADE}[%150][ORANGE]Success ain't free[ENDCOLOR], it's the {JOLT}war I fought{ENDJOLT}. [+trophy][+crossed swords]");
+        lyrics.add("{FADE}Step to the {SLIDE}plate{ENDSLIDE}, {WAVE=0.05;0.8;1.5}swing or miss{ENDWAVE},  [+baseball]");
+        lyrics.add("{FADE}[%175]{EMERGE}Objective reality{ENDEMERGE}, {SPIRAL=1;0.5;true}only way to exist{ENDSPIRAL}. [+telescope][+dizzy]");
+
+        lyrics.add("[%?SHINY][%150]Objective Reality, Suno[%][%]");
