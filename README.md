@@ -33,6 +33,7 @@ The application displays a series of text phrases, one at a time, each featuring
 3.  **Open the project** in a compatible IDE (IntelliJ IDEA is recommended).
 4.  The IDE should automatically detect and sync the Gradle project.
 5.  Add a Gradle Run Configuration of lwjgl3:run to your IDE or use lwjgl3:run in the terminal.
+6.  Working example in VfxProductionScreen.java, a libgdx screen with video background and controls to cycle marked up text on screen.
 
 ### 🎮 Controls
 
