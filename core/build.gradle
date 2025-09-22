@@ -14,6 +14,7 @@ dependencies {
   api "com.github.tommyettinger:regexodus:$regExodusVersion"
   api "com.github.tommyettinger:textratypist:$textratypistVersion"
   api "org.mini2Dx:universal-tween-engine:$universalTweenVersion"
+  api "com.badlogicgames.gdx-video:gdx-video:1.3.4-SNAPSHOT"
 
   if(enableGraalNative == 'true') {
     implementation "io.github.berstanio:gdx-svmhelper-annotations:$graalHelperVersion"

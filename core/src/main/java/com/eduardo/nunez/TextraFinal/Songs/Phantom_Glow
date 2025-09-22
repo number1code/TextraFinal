@@ -1,0 +1,35 @@
+// [Verse 1]
+        lyrics.add("{FADE=1;1;0.5}{FAST}{WIND=0.1;1;2;0.5}[GRAY]Shadows[CLEARCOLOR] creeping, past midnight tickin{SLOWER}g slow, [+new moon][+alarm clock]");
+        lyrics.add("{FADE}{FAST}{EMERGE}[CYAN]Hoodie up, I'm the {RAINBOW}phantom glow{ENDRAINBOW},[CLEARCOLOR] [+man superhero, medium-dark skin tone] [+glowing star]");
+        lyrics.add("{FADE}{FAST}{SICK=0.8}[GRAY]Smoke thick[CLEARCOLOR], {HEARTBEAT=1.0}lungs tight[/], {WAVE=0.05;1;1}streets whisper low{ENDWAVE}, [+lungs] [+cigarette]");
+        lyrics.add("{FADE}{FAST}[%125]Concrete jungle[%] where the {SPIRAL=0.8;0.3}lost souls grow{ENDSPIRAL}. [+cityscape][+person walking]");
+
+        lyrics.add("{FADE}{FAST}[RED]Eyes red[/], mind spinning like a {SPIN}carousel{ENDSPIN}, [+eyes] [+ferris wheel]");
+        lyrics.add("{FADE}{FAST}{JOLT=1.0;5.0;inf;0.5;333333ff;777777ff}Memories cut deep, sharper than a{ENDJOLT} {SHAKE}scalpel,{ENDSHAKE} [+brain] [+kitchen knife]");
+        lyrics.add("{FADE}{FAST}[%75]Dreams dissolve[%] in the {HANG=0.3;0.6}devil's cracked chapel{ENDHANG}, [+zzz][+ogre]");
+        lyrics.add("{FADE}{FAST}{HEARTBEAT=0.15;1.0}Each breath stolen, life fragile as an apple [+lungs]{ENDHEARTBEAT} [+red apple]");
+
+// [Chorus]
+        lyrics.add("{FADE}{FAST}{GRADIENT=BLACK;PURPLE;0.5}[%175]{CROWD}Phantom glow{ENDCROWD}{ENDGRADIENT}[%], where the {WIND=0.1;2;3;0.5}dark winds blow{ENDWIND}, [+wind face] {CROWD}[+ghost]{ENDCROWD}");
+        lyrics.add("{FADE}[%125]{FASTER}Every step heavy[%], every move {SLOW}too slow, {HANG}[+foot]{ENDHANG}[+snail]");
+        lyrics.add("{FADE}{FAST}{GRADIENT=BLACK;PURPLE;0.5}[%175]{CROWD}Phantom glow{ENDCROWD}{ENDGRADIENT}[%], I'm the {EMERGE}ghost they know{ENDEMERGE}, {CROWD}[+ghost] [+waving hand]{ENDCROWD}");
+        lyrics.add("{FADE}Through the {WAVE=0.05;1.5;1}haze[/], I'm the {SICK=0.8}[RED]curse they sow{ENDSICK}.{CLEARCOLOR}");
+
+// [Verse 2]
+        lyrics.add("{FADE}{FAST}{SHAKE=0.3;1.0}Echoes of sirens{ENDSHAKE}, blend with the {SQUASH}bassline{ENDSQUASH}, [+police car light] [+speaker high volume] ");
+        lyrics.add("{FADE}{FAST}{HEARTBEAT=0.4;1.0}Hearbeat syncopated, life on a{ENDHEARTBEAT} {BLINK=FF0000ff;000000;0.8;0.7}[RED]flatline,[/]{ENDBLINK}  [+beating heart] [+chart decreasing]");
+        lyrics.add("{FADE}{FAST}[%125][GRAY]Corners cold[CLEARCOLOR], {HANG=0.8;0.5}currency in [%?WHITE OUTLINE]chalk outlines[%]{ENDHANG}{CLEARCOLOR},");
+        lyrics.add("{FADE}{FAST}Fate's a {SPIN=0.6;1.0;false}dealer{ENDSPIN}, hand dealt in {JOLT=1.0;1.0;inf;0.5;ffffffff;f99d0fff}landmines{ENDJOLT}.[+game die][+bomb]");
+
+        lyrics.add("{FADE}{FAST}[GRAY]Hollow laughs ricochet off the {SLIDE=1;0.5;true}liquor store{ENDSLIDE},[CLEARCOLOR][+skull][+bottle with popping cork]");
+        lyrics.add("{FADE}{FAST}[%75]Futures pawned[%], {SICK=0.8}[GRAY]dreams dead on the floor[/]{ENDSICK}, [+broken heart][+coffin]");
+        lyrics.add("{FADE}{FAST}[%125]Grit so thick[%], it {RAINBOW}stains to the core{ENDRAINBOW}, [+grinning face][+brown heart]");
+        lyrics.add("{FADE}{FAST}{ATTENTION}Reality's a wolf{ENDATTENTION} and it's {SHAKE}[RED]scratching at my door{ENDSHAKE}. [+wolf] [+door]");
+
+// [Bridge]
+        lyrics.add("{FADE}{FAST}[%125]Fingers on the glass[%], {WIND=0.1;1;2;0.5}fogged with regret{ENDWIND}, [+backhand index pointing right] [+fog]");
+        lyrics.add("{FADE}{SPIRAL=1;0.5}Chasing shadows{ENDSPIRAL}, can't {JUMP}outrun the debt{ENDJUMP}, [+person running][+money with wings]");
+        lyrics.add("{FADE}{FAST}Past in the rearview{ENDFADE}, [GRAY]{WAVE}[%?SHADOW]smoke silhouettes[%]{ENDWAVE}{CLEARCOLOR}, [+oncoming automobile] [+man detective]");
+        lyrics.add("{FADE}{RAINBOW}[%150]Phantom glow lingers[%]{ENDRAINBOW}, {HEARTBEAT=1.0}[RED]never forget{ENDHEARTBEAT}.{CLEARCOLOR} [+glowing star][+red heart]");
+
+        lyrics.add("[%?SHINY][%150]Phantom Glow, Suno[%][%]");
