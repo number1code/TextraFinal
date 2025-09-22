@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
@@ -18,6 +19,9 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.video.VideoPlayer;
+import com.badlogic.gdx.video.VideoPlayerCreator;
+import com.badlogic.gdx.video.scenes.scene2d.VideoActor;
 import com.crashinvaders.vfx.VfxManager;
 import com.crashinvaders.vfx.effects.*;
 import com.github.tommyettinger.textra.*;
@@ -30,7 +34,6 @@ public class VfxProductionScreen extends ScreenAdapter {
     private Stage stage;
     private Skin skin;
     private TypingLabel typingLabel;
-
     // --- Lyrics Data and State ---
     private Array<String> lyrics;
     private int currentLyricIndex = 0;
@@ -70,12 +73,25 @@ public class VfxProductionScreen extends ScreenAdapter {
     private boolean isZoomEnabled = false;
     private boolean isFxaaEnabled = false;
     private boolean isNfaaEnabled = false;
+
+    private VideoPlayer videoPlayer;
+    private VideoActor videoActor;
+
     public VfxProductionScreen(Game game) {
         this.game = game;
     }
 
     @Override
     public void show() {
+        videoPlayer = VideoPlayerCreator.createVideoPlayer();
+        FileHandle file = Gdx.files.internal("test_video.webm");
+        try {
+            videoPlayer.load(file);
+        }catch (Exception e){
+            Gdx.app.log("loading video", "error: " + e.toString());
+        }
+        videoPlayer.play();
+        videoActor = new VideoActor(videoPlayer);
         // --- 1. Data and Asset Setup ---
         lyrics = createLyrics(); // <-- Refactored: Lyrics are now loaded from a clean, separate method.
         skin = new Skin();
@@ -93,8 +109,10 @@ public class VfxProductionScreen extends ScreenAdapter {
 
         Table table = new Table();
         table.setFillParent(true);
-        table.add(typingLabel).width(1020f);
+        table.add(typingLabel).width(1000f);
         stage.addActor(table);
+
+        stage.addActor(videoActor);
 
         // --- 4. GDX-VFX SETUP ---
         vfxManager = new VfxManager(Pixmap.Format.RGBA8888);
@@ -120,9 +138,10 @@ public class VfxProductionScreen extends ScreenAdapter {
         bloomEffect.setBloomIntensity(2.0f);
         bloomEffect.setThreshold(0.3f);
         //
-
+        vignettingEffect.setIntensity(2);
         // Add effects to the manager. The order matters.
-        //vfxManager.addEffect(crtEffect);
+        vfxManager.addEffect(crtEffect);
+        isCrtEnabled = true;
         vfxManager.addEffect(bloomEffect);
         isBloomEnabled = true;
         vfxManager.addEffect(vignettingEffect);
@@ -150,7 +169,13 @@ public class VfxProductionScreen extends ScreenAdapter {
         vfxManager.beginInputCapture();
         //ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);
         ScreenUtils.clear(0, 0, 0, 1f);
+        //drawing video in the background
+        Texture videoFrame = videoPlayer.getTexture();
+        batch.begin();
+        batch.draw(videoFrame,0,0);
+        batch.end();
         stage.draw(); // The FitViewport correctly scales the drawing here
+
         vfxManager.endInputCapture();
 
         // 3. Apply the effects
@@ -337,11 +362,13 @@ public class VfxProductionScreen extends ScreenAdapter {
         defaultLabelStyle.font = skin.get("primary", Font.class);
         skin.add("default", defaultLabelStyle);
 
-        KnownFonts.addEmoji(primaryTextraFont);
-        KnownFonts.addGameIcons(primaryTextraFont);
+        KnownFonts.addEmoji(primaryTextraFont);//disabling this allows some from GameIcons to work, this does seem to work with noto?
+        //KnownFonts.addGameIcons(primaryTextraFont);//disabling this allows some from OpenMoji to work. Doesn't work with some noto.
         KnownFonts.addNotoEmoji(primaryTextraFont);
         KnownFonts.addMaterialDesignIcons(primaryTextraFont);
         KnownFonts.addOpenMoji(primaryTextraFont, true);
+
+        KnownFonts.getStandardFamily();
     }
 
     /**
@@ -350,43 +377,29 @@ public class VfxProductionScreen extends ScreenAdapter {
      */
     private Array<String> createLyrics() {
         Array<String> lyrics = new Array<>();
-        lyrics.add("[%?SHINY][%150]Phantom Glow, Suno[%][%]");
+
+        // lyrics.add("[%?SHINY][%150]Grime Gospel, Suno[%][%]");
+        lyrics.add("[%?SHINY][%150]Concrete Requiem, Suno [%][%]");
 
 // [Verse 1]
-        lyrics.add("{FADE=1;1;0.5}{FAST}{WIND=0.1;1;2;0.5}[GRAY]Shadows[CLEARCOLOR] creeping, past midnight tickin{SLOWER}g slow, [+new moon][+alarm clock]");
-        lyrics.add("{FADE}{FAST}{EMERGE}[CYAN]Hoodie up, I'm the {RAINBOW}phantom glow{ENDRAINBOW},[CLEARCOLOR] [+man superhero, medium-dark skin tone] [+glowing star]");
-        lyrics.add("{FADE}{FAST}{SICK=0.8}[BLACK]Smoke thick[/], {HEARTBEAT=1.0}lungs tight[/], {WAVE=0.05;1;1}streets whisper low{ENDWAVE}, [+lungs] [+cigarette]");
-        lyrics.add("{FADE}{FAST}[%125]Concrete jungle[%] where the {SPIRAL=0.8;0.3}lost souls grow{ENDSPIRAL}. [+cityscape][+person walking]");
-
-        lyrics.add("{FADE}{FAST}[RED]Eyes red[/], mind spinning like a {SPIN}carousel{ENDSPIN}, [+eyes] [+ferris wheel]");
-        lyrics.add("{FADE}{FAST}{JOLT=1.0;5.0;inf;0.5;000000ff;777777ff}Memories cut deep, sharper than a{ENDJOLT} {SHAKE}scalpel,{ENDSHAKE} [+brain] [+kitchen knife]");
-        lyrics.add("{FADE}{FAST}[%75]Dreams dissolve[%] in the {HANG=0.4;1}devil's cracked chapel{ENDHANG}, [+zzz][+ogre]");
-        lyrics.add("{FADE}{FAST}{SLOW}{HEARTBEAT=0.15;1.0}Each breath stolen, life fragile as an apple [+lungs]{ENDHEARTBEAT} [+red apple]");
-
-// [Chorus]
-        lyrics.add("{FADE}{FAST}{GRADIENT=BLACK;PURPLE;0.5}[%175]{CROWD}Phantom glow{ENDCROWD}{ENDGRADIENT}[%], where the {WIND=0.1;2;3;0.5}dark winds blow{ENDWIND}, [+wind face] {CROWD}[+ghost]{ENDCROWD}");
-        lyrics.add("{FADE}[%125]{FASTER}Every step heavy[%], every move {SLOW}too slow, {HANG}[+foot]{ENDHANG}[+snail]");
-        lyrics.add("{FADE}{FAST}{GRADIENT=BLACK;PURPLE;0.5}[%175]{CROWD}Phantom glow{ENDCROWD}{ENDGRADIENT}[%], I'm the {EMERGE}ghost they know{ENDEMERGE}, {CROWD}[+ghost] [+waving hand]{ENDCROWD}");
-        lyrics.add("{FADE}Through the {WAVE=0.05;1.5;1}haze[/], I'm the {SICK=0.8}[RED]curse they sow{ENDSICK}.{CLEARCOLOR}");
+        lyrics.add("{FADE}{SLAM}[%125][%^neon][RED]City eats souls,[] [RED]{SQUASH}jaws unhinge{ENDSQUASH} for the feast{CLEARCOLOR} [+needle-jaws]");
+        lyrics.add("{FADE}{FAST}Pavement cracked, [DARK_RED]blood seeps[/], {JOLT=0.5;10;0.5}baptized in the beast{ENDJOLT} [+drop of blood][+church]");
+        lyrics.add("{FADE}{WIND=0.1;1.5;2;0.5}Wind howls[/], a {EMERGE}[CYAN]banshee[/]{ENDEMERGE} caught in the breeze [+wind face][+ghost]");
+        lyrics.add("{FADE}[GRAY]Grime-covered dreams[/], they {SICK=0.8}rot[/]{ENDSICK}, no {SHRINK}release{ENDSHRINK}. [+zzz][+biohazard]");
+        lyrics.add("{FADE}{BUMP}[%125][GRAY]Steel toes on the asphalt[/], {ENDJUMP}stomping the weak{ENDBUMP} [+boot][+person falling]");
+        lyrics.add("{FADE}{SHAKE}Shadow-boxing with [RED]demons[/],{ENDSHAKE} they don't ever retreat [+person boxing][+devil]");
+        lyrics.add("{FADE}[GREEN]Currency smells {SICK=0.5}sour[/]{ENDSICK}, hands dirty for keeps [+money with wings][+nauseated face]");
+        lyrics.add("{FADE}{WAVE=0.05;2;2}Sleep's a mirage[/], {JOLT}[BLACK]nightmares sewn in the sheets{ENDJOLT} [+sleeping face][+scream]");
 
 // [Verse 2]
-        lyrics.add("{FADE}{SHAKE=0.3;1.0}Echoes of sirens{ENDSHAKE}, blend with the {SQUASH}bassline{ENDSQUASH}, [+police car light] [+speaker high volume] ");
-        lyrics.add("{FADE}{HEARTBEAT=0.4;1.0}Hearbeat syncopated, life on a{ENDHEARTBEAT} {BLINK=FF0000ff;000000;0.8;0.7}[RED]flatline,[/]{ENDBLINK}  [+beating heart] [+chart decreasing]");
-        lyrics.add("{FADE}[%125][BLACK]Corners cold[/], {HANG=0.8;0.5}currency in [%?WHITE OUTLINE]chalk outlines[%]{ENDHANG}{CLEARCOLOR},");
-        lyrics.add("{FADE}{FAST}Fate's a {SPIN=0.6;1.0;false}dealer{ENDSPIN}, hand dealt in {JOLT=1.0;1.0;inf;0.5;ffffffff;f99d0fff}landmines{ENDJOLT}.[+game die][+bomb]");
-
-        lyrics.add("{FADE}{FAST}[GRAY]Hollow laughs ricochet off the {SLIDE=1;0.5;true}liquor store{ENDSLIDE},[CLEARCOLOR][+skull][+bottle with popping cork]");
-        lyrics.add("{FADE}[%75]Futures pawned[%], {SICK=0.8}[BLACK]dreams dead on the floor[/]{ENDSICK}, [+broken heart][+coffin]");
-        lyrics.add("{FADE}[%125]Grit so thick[%], it {RAINBOW}stains to the core{ENDRAINBOW}, [+grinning face][+brown heart]");
-        lyrics.add("{FADE}{ATTENTION}Reality's a wolf{ENDATTENTION} and it's {SHAKE}[RED]scratching at my door{ENDSHAKE}. [+wolf] [+door]");
-
-// [Bridge]
-        lyrics.add("{FADE}{FAST}[%125]Fingers on the glass[%], {WIND=0.1;1;2;0.5}fogged with regret{ENDWIND}, [+backhand index pointing right] [+fog]");
-        lyrics.add("{FADE}{SPIRAL=1;0.5}Chasing shadows{ENDSPIRAL}, can't {JUMP}outrun the debt{ENDJUMP}, [+person running][+money with wings]");
-        lyrics.add("{FADE}Past in the rearview{ENDFADE}, [GRAY]{WAVE}[%?SHADOW]smoke silhouettes[%]{ENDWAVE}{CLEARCOLOR}, [+oncoming automobile] [+man detective]");
-        lyrics.add("{FADE}{RAINBOW}[%150]Phantom glow lingers[%]{ENDRAINBOW}, {HEARTBEAT=1.0}[RED]never forget{ENDHEARTBEAT}.{CLEARCOLOR} [+glowing star][+red heart]");
-
-        lyrics.add("[%?SHINY][%150]Phantom Glow, Suno[%][%]");
+        lyrics.add("{FADE}{WIND=0.1;2;3;0.5}[BLACK]Smoke stacks exhale[/], lungs {SICK=0.8}inhale the sin{ENDSICK} [+factory][+lungs]");
+        lyrics.add("{FADE}[PURPLE]Knuckles bruised[/], they {SHAKE}scream[/]{ENDSHAKE}, {SLAM}[%150]this is how we begin{ENDSLAM} [+fist][+bomb]");
+        lyrics.add("{FADE}The block's a {VAR=FIRE}furnace[/], we {BUMP}forge kin[/]{ENDBUMP} from the din [+fire][+people hugging]");
+        lyrics.add("{FADE}[GRAY]Ashes in my veins[/], but the {HEARTBEAT=1.2}[ORANGE]fire's still within{ENDHEARTBEAT} [+bone][+red heart]");
+        lyrics.add("{FADE}{BLINK=838181ff;000000;1.0;0.5}Streetlights flicker[/], {FASTER}Morse code from the ghosts{FASTER} [+light bulb][+ghost]");
+        lyrics.add("{FADE}{SLOW}[%75]Kingpins whisper tales[/], but they all {SHRINK=1.0;1.0;true}decomposed{ENDSHRINK}. [+crown][+skull and crossbones]");
+        lyrics.add("{FADE}{HEARTBEAT=0.8}Hunger’s a drumbeat[/], keeps my heart {EMERGE}composed{ENDEMERGE} [+drum][+beating heart]");
+        lyrics.add("{FADE}Every crack in the sidewalk's a {SLIDE=1;0.5;true}map to the [PURPLE]unknown[/]{ENDSLIDE}. [+map][+question mark]");
         return lyrics;
     }
 }
