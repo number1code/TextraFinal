@@ -1,0 +1,54 @@
+lyrics.add("[%?SHINY][%150]2023, 10xdevart[%][%]");
+
+// [Intro]
+        lyrics.add("{FADE=1;0;2}{SLOW}[dark gray]2023... [+pocket-watch]{ENDFADE}");
+        lyrics.add("{FADE=1;0;3}{SLOW}The world as we know it is about to end...{ENDFADE} [+exploding-planet]");
+
+// [Verse]
+        lyrics.add("I'ma find the time  [+stopwatch]");
+        lyrics.add("Two phones, the numbers stay {WAVE=0.1;2;0.8}dialed [+ringing-bell]{ENDWAVE}");
+        lyrics.add("No pressure, no {JOLT=1;1;1;0.5;white;light cyan}diamond{ENDJOLT}  [+big-diamond-ring]");
+        lyrics.add("{VAR=DIVINE}Stay blessed, the course is divine{VAR=ENDDIVINE}  [+angel-wings]");
+        lyrics.add("{VAR=BLADE}Got the blade on me{VAR=ENDBLADE} [+razor-blade]");
+        lyrics.add("Stuntin' in the {SHAKE=0.5;0.5}shade{ENDSHAKE} on 'em [+sunglasses]");
+        lyrics.add("[rich magenta]Bad bitch in my face, wanna lay on me[/]   [+queen-crown]");
+        lyrics.add("You can tell me how it {SICK=0.5;1}tastes,{ENDSICK} homie  [+tongue]");
+        lyrics.add("{VAR=MONEY}Makin' money off the way I speak{VAR=ENDMONEY}  [+cash]");
+        lyrics.add("Way I eat   [+meal]");
+        lyrics.add("Way I breathe");
+        lyrics.add("I could make a dollar off of {RAINBOW=1;1;1;0.6}anything{ENDRAINBOW}  [+take-my-money]");
+        lyrics.add("Call me Lenny Kravitz with the {GRADIENT=silver;gold;1;1}bling{ENDGRADIENT}  [+gem-pendant]");
+        lyrics.add("{VAR=ROCKSTAR}I'm just livin' out a rockstar fantasy  [+guitar-head]{VAR=ENDROCKSTAR}");
+        lyrics.add("{FAST}Might not be the man that you planned to see");  //abacus
+        lyrics.add("{FAST}But I'll be the {VAR=DIVINE}man that you need{VAR=ENDDIVINE}  [+hand-of-god]");
+        lyrics.add("I'ma plant the seed  [+plant-seed]");
+        lyrics.add("In the family tree  [+family-tree]");
+        lyrics.add("Now, I'm sittin' back, and I'm lookin' like");
+        lyrics.add("{EMERGE=0.5;true}[%200]\"Wow, look at me\"{ENDEMERGE} [+trophy]");
+        lyrics.add("{FAST}Feelin' like a {SHRINK=2;1.5;false}[light yellow]star,[CLEARCOLOR] I don't wanna leave  [+flexible-star]");
+        lyrics.add("Only one life, ain't no repeat  [+cancel]");
+        lyrics.add("{VAR=MONEY}I need my coins{VAR=ENDMONEY}  [+coins]");
+        lyrics.add("She bring the box, it's a {JUMP=1;2;1;0.5}joint{ENDJUMP} [+open-treasure-chest]");
+        lyrics.add("When she hit me, it's a point  [+bullseye]");
+        lyrics.add("I got no time to {SHAKE=1.5;1.5}disappoint{ENDSHAKE}  [+broken-shield]");
+
+// [Chorus]
+        lyrics.add("{EASE=2;1.5;false}[%175][GRAY]Don't worry about me, I'ma be alright{ENDEASE} [+thumb-up]");
+        lyrics.add("{EASE=2;1.5;false}[%175][GRAY]Ayy, ayy, I'ma be alright{ENDEASE} [+thumb-up]");
+        lyrics.add("{EASE=2;1.5;false}[%175][GRAY]I'ma be alright{ENDEASE} [+thumb-up]");
+
+// [Outro]
+        lyrics.add("{FADE=1;0;4}{SLOW}[dark gray]2023...{ENDFADE} [+hourglass]");
+
+//Used for 2023 //predefined styles used in main Game class
+        TypingConfig.GLOBAL_VARS.put("DIVINE", "{FADE=0;1;1.5}{COLOR=rich light gold}");
+        TypingConfig.GLOBAL_VARS.put("ENDDIVINE", "{CLEARCOLOR}{ENDFADE}");
+
+        TypingConfig.GLOBAL_VARS.put("ROCKSTAR", "{SLIDE=2;2.5;false}{GRADIENT=light cyan;rich magenta;1;1}");
+        TypingConfig.GLOBAL_VARS.put("ENDROCKSTAR", "{ENDGRADIENT}{ENDSLIDE}");
+
+        TypingConfig.GLOBAL_VARS.put("MONEY", "{SQUASH=1.5;2;false}{COLOR=rich lime green}");
+        TypingConfig.GLOBAL_VARS.put("ENDMONEY", "{CLEARCOLOR}{ENDSQUASH}");
+
+        TypingConfig.GLOBAL_VARS.put("BLADE", "{SLIDE=3;3;false}{COLOR=light metallic silver}");
+        TypingConfig.GLOBAL_VARS.put("ENDBLADE", "{CLEARCOLOR}{ENDSLIDE}");

@@ -1,0 +1,21 @@
+lyrics.add("[%?SHINY][%150]Concrete Requiem, Suno [%][%]");
+
+// [Verse 1]
+        lyrics.add("{FADE}{SLAM}[%125][RED]City eats souls,[] [RED]{SQUASH}jaws unhinge{ENDSQUASH} for the feast{CLEARCOLOR} [+carnivore-mouth]");//[%^neon] [+needle-jaws]
+        lyrics.add("{FADE}{FAST}Pavement cracked, [FIREBRICK]blood{CLEARCOLOR} seeps, {JOLT=0.5;10.0;inf;0.5;ffffffff;e20303ff}baptized n the beast{ENDJOLT} [+church] [RED][%75][+blood][%]{CLEARCOLOR}");
+        lyrics.add("{FADE}{WIND=0.1;1.5;2;0.5}Wind howls, a {EMERGE}[CYAN]banshee[/]{ENDEMERGE} caught in the breeze [+\uD83C\uDF2C]  [+ghost]");
+        lyrics.add("{FADE}{FASTER}{VAR=ZOMBIE}Grime-covered dreams, they {SICK=0.8}rot[/]{ENDSICK}, no {SHRINK}release{ENDSHRINK}. [+biohazard]{VAR=ENDZOMBIE}");//[+😴]
+        lyrics.add("{FADE}{FAST}[GRAY]Steel{CLEARCOLOR} toes on the [SLATE]asphalt{CLEARCOLOR}, {JUMP}stomping the weak [+steeltoe-boots]{ENDJUMP}[+falling]");
+        lyrics.add("{FADE}{FAST}{SHAKE}Shadow-boxing with [RED]demons[CLEARCOLOR],{ENDSHAKE} they don't ever retreat  [+boxing-glove][+devil-mask]");
+        lyrics.add("{FADE}{FAST}[GREEN]Currency smells {SICK=0.5;0.5}sour{ENDSICK} hands dirty for keeps   [+money-stack][+vomiting]");
+        lyrics.add("{FADE}{FAST}{WAVE=0.05;2;2}Sleep's a mirage[/], {JOLT}[GRAY] nightmares sewn in the sheets{ENDJOLT} [+\uD83D\uDE34] [+screaming]");
+
+// [Verse 2]
+        lyrics.add("{FADE}{WIND=0.1;2;3;0.5}[GRAY]Smoke stacks exhale[/], lungs {SICK=0.8}inhale the sin{ENDSICK}   [+factory][+lungs]");
+        lyrics.add("{FADE}{FAST}[PURPLE]Knuckles bruised,  they {SHAKE}scream{ENDSHAKE}, {SLAM}[%150]this is how we begin{ENDSLAM} [+brass-knuckles] [+cluster-bomb]");
+        lyrics.add("{FADE}The block's a {VAR=FIRE}furnace{VAR=ENDFIRE}, we forge{EMERGE} kin{ENDEMERGE} from the {EMERGE}din{ENDEMERGE} [+fire][+\uD83E\uDEC2]");
+        lyrics.add("{FADE}[GRAY]Ashes[CLEARCOLOR] in my veins, but the {HEARTBEAT=1.2}{VAR=FIRE}fire's still  within [+❤\uFE0F\u200D\uD83D\uDD25]{VAR=ENDFIRE}{ENDHEARTBEAT}");//[+bones]
+        lyrics.add("{FADE}{BLINK=ffffff;000000;1.0;0.5}Streetlights flicker, {FASTER}Morse code from the ghosts{FASTER} [+ghost][+\uD83D\uDCA1]");
+        lyrics.add("{FADE}{FAST}Kingpins whisper tales, but they all {SHRINK=1.0;1.0;true}decomposed{ENDSHRINK}. [+\uD83D\uDC80]");
+        lyrics.add("{FADE}{FAST}{HEARTBEAT=0.8}Hunger’s a drumbeat, keeps my heart {EMERGE}composed{ENDEMERGE} [+drum]  [%75] [+heart-beats]");
+        lyrics.add("{FADE}[150%]Every[%] crack in the sidewalk's a {SLIDE=1;0.5;true}map to the [PURPLE]unknown{ENDSLIDE}.    [+treasure-map][+red_question_mark]{CLEARCOLOR}");

@@ -1,0 +1,90 @@
+[
+  {
+    "startTime": 26.90,
+    "markup": "{VAR=ASH_FALL}Ashes fall like paper rain{VAR=ENDASH_FALL}"
+  },
+  {
+    "startTime": 33.52,
+    "markup": "{FADE=0.5;1;2}[dullest blue]Skies no longer know the blue{ENDFADE}"
+  },
+  {
+    "startTime": 40.36,
+    "markup": "Streetlights {VAR=FLICKER_LIGHT}flicker...{VAR=ENDFLICKER_LIGHT}{WAIT=0.5}{SICK=1;1}Lost in pain{ENDSICK}"
+  },
+  {
+    "startTime": 45.16,
+    "markup": "{SLAM}[dark gray]World done broke...{ENDSLAM}{WAIT=3.98}What can we do?"
+  },
+  {
+    "startTime": 53.22,
+    "markup": "{VAR=SMOKE_LUNGS}Smoke in my lungs...{WAIT=0.22}Heavy it weigh{VAR=ENDSMOKE_LUNGS}"
+  },
+  {
+    "startTime": 59.06,
+    "markup": "{SPEED=2}We run from the night,{WAIT=0.26} we run from the day{NORMAL}"
+  },
+  {
+    "startTime": 65.60,
+    "markup": "{VAR=ASH_FALL}Ashes in the air...{VAR=ENDASH_FALL}{WAIT=0.72}Who still care?"
+  },
+  {
+    "startTime": 70.10,
+    "markup": "{SPEED=2}Life gone thin,{WAIT=0.38} the end declare{NORMAL}"
+  },
+  {
+    "startTime": 73.14,
+    "markup": "{VAR=ASH_FALL}Ashes in the air...{VAR=ENDASH_FALL}{WAIT=1.02}Who still care?"
+  },
+  {
+    "startTime": 76.48,
+    "markup": "{SPEED=4}Answer me now,{WAIT=0.22} or leave me bare{NORMAL}"
+  },
+  {
+    "startTime": 120.36,
+    "markup": "{VAR=GHOST_WHISPER}Shadows crawl where sunlight died{VAR=ENDGHOST_WHISPER}"
+  },
+  {
+    "startTime": 127.46,
+    "markup": "[dark gray]Concrete jungle turns to dust"
+  },
+  {
+    "startTime": 133.92,
+    "markup": "{VAR=GHOST_WHISPER}Voices echo...{WAIT=0.76}nowhere to hide{VAR=ENDGHOST_WHISPER}"
+  },
+  {
+    "startTime": 139.22,
+    "markup": "[dark red]Trust no one...{WAIT=1.22}not even trust"
+  },
+  {
+    "startTime": 147.36,
+    "markup": "{SPEED=4}Tick tock...{WAIT=0.68}the clocks don't turn{NORMAL}"
+  },
+  {
+    "startTime": 150.32,
+    "markup": "{VAR=SPUTTERINGFIRE}Fires blaze{VAR=ENDSPUTTERINGFIRE} and bridges {SHRINK=2;1.5;false}burn{ENDSHRINK}"
+  },
+  {
+    "startTime": 154.06,
+    "markup": "{SPEED=4}Tick tock...{WAIT=0.64}the clocks don't turn{NORMAL}"
+  },
+  {
+    "startTime": 157.04,
+    "markup": "{VAR=GHOST_WHISPER}Ashes whisper...{WAIT=1.16}lessons spurned{VAR=ENDGHOST_WHISPER}"
+  },
+  {
+    "startTime": 161.80,
+    "markup": "{VAR=ASH_FALL}Ashes in the air...{VAR=ENDASH_FALL}{WAIT=0.88}Who still care?"
+  },
+  {
+    "startTime": 164.00,
+    "markup": "{SPEED=2}Life gone thin,{WAIT=0.92} the end declare{NORMAL}"
+  },
+  {
+    "startTime": 166.98,
+    "markup": "{VAR=ASH_FALL}Ashes in the air...{VAR=ENDASH_FALL}{WAIT=0.62}Who still care?"
+  },
+  {
+    "startTime": 170.78,
+    "markup": "{SPEED=4}Answer me now,{WAIT=0.52} or leave me bare{NORMAL}"
+  }
+]

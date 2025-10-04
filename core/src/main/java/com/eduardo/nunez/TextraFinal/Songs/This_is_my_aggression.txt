@@ -1,0 +1,70 @@
+lyrics.add("[%?SHINY][%150]Aggression, 10xdev_art[%][%]");
+
+// [Verse]
+        lyrics.add("{SPEED=1.1}This is my {VAR=AGGRESSION_HIT}aggression,{VAR=ENDAGGRESSION_HIT}{WAIT=0.24}{NORMAL} I'm back,{WAIT=0.26} {SPEED=4}I can't give you a break{NORMAL}{WAIT=0.52}");
+        lyrics.add("{SPEED=1}I let the {SQUASH=1.5;2;false}pressure{ENDSQUASH} pile up,{NORMAL}{WAIT=0.32} and it's my {JOLT=2;2;0.5}mistake{ENDJOLT}{WAIT=0.62}");
+        lyrics.add("{SPEED=0.9}I got my mind made up,{NORMAL}{WAIT=0.22} {SPEED=1}I don't need a debate{NORMAL}{WAIT=0.5}");
+        lyrics.add("{SPEED=1}This is my {VAR=AGGRESSION_HIT}aggression,{VAR=ENDAGGRESSION_HIT}{WAIT=0.14}{NORMAL} my confession,{WAIT=0.26} you better {SHAKE=2;2}[%175]pray[%]{ENDSHAKE}");
+        lyrics.add("{SPEED=1}This is my {VAR=AGGRESSION_HIT}aggression,{VAR=ENDAGGRESSION_HIT}{WAIT=0.2}{NORMAL} I'm back,{WAIT=0.16} {SPEED=1}I can't give you a break{NORMAL}{WAIT=0.52}");
+        lyrics.add("{SPEED=1}I let the {SQUASH=1.5;2;false}pressure{ENDSQUASH} pile up,{NORMAL}{WAIT=0.14} and it's my {JOLT=2;2;0.5}mistake{ENDJOLT}{WAIT=0.64}");
+        lyrics.add("{SPEED=1}I got my mind made up,{NORMAL}{WAIT=0.26} {SPEED=1}I don't need a debate{NORMAL}{WAIT=0.52}");
+        lyrics.add("{SPEED=1.1}This is my {VAR=AGGRESSION_HIT}aggression,{VAR=ENDAGGRESSION_HIT}{WAIT=0.18}{NORMAL} my confession,{WAIT=0.2} you better {SHAKE=2;2}[%175]pray[%]{ENDSHAKE}");
+
+// [Chorus]
+        lyrics.add("{SPEED=1.5}{VAR=REAPER_FADE}It's the reaper,{VAR=ENDREAPER_FADE}{WAIT=0.5} the trigger squeezer{WAIT=0.18}  [+reaper-scythe]");
+        lyrics.add("{SPEED=1.1}{VAR=REAPER_FADE}You feel the ether,{VAR=ENDREAPER_FADE}{WAIT=0.32} leave your soul deeper  [+sly]");
+        lyrics.add("{JUMP=1;2;1;0.5}You better pray{ENDJUMP}   [+prayer]");
+        lyrics.add("{JUMP=1;2;1;0.5}[%125]You better pray[%]{ENDJUMP}   [+angel-wings]");
+        lyrics.add("{JUMP=1;2;1;0.5}[%150]You better pray[%]{ENDJUMP}   [+prayer]");
+        lyrics.add("{JOLT=2;2;0.6}[%175]You better pray[%]{ENDJOLT}   [+prayer-beads]");
+
+// [Verse 2]
+        lyrics.add("{SPEED=2}[rich green]Chase a couple of bands,{WAIT=0.08} make a couple of flips{NORMAL}   [+cash]");
+        lyrics.add("{SPEED=2}I pop a couple of {JUMP=0.8;1;1;0.3}pills,{ENDJUMP}{WAIT=0.1} I let it numb my lips{NORMAL}   [+pill]");
+        lyrics.add("{SPEED=3}I'm in a couple of rips,{WAIT=0.06} I'm making couple of trips{NORMAL}   [+tripwire]");
+        lyrics.add("{SPEED=3}I'm on some {VAR=DEMON_TIME}demon time,{VAR=ENDDEMON_TIME}{WAIT=0.04} I got a couple of clips  [+bat-blade]");
+        lyrics.add("{SPEED=2}I'm moving militant{WAIT=0.28} with a couple of men{NORMAL}   [+team-upgrade]");
+        lyrics.add("{SPEED=2}IYou thinking, {SHAKE=1;1}\"Man, oh, man{ENDSHAKE}{WAIT=0.12} here we go again\"");
+        lyrics.add("{SPEED=4}I'm with a couple of bitches and they want me to win{NORMAL}   [+cherish]");
+        lyrics.add("{SPEED=1.5}We on some {VAR=TOXIC_GLOW}toxic love,{VAR=ENDTOXIC_GLOW} I'm 'bout to {SPIN=1;1;false}spin again{ENDSPIN}");
+
+// [Chorus] - Repeated with slight variations for intensity
+        lyrics.add("{SPEED=1.5}{VAR=REAPER_FADE}It's the reaper,{VAR=ENDREAPER_FADE}{WAIT=0.5} the trigger squeezer{WAIT=0.18} [+pistol-gun]");
+        lyrics.add("{SPEED=1.1}{VAR=REAPER_FADE}You feel the ether,{VAR=ENDREAPER_FADE}{WAIT=0.32} leave your soul deeper [+sly]");
+        lyrics.add("{JUMP=1;2;1;0.5}You better pray{ENDJUMP}   [+jerusalem-cross]");
+        lyrics.add("{JUMP=1;2;1;0.5}[%125]You better pray[%]{ENDJUMP}   [+angel-wings]");
+        lyrics.add("{JUMP=1;2;1;0.5}[%150]You better pray[%]{ENDJUMP} [+prayer]");
+        lyrics.add("{JOLT=2;2;0.6}[%175]You better pray[%]{ENDJOLT}   [+prayer-beads]");
+
+// [Verse 3] - Repeats Verse 1, so we use the same synchronized markup
+        lyrics.add("{SPEED=1.1}This is my {VAR=AGGRESSION_HIT}aggression,{VAR=ENDAGGRESSION_HIT}{WAIT=0.24}{NORMAL} I'm back,{WAIT=0.16} {SPEED=1.5}I can't give you a break{NORMAL}{WAIT=0.56}");
+        lyrics.add("{SPEED=1}I let the {SQUASH=1.5;2;false}pressure{ENDSQUASH} pile up{NORMAL} {JOLT=2;2;0.5}I got my mind made up,{ENDJOLT}{WAIT=0.24}");
+        lyrics.add("{SPEED=1}I don't need a debate{NORMAL}{WAIT=0.54}");
+        lyrics.add("{SPEED=2}This is my {VAR=AGGRESSION_HIT}aggression,{VAR=ENDAGGRESSION_HIT}{WAIT=0.22}{NORMAL} my confession {WAIT=0.56}you better {SHAKE=2;2}[%175]pray[%]{ENDSHAKE}");
+        lyrics.add("{SPEED=2}This is my {VAR=AGGRESSION_HIT}aggression,{VAR=ENDAGGRESSION_HIT}{WAIT=0.36}{NORMAL} I'm back,{WAIT=0.14} {SPEED=1.5}I can't give you a break{NORMAL}{WAIT=0.58}");
+        lyrics.add("{SPEED=2}I let the {SQUASH=1.5;2;false}pressure{ENDSQUASH} pile up,{NORMAL}{WAIT=0.34} and it's my {JOLT=2;2;0.5}mistake{ENDJOLT}{WAIT=0.68}");
+        lyrics.add("{SPEED=2}I got my mind made up,{NORMAL}{WAIT=0.24} {SPEED=1.5}I don't need a debate{NORMAL}{WAIT=0.52}");
+        lyrics.add("{SPEED=2}This is my {VAR=AGGRESSION_HIT}aggression,{VAR=ENDAGGRESSION_HIT}{WAIT=0.2}{NORMAL} my confession {WAIT=0.6}you better {SHAKE=2;2}[%175]pray[%]{ENDSHAKE}");
+
+// [Chorus] - Final and most intense repeat
+        lyrics.add("{SPEED=1.1}{VAR=REAPER_FADE}It's the reaper,{VAR=ENDREAPER_FADE}{WAIT=0.36} The trigger squeezer{WAIT=0.18}  [+reaper-scythe]");
+        lyrics.add("{SPEED=1.1}{VAR=REAPER_FADE}You feel the ether,{VAR=ENDREAPER_FADE}{WAIT=0.26} leave your soul deeper [+sly]");
+        lyrics.add("{VAR=MANIC_SCREAM}You better pray{ENDMANIC_SCREAM} [+prayer]");
+        lyrics.add("{VAR=MANIC_SCREAM}You better pray{ENDMANIC_SCREAM} [+jerusalem-cross]");
+
+
+
+
+        --->Predefined styles(used in main Game class)
+        //thisIsMyAggression
+                TypingConfig.GLOBAL_VARS.put("AGGRESSION_HIT", "{SLAM}[%150][darkest red]");
+                TypingConfig.GLOBAL_VARS.put("ENDAGGRESSION_HIT", "[%]{ENDSLAM}{CLEARCOLOR}");
+
+                TypingConfig.GLOBAL_VARS.put("REAPER_FADE", "{FADE=0;1;1.2}{WIND=0.1;0.1;3;0.5}{COLOR=pale weak gray}");
+                TypingConfig.GLOBAL_VARS.put("ENDREAPER_FADE", "{CLEARCOLOR}{ENDWIND}{ENDFADE}");
+
+                TypingConfig.GLOBAL_VARS.put("TOXIC_GLOW", "{STYLE=NEON}{SICK=0.8;1}{COLOR=dull sick green}");
+                TypingConfig.GLOBAL_VARS.put("ENDTOXIC_GLOW", "{ENDSICK}{CLEARCOLOR}{STYLE=DEFAULT}");
+
+                TypingConfig.GLOBAL_VARS.put("DEMON_TIME", "{VAR=SPUTTERINGFIRE}");
+                TypingConfig.GLOBAL_VARS.put("ENDDEMON_TIME", "{VAR=ENDSPUTTERINGFIRE}");

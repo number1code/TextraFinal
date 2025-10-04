@@ -1,0 +1,80 @@
+lyrics.add("[%?SHINY][%150]Monotone Weapons, 10xdev_art[%][%]");
+
+// [Verse 1]
+        lyrics.add("{FAST}Out in Harlem like the {SHAKE}[dark red]Taliban{ENDSHAKE}  [+turban]");
+        lyrics.add("Black tea with the turmeric and [rich yellow]cardamom[CLEARCOLOR]  [+teapot-leaves]");
+        lyrics.add("{FAST}{SLAM}Body slammed in a cage,[/] ni**a, {VAR=GORY_FLASH}ThunderDan{VAR=ENDGORY_FLASH}  [+caged-ball]");
+        lyrics.add("{FAST}I'm throwin' hands, [%150]no squares in my circle[%] [+fist]");
+        lyrics.add("{FAST}More {VAR=SURGICAL_CUT}surgical{VAR=ENDSURGICAL_CUT}, bustin' like Daffy   [+scalpel]");
+        lyrics.add("It's the trashy MCs on the {VAR=SOUL_EATER}black sea{VAR=ENDSOUL_EATER}   [+pirate-flag]");
+        lyrics.add("{FAST}For real, in the cut like {VAR=SURGICAL_CUT}machetes{VAR=ENDSURGICAL_CUT}  [+machete]");
+        lyrics.add("Heavy, the dream and the nightmare of {JOLT=1;1;0.5;0.;black;red}Freddie{ENDJOLT}  [+night-vision]  [+monster-grasp]");
+        lyrics.add("I'm ready, {SQUASH=2;2;false}set it off{ENDSQUASH} like Latifah  [+fire-bomb]");
+        lyrics.add("Mami is a {VAR=SOUL_EATER}soul-eater{VAR=ENDSOUL_EATER}  [+mouth-watering]  [+monster-grasp]");
+        lyrics.add("Old school, buck the meter  [+two-coins]");
+        lyrics.add("{FASTER}Nothin' cheaper");
+        lyrics.add("{FASTER}It's gettin' {SHRINK=2;1.5;false}deeper,[/] ni**a [+diving-helmet]");
+
+// [Verse 2]
+        lyrics.add("{FASTER}Move it like a {WIND=0.1;0.1;2;0.5}[dark gray]reaper{ENDWIND} [+reaper-scythe]");
+        lyrics.add("{FASTER}Seek the hidden feature [+secret-door]");
+        lyrics.add("{FASTER}Cheaper creeper  [+ghost]");
+        lyrics.add("{FAST}Runnin' through your {WAVE=0.1;2;0.8}speaker{ENDWAVE} [+speaker]");
+        lyrics.add("{FAST}How it gets freakier  [+screaming]");
+        lyrics.add("{FAST}How it gets weaker  [+broken-shield]");
+        lyrics.add("{FASTER}On the side like a cheater  [+ace]");
+        lyrics.add("{FASTER}Cold and bold like I'm {EMERGE=0.5;true}[sky blue]Nina{ENDEMERGE}   [+snowflake-2]");
+        lyrics.add("{FASTER}{VAR=SOUL_EATER}Soul eater, slasher, cut the cleaner{VAR=ENDSOUL_EATER}  [+slashed-shield]");
+        lyrics.add("{FASTER}{VAR=GORY_FLASH}Bleedin' out,{VAR=ENDGORY_FLASH} pass the teether  [+blood]");
+        lyrics.add("{FAST}Black and yellow like a bee   [+bee]");
+        lyrics.add("{FAST}Hate to see her, love to be her");
+        lyrics.add("{SLAM}Damn[/]   [+hazard-sign]");
+
+// [Verse 3]
+        lyrics.add("These rappers out here [%125][gray]bore me[%] [+sleepy]");
+        lyrics.add("My story's never told  [+book-cover]");
+        lyrics.add("It's so {VAR=GORY_FLASH}gory,{VAR=ENDGORY_FLASH} I just sold [+bleeding-eye]");
+        lyrics.add("I'm a warry, it's unfold [+sword-hilt]");
+        lyrics.add("I've been scorned, I see {SICK=1;1}[dull green]mold{ENDSICK}   [+skull-crack]");
+        lyrics.add("They keep teasin', I hold [+closed-doors]");
+        lyrics.add("It's been real, it's been [%150]{VAR=FROST_BREATH}cold{VAR=ENDFROST_BREATH}   [+ice-cube]");
+        lyrics.add("My ni**a");
+        lyrics.add("I tell it in a way you ni**as can't");
+        lyrics.add("Your ni**as get too caught up in the chance");
+        lyrics.add("Your ni**as don't know when to break a {VAR=SURGICAL_CUT}lance{VAR=ENDSURGICAL_CUT}   [+mounted-knight]");
+        lyrics.add("And every time we show, it's been a dance   [+ballerina-shoes]");
+        lyrics.add("Your ni**as lookin' {SLOW}slow{NORMAL} [+snail]");
+        lyrics.add("I'm sayin', this the {VAR=DIVINE_GLOW}God flow{VAR=ENDDIVINE_GLOW} [+hand-of-god]");
+        lyrics.add("Huh, I hope your God knows");
+        lyrics.add("God knows   [+angel-wings]");
+
+// [Verse 4]
+        lyrics.add("I'm too {VAR=DIVINE_GLOW}divine{VAR=ENDDIVINE_GLOW} for you ni**as, I had to tell you");
+        lyrics.add("Try to walk in my shoes, you couldn't feel   [+boot-prints]");
+        lyrics.add("{SLAM}[%150]Real, spill[%] [+water-drop]");
+        lyrics.add("My vision clearer, but now it's gettin' nearer [+binoculars]");
+        lyrics.add("Hittin' targets, aimin' steady like a {VAR=SURGICAL_CUT}spear{VAR=ENDSURGICAL_CUT}   [+spear-hook]");
+        lyrics.add("Spit your lyrics out, never could I hear ya [+sound-off]");
+        lyrics.add("{FAST} I ain't {SHAKE}fearin'{ENDSHAKE} ya, lookin' like I'm peerin'  [+eye-shield]");
+        lyrics.add("In your rear");
+        lyrics.add("Never could I see her");
+        lyrics.add("Never could I be her");
+        lyrics.add("Now, I'm {EASE=2;2;true}free{ENDEASE}   [+bird-twitter]");
+        lyrics.add("{EMERGE=0.5;true}Be");
+
+// [Verse 5]
+        lyrics.add("{FADE=0;1;2}Just be what you are");
+        lyrics.add("{FADE=0;1;3}I'll be what I am.");
+
+//Monotone Weapons //predefined styles used in main Game class
+        TypingConfig.GLOBAL_VARS.put("DIVINE_GLOW", "{FADE=0;1;1.5}{COLOR=light rich gold}");
+        TypingConfig.GLOBAL_VARS.put("ENDDIVINE_GLOW", "{CLEARCOLOR}{ENDFADE}");
+
+        TypingConfig.GLOBAL_VARS.put("GORY_FLASH", "{JOLT=1;1;1;0.6;white; light yellow}");
+        TypingConfig.GLOBAL_VARS.put("ENDGORY_FLASH", "{ENDJOLT}");
+
+        TypingConfig.GLOBAL_VARS.put("SURGICAL_CUT", "{SLIDE=3;3;false}{COLOR=light metallic silver}");
+        TypingConfig.GLOBAL_VARS.put("ENDSURGICAL_CUT", "{CLEARCOLOR}{ENDSLIDE}");
+
+        TypingConfig.GLOBAL_VARS.put("SOUL_EATER", "{WAVE=0.1;3;0.5}{COLOR=deep rich purple}[%125]");
+        TypingConfig.GLOBAL_VARS.put("ENDSOUL_EATER", "[%]{CLEARCOLOR}{ENDWAVE}");
