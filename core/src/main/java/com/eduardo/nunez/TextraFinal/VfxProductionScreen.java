@@ -33,6 +33,7 @@ public class VfxProductionScreen extends ScreenAdapter {
     private final Game game;
     private Stage stage;
     private Skin skin;
+    private Skin testSkin;
     private TypingLabel typingLabel;
     // --- Lyrics Data and State ---
     private Array<String> lyrics;
@@ -76,6 +77,9 @@ public class VfxProductionScreen extends ScreenAdapter {
 
     private VideoPlayer videoPlayer;
     private VideoActor videoActor;
+    private int videoWidth;
+    private int videoHeight;
+
 
     public VfxProductionScreen(Game game) {
         this.game = game;
@@ -84,17 +88,24 @@ public class VfxProductionScreen extends ScreenAdapter {
     @Override
     public void show() {
         videoPlayer = VideoPlayerCreator.createVideoPlayer();
-        FileHandle file = Gdx.files.internal("test_video.webm");
+        //FileHandle file = Gdx.files.internal("test_video.webm");
+        //FileHandle file = Gdx.files.internal("warpath.webm");
+        //FileHandle file = Gdx.files.internal("2023_video-effectapp.webm");
+        //FileHandle file = Gdx.files.internal("monotone-weapons-bg-video.webm");//too narrow video
+        //FileHandle file = Gdx.files.internal("manic-throne-video.webm");
+        FileHandle file = Gdx.files.internal("aggro_video-effectapp.webm");
         try {
             videoPlayer.load(file);
         }catch (Exception e){
             Gdx.app.log("loading video", "error: " + e.toString());
         }
         videoPlayer.play();
+        videoPlayer.setLooping(true);
         videoActor = new VideoActor(videoPlayer);
         // --- 1. Data and Asset Setup ---
         lyrics = createLyrics(); // <-- Refactored: Lyrics are now loaded from a clean, separate method.
         skin = new Skin();
+        //Skin skin = new Skin(Gdx.files.internal("assets/skin.json")); //Error reading file
         batch = new SpriteBatch();
         // --- 2. Font and Skin Initialization ---
         // This could also be moved to a separate method if it grows larger.
@@ -129,16 +140,19 @@ public class VfxProductionScreen extends ScreenAdapter {
         fisheyeEffect = new FisheyeEffect();
         levelsEffect = new LevelsEffect();
         zoomEffect = new ZoomEffect();
-        fxaaEffect = new FxaaEffect(0.5f,0.5f,0.5f,true);
+        fxaaEffect = new FxaaEffect(0.15f,1,1,true);
         nfaaEffect = new NfaaEffect(true);
 
 
         // Configure the effects for the desired look
-        bloomEffect.setBaseIntensity(1.5f);
-        bloomEffect.setBloomIntensity(2.0f);
-        bloomEffect.setThreshold(0.3f);
+        //bloomEffect.setBaseIntensity(1.0f);
+        bloomEffect.setBloomIntensity(1.5f);
+        //bloomEffect.setThreshold(0.5f);
         //
-        vignettingEffect.setIntensity(2);
+        vignettingEffect.setIntensity(0.6f);
+        levelsEffect.setSaturation(0.85f);
+        levelsEffect.setHue(0.5f);
+        //levelsEffect.setGamma(0.5f);
         // Add effects to the manager. The order matters.
         vfxManager.addEffect(crtEffect);
         isCrtEnabled = true;
@@ -146,10 +160,12 @@ public class VfxProductionScreen extends ScreenAdapter {
         isBloomEnabled = true;
         vfxManager.addEffect(vignettingEffect);
         isVignetteEnabled = true;
-        vfxManager.addEffect(oldTvEffect);
-        isOldTvEnabled = true;
-        vfxManager.addEffect(filmGrainEffect);
-        isFilmGrainEnabled = true;
+
+        //vfxManager.addEffect(oldTvEffect);
+        //isOldTvEnabled = true;
+//        vfxManager.addEffect(filmGrainEffect);
+//        isFilmGrainEnabled = true;
+//        filmGrainEffect.setNoiseAmount(0.2f);
         vfxManager.addEffect(fisheyeEffect);
         isFisheyeEnabled = true;
         // --- 5. Input Processor Setup ---
@@ -172,7 +188,7 @@ public class VfxProductionScreen extends ScreenAdapter {
         //drawing video in the background
         Texture videoFrame = videoPlayer.getTexture();
         batch.begin();
-        batch.draw(videoFrame,0,0);
+        batch.draw(videoFrame,180,0, videoWidth + 180, videoHeight);
         batch.end();
         stage.draw(); // The FitViewport correctly scales the drawing here
 
@@ -182,7 +198,7 @@ public class VfxProductionScreen extends ScreenAdapter {
         vfxManager.applyEffects();
 
         // 4. Clear the actual screen
-        ScreenUtils.clear(0, 0, 0, 1f);
+        //ScreenUtils.clear(0, 0, 0, 1f);
 
         // 5. Render the final result to the specific screen area calculated by the viewport.
         // This is the key to solving the scaling and positioning problem.
@@ -201,6 +217,9 @@ public class VfxProductionScreen extends ScreenAdapter {
     public void resize(int width, int height) {
         stage.getViewport().update(width, height, true);
         vfxManager.resize(width, height); // <-- CRITICAL: This was missing before.
+        videoWidth = videoPlayer.getVideoWidth();
+        videoHeight = videoPlayer.getVideoHeight();
+        Gdx.app.log("video dimensions: " ,"width: " + videoWidth + " height: " + videoHeight);
     }
 
     /**
@@ -340,12 +359,19 @@ public class VfxProductionScreen extends ScreenAdapter {
      * Initializes and configures all fonts and adds them to the skin.
      */
     private void setupFontsAndSkin() {
-        FreeTypeFontGenerator generator1 = new FreeTypeFontGenerator(Gdx.files.internal("BitcountInk-VariableFont_CRSV,ELSH,ELXP,SZP1,SZP2,XPN1,XPN2,YPN1,YPN2,slnt,wght.ttf"));
+        //FreeTypeFontGenerator generator1 = new FreeTypeFontGenerator(Gdx.files.internal("BitcountInk-VariableFont_CRSV,ELSH,ELXP,SZP1,SZP2,XPN1,XPN2,YPN1,YPN2,slnt,wght.ttf"));
+        //FreeTypeFontGenerator generator1 = new FreeTypeFontGenerator(Gdx.files.internal("Philophobia-0p8d.ttf"));
+        //FreeTypeFontGenerator generator1 = new FreeTypeFontGenerator(Gdx.files.internal("CinzelDecorative-Regular.ttf"));
+        //FreeTypeFontGenerator generator1 = new FreeTypeFontGenerator(Gdx.files.internal("Bleeding_Cowboys.ttf"));
+        //FreeTypeFontGenerator generator1 = new FreeTypeFontGenerator(Gdx.files.internal("Balthazar-Regular.ttf"));
+        //FreeTypeFontGenerator generator1 = new FreeTypeFontGenerator(Gdx.files.internal("Shooting_Star.ttf"));
+        //FreeTypeFontGenerator generator1 = new FreeTypeFontGenerator(Gdx.files.internal("manic-depressive.ttf"));
+        FreeTypeFontGenerator generator1 = new FreeTypeFontGenerator(Gdx.files.internal("Staatliches-Regular.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter1 = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter1.size = 96;
-        parameter1.color = Color.WHITE;
+        parameter1.size = 106;//78
+        parameter1.color = Color.ORANGE;
         parameter1.borderColor = Color.BLACK;
-        parameter1.borderWidth = 2f;
+        parameter1.borderWidth = 1f;
         parameter1.magFilter = Texture.TextureFilter.Linear;
         parameter1.minFilter = Texture.TextureFilter.Linear;
 
@@ -362,8 +388,8 @@ public class VfxProductionScreen extends ScreenAdapter {
         defaultLabelStyle.font = skin.get("primary", Font.class);
         skin.add("default", defaultLabelStyle);
 
-        KnownFonts.addEmoji(primaryTextraFont);//disabling this allows some from GameIcons to work, this does seem to work with noto?
-        //KnownFonts.addGameIcons(primaryTextraFont);//disabling this allows some from OpenMoji to work. Doesn't work with some noto.
+        //KnownFonts.addEmoji(primaryTextraFont);//disabling this allows some from GameIcons to work, this does seem to work with noto?
+        KnownFonts.addGameIcons(primaryTextraFont);//disabling this allows some from OpenMoji to work. Doesn't work with some noto.
         KnownFonts.addNotoEmoji(primaryTextraFont);
         KnownFonts.addMaterialDesignIcons(primaryTextraFont);
         KnownFonts.addOpenMoji(primaryTextraFont, true);
@@ -377,29 +403,61 @@ public class VfxProductionScreen extends ScreenAdapter {
      */
     private Array<String> createLyrics() {
         Array<String> lyrics = new Array<>();
+        lyrics.add("[%?SHINY][%150]Aggression, 10xdev_art[%][%]");
 
-        // lyrics.add("[%?SHINY][%150]Grime Gospel, Suno[%][%]");
-        lyrics.add("[%?SHINY][%150]Concrete Requiem, Suno [%][%]");
+// [Verse]
+        lyrics.add("{SPEED=1.1}This is my {VAR=AGGRESSION_HIT}aggression,{VAR=ENDAGGRESSION_HIT}{WAIT=0.24}{NORMAL} I'm back,{WAIT=0.26} {SPEED=4}I can't give you a break{NORMAL}{WAIT=0.52}");
+        lyrics.add("{SPEED=1}I let the {SQUASH=1.5;2;false}pressure{ENDSQUASH} pile up,{NORMAL}{WAIT=0.32} and it's my {JOLT=2;2;0.5}mistake{ENDJOLT}{WAIT=0.62}");
+        lyrics.add("{SPEED=0.9}I got my mind made up,{NORMAL}{WAIT=0.22} {SPEED=1}I don't need a debate{NORMAL}{WAIT=0.5}");
+        lyrics.add("{SPEED=1}This is my {VAR=AGGRESSION_HIT}aggression,{VAR=ENDAGGRESSION_HIT}{WAIT=0.14}{NORMAL} my confession,{WAIT=0.26} you better {SHAKE=2;2}[%175]pray[%]{ENDSHAKE}");
+        lyrics.add("{SPEED=1}This is my {VAR=AGGRESSION_HIT}aggression,{VAR=ENDAGGRESSION_HIT}{WAIT=0.2}{NORMAL} I'm back,{WAIT=0.16} {SPEED=1}I can't give you a break{NORMAL}{WAIT=0.52}");
+        lyrics.add("{SPEED=1}I let the {SQUASH=1.5;2;false}pressure{ENDSQUASH} pile up,{NORMAL}{WAIT=0.14} and it's my {JOLT=2;2;0.5}mistake{ENDJOLT}{WAIT=0.64}");
+        lyrics.add("{SPEED=1}I got my mind made up,{NORMAL}{WAIT=0.26} {SPEED=1}I don't need a debate{NORMAL}{WAIT=0.52}");
+        lyrics.add("{SPEED=1.1}This is my {VAR=AGGRESSION_HIT}aggression,{VAR=ENDAGGRESSION_HIT}{WAIT=0.18}{NORMAL} my confession,{WAIT=0.2} you better {SHAKE=2;2}[%175]pray[%]{ENDSHAKE}");
 
-// [Verse 1]
-        lyrics.add("{FADE}{SLAM}[%125][%^neon][RED]City eats souls,[] [RED]{SQUASH}jaws unhinge{ENDSQUASH} for the feast{CLEARCOLOR} [+needle-jaws]");
-        lyrics.add("{FADE}{FAST}Pavement cracked, [DARK_RED]blood seeps[/], {JOLT=0.5;10;0.5}baptized in the beast{ENDJOLT} [+drop of blood][+church]");
-        lyrics.add("{FADE}{WIND=0.1;1.5;2;0.5}Wind howls[/], a {EMERGE}[CYAN]banshee[/]{ENDEMERGE} caught in the breeze [+wind face][+ghost]");
-        lyrics.add("{FADE}[GRAY]Grime-covered dreams[/], they {SICK=0.8}rot[/]{ENDSICK}, no {SHRINK}release{ENDSHRINK}. [+zzz][+biohazard]");
-        lyrics.add("{FADE}{BUMP}[%125][GRAY]Steel toes on the asphalt[/], {ENDJUMP}stomping the weak{ENDBUMP} [+boot][+person falling]");
-        lyrics.add("{FADE}{SHAKE}Shadow-boxing with [RED]demons[/],{ENDSHAKE} they don't ever retreat [+person boxing][+devil]");
-        lyrics.add("{FADE}[GREEN]Currency smells {SICK=0.5}sour[/]{ENDSICK}, hands dirty for keeps [+money with wings][+nauseated face]");
-        lyrics.add("{FADE}{WAVE=0.05;2;2}Sleep's a mirage[/], {JOLT}[BLACK]nightmares sewn in the sheets{ENDJOLT} [+sleeping face][+scream]");
+// [Chorus]
+        lyrics.add("{SPEED=1.5}{VAR=REAPER_FADE}It's the reaper,{VAR=ENDREAPER_FADE}{WAIT=0.5} the trigger squeezer{WAIT=0.18}  [+reaper-scythe]");
+        lyrics.add("{SPEED=1.1}{VAR=REAPER_FADE}You feel the ether,{VAR=ENDREAPER_FADE}{WAIT=0.32} leave your soul deeper  [+sly]");
+        lyrics.add("{JUMP=1;2;1;0.5}You better pray{ENDJUMP}   [+prayer]");
+        lyrics.add("{JUMP=1;2;1;0.5}[%125]You better pray[%]{ENDJUMP}   [+angel-wings]");
+        lyrics.add("{JUMP=1;2;1;0.5}[%150]You better pray[%]{ENDJUMP}   [+prayer]");
+        lyrics.add("{JOLT=2;2;0.6}[%175]You better pray[%]{ENDJOLT}   [+prayer-beads]");
 
 // [Verse 2]
-        lyrics.add("{FADE}{WIND=0.1;2;3;0.5}[BLACK]Smoke stacks exhale[/], lungs {SICK=0.8}inhale the sin{ENDSICK} [+factory][+lungs]");
-        lyrics.add("{FADE}[PURPLE]Knuckles bruised[/], they {SHAKE}scream[/]{ENDSHAKE}, {SLAM}[%150]this is how we begin{ENDSLAM} [+fist][+bomb]");
-        lyrics.add("{FADE}The block's a {VAR=FIRE}furnace[/], we {BUMP}forge kin[/]{ENDBUMP} from the din [+fire][+people hugging]");
-        lyrics.add("{FADE}[GRAY]Ashes in my veins[/], but the {HEARTBEAT=1.2}[ORANGE]fire's still within{ENDHEARTBEAT} [+bone][+red heart]");
-        lyrics.add("{FADE}{BLINK=838181ff;000000;1.0;0.5}Streetlights flicker[/], {FASTER}Morse code from the ghosts{FASTER} [+light bulb][+ghost]");
-        lyrics.add("{FADE}{SLOW}[%75]Kingpins whisper tales[/], but they all {SHRINK=1.0;1.0;true}decomposed{ENDSHRINK}. [+crown][+skull and crossbones]");
-        lyrics.add("{FADE}{HEARTBEAT=0.8}Hunger’s a drumbeat[/], keeps my heart {EMERGE}composed{ENDEMERGE} [+drum][+beating heart]");
-        lyrics.add("{FADE}Every crack in the sidewalk's a {SLIDE=1;0.5;true}map to the [PURPLE]unknown[/]{ENDSLIDE}. [+map][+question mark]");
+        lyrics.add("{SPEED=2}[rich green]Chase a couple of bands,{WAIT=0.08} make a couple of flips{NORMAL}   [+cash]");
+        lyrics.add("{SPEED=2}I pop a couple of {JUMP=0.8;1;1;0.3}pills,{ENDJUMP}{WAIT=0.1} I let it numb my lips{NORMAL}   [+pill]");
+        lyrics.add("{SPEED=3}I'm in a couple of rips,{WAIT=0.06} I'm making couple of trips{NORMAL}   [+tripwire]");
+        lyrics.add("{SPEED=3}I'm on some {VAR=DEMON_TIME}demon time,{VAR=ENDDEMON_TIME}{WAIT=0.04} I got a couple of clips  [+bat-blade]");
+        lyrics.add("{SPEED=2}I'm moving militant{WAIT=0.28} with a couple of men{NORMAL}   [+team-upgrade]");
+        lyrics.add("{SPEED=2}IYou thinking, {SHAKE=1;1}\"Man, oh, man{ENDSHAKE}{WAIT=0.12} here we go again\"");
+        lyrics.add("{SPEED=4}I'm with a couple of bitches and they want me to win{NORMAL}   [+cherish]");
+        lyrics.add("{SPEED=1.5}We on some {VAR=TOXIC_GLOW}toxic love,{VAR=ENDTOXIC_GLOW} I'm 'bout to {SPIN=1;1;false}spin again{ENDSPIN}");
+
+// [Chorus] - Repeated with slight variations for intensity
+        lyrics.add("{SPEED=1.5}{VAR=REAPER_FADE}It's the reaper,{VAR=ENDREAPER_FADE}{WAIT=0.5} the trigger squeezer{WAIT=0.18} [+pistol-gun]");
+        lyrics.add("{SPEED=1.1}{VAR=REAPER_FADE}You feel the ether,{VAR=ENDREAPER_FADE}{WAIT=0.32} leave your soul deeper [+sly]");
+        lyrics.add("{JUMP=1;2;1;0.5}You better pray{ENDJUMP}   [+jerusalem-cross]");
+        lyrics.add("{JUMP=1;2;1;0.5}[%125]You better pray[%]{ENDJUMP}   [+angel-wings]");
+        lyrics.add("{JUMP=1;2;1;0.5}[%150]You better pray[%]{ENDJUMP} [+prayer]");
+        lyrics.add("{JOLT=2;2;0.6}[%175]You better pray[%]{ENDJOLT}   [+prayer-beads]");
+
+// [Verse 3] - Repeats Verse 1, so we use the same synchronized markup
+        lyrics.add("{SPEED=1.1}This is my {VAR=AGGRESSION_HIT}aggression,{VAR=ENDAGGRESSION_HIT}{WAIT=0.24}{NORMAL} I'm back,{WAIT=0.16} {SPEED=1.5}I can't give you a break{NORMAL}{WAIT=0.56}");
+        lyrics.add("{SPEED=1}I let the {SQUASH=1.5;2;false}pressure{ENDSQUASH} pile up{NORMAL} {JOLT=2;2;0.5}I got my mind made up,{ENDJOLT}{WAIT=0.24}");
+        lyrics.add("{SPEED=1}I don't need a debate{NORMAL}{WAIT=0.54}");
+        lyrics.add("{SPEED=2}This is my {VAR=AGGRESSION_HIT}aggression,{VAR=ENDAGGRESSION_HIT}{WAIT=0.22}{NORMAL} my confession {WAIT=0.56}you better {SHAKE=2;2}[%175]pray[%]{ENDSHAKE}");
+        lyrics.add("{SPEED=2}This is my {VAR=AGGRESSION_HIT}aggression,{VAR=ENDAGGRESSION_HIT}{WAIT=0.36}{NORMAL} I'm back,{WAIT=0.14} {SPEED=1.5}I can't give you a break{NORMAL}{WAIT=0.58}");
+        lyrics.add("{SPEED=2}I let the {SQUASH=1.5;2;false}pressure{ENDSQUASH} pile up,{NORMAL}{WAIT=0.34} and it's my {JOLT=2;2;0.5}mistake{ENDJOLT}{WAIT=0.68}");
+        lyrics.add("{SPEED=2}I got my mind made up,{NORMAL}{WAIT=0.24} {SPEED=1.5}I don't need a debate{NORMAL}{WAIT=0.52}");
+        lyrics.add("{SPEED=2}This is my {VAR=AGGRESSION_HIT}aggression,{VAR=ENDAGGRESSION_HIT}{WAIT=0.2}{NORMAL} my confession {WAIT=0.6}you better {SHAKE=2;2}[%175]pray[%]{ENDSHAKE}");
+
+// [Chorus] - Final and most intense repeat
+        lyrics.add("{SPEED=1.1}{VAR=REAPER_FADE}It's the reaper,{VAR=ENDREAPER_FADE}{WAIT=0.36} The trigger squeezer{WAIT=0.18}  [+reaper-scythe]");
+        lyrics.add("{SPEED=1.1}{VAR=REAPER_FADE}You feel the ether,{VAR=ENDREAPER_FADE}{WAIT=0.26} leave your soul deeper [+sly]");
+        lyrics.add("{VAR=MANIC_SCREAM}You better pray{ENDMANIC_SCREAM} [+prayer]");
+        lyrics.add("{VAR=MANIC_SCREAM}You better pray{ENDMANIC_SCREAM} [+jerusalem-cross]");
+
+
         return lyrics;
     }
 }

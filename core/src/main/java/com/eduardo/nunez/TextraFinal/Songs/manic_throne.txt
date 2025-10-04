@@ -1,0 +1,49 @@
+lyrics.add("{FADE}[%?SHINY][%150]Manic Throne, 10xdevart[%][%]");
+
+// [Verse 1]
+        lyrics.add("{FAST}{SHAKE=1.5;1}Crown so heavy,{ENDSHAKE} head 'bout to tilt,  [+crown]");
+        lyrics.add("{FAST}Buildin' {EMERGE=0.5;true}empires{ENDEMERGE} outta spit and guilt.  [+castle]");
+        lyrics.add("{FAST}{VAR=HAUNTED_COWBELL}Cowbells clank like a haunted forge,  [+anvil]{VAR=ENDHAUNTED_COWBELL}");
+        lyrics.add("{FAST}Every bar {VAR=SPUTTERINGFIRE}scorched, torchin' the gorge.  [+flame]{VAR=ENDSPUTTERINGFIRE}");
+
+        lyrics.add("{FAST}{WIND=0.1;0.2;2;0.5}Steam risin' off the mic,[/] {VAR=MOLTEN_DRIP}molten drip,{VAR=ENDMOLTEN_DRIP} [+microphone]");
+        lyrics.add("{FAST}Tongue like a {SQUASH=2;2;false}whip,{ENDSQUASH} verbal {SHRINK=2;1.5;false}eclipse.  [+whip]{ENDSHRINK}");
+        lyrics.add("{FAST}Teeth grit, spit slick, {SICK=1;1}[dull green]venomous script,{ENDSICK}  [+fangs]");
+        lyrics.add("{FAST}{VAR=MANIC_SCREAM}Greatest alive,{VAR=ENDMANIC_SCREAM} ego take a backflip. [+trophy]");
+
+// [Chorus]
+        lyrics.add("{VAR=MANIC_SCREAM}Manic throne,{VAR=ENDMANIC_SCREAM} I’m sittin’ alone, [+stone-throne]");
+        lyrics.add("{FADE}{FAST}{SLAM}King of the {JOLT=2;2;0.5;0.2;black;gray}ash,{ENDSLAM} no heir to the bone.{ENDJOLT} [+skull]");
+        lyrics.add("{FAST}{VAR=MANIC_SCREAM}Manic throne,{VAR=ENDMANIC_SCREAM} my mind {SPIRAL=2;1;true}cyclone, [+whirlwind]{ENDSPIRAL}");
+        lyrics.add("{FAST}Greatest alive, every line {VAR=STONE_THRONE}carved in stone.{VAR=ENDSTONE_THRONE} [+stone-tablet]");
+
+// [Verse 2]
+        lyrics.add("Brain wired wrong, {VAR=ELECTRIFY}circuits ignite,{VAR=ENDELECTRIFY} [+brain]");
+        lyrics.add("Neurons {FADE=0;1;0.2}fight{ENDFADE} like dogs in the night. [+wolf-head]");
+        lyrics.add("Thoughts ricochet, {CROWD=10;1.5}chaos ballet, [+ballerina-shoes]{ENDCROWD}");
+        lyrics.add("{FAST}{VAR=STONE_THRONE}King of the void,[/] in disarray.  [+black-hole-bolas]{VAR=ENDSTONE_THRONE}");
+
+        lyrics.add("{VAR=GORY_FLASH}Raw trashcore, guts on the floor,{VAR=ENDGORY_FLASH} [+hazmat-suit]");
+        lyrics.add("{FAST}{ATTENTION}Knock knock knock{ENDATTENTION}—death’s at the door. [+door][+reaper-scythe]");
+        lyrics.add("{FASTER}But I’m too {SHAKE=2;2}loud,[/] too proud to ignore,");
+        lyrics.add("My crown’s {JOLT=2;2;0.5;0.2;black;white}cracked,[/] but I’m beggin’ for more.");
+
+// [Bridge]
+        lyrics.add("{FAST}Runnin' on {WIND=0.2;0.1;3;0.5}fumes,[/] but the tank don’t quit, [+gas-pump]");
+        lyrics.add("{FAST}{VAR=MANIC_SCREAM}Sanity split,{VAR=ENDMANIC_SCREAM} I’m the architect of this pit. [+architect-mask]");
+        lyrics.add("{FAST}{VAR=HAUNTED_COWBELL}Cowbell ghost hummin' through the mist,{VAR=ENDHAUNTED_COWBELL} [+haunting]");
+        lyrics.add("{FADE}Reality twist, {RAINBOW=1;1;1;0.6}maniacal bliss. [+screaming]{ENDRAINBOW}");
+
+//predefined styles used in main Game class
+//Manic Throne
+        TypingConfig.GLOBAL_VARS.put("MANIC_SCREAM", "{SHAKE=1;0.5}{JOLT=1;1;inf;0.9;black;rich fiery orange}[%150]");
+        TypingConfig.GLOBAL_VARS.put("ENDMANIC_SCREAM", "[%]{ENDJOLT}{ENDSHAKE}");
+
+        TypingConfig.GLOBAL_VARS.put("HAUNTED_COWBELL", "{WAVE=0.1;3;0.5}{WIND=0.1;0.1;2;0.5}{COLOR=pale weak cyan}");
+        TypingConfig.GLOBAL_VARS.put("ENDHAUNTED_COWBELL", "{CLEARCOLOR}{ENDWIND}{ENDWAVE}");
+
+        TypingConfig.GLOBAL_VARS.put("MOLTEN_DRIP", "{SICK=1;1}{COLOR=dark rich orange}");
+        TypingConfig.GLOBAL_VARS.put("ENDMOLTEN_DRIP", "{CLEARCOLOR}{ENDSICK}");
+
+        TypingConfig.GLOBAL_VARS.put("STONE_THRONE", "{SLAM}{COLOR=darkest gray}[%125]");
+        TypingConfig.GLOBAL_VARS.put("ENDSTONE_THRONE", "[%]{CLEARCOLOR}{ENDSLAM}");

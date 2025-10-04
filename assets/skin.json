@@ -1,0 +1,40 @@
+{
+
+  "com.badlogic.gdx.graphics.Color": {
+    "white": { "r": 1, "g": 1, "b": 1, "a": 1 },
+    "black": { "r": 0, "g": 0, "b": 0, "a": 1 },
+    "neon-cyan": { "hex": "7df9ff" }
+  },
+
+
+  "com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator": {
+    "primary-generator": { "font": "ShareTech-Regular.ttf" },
+    "pixel-generator": { "font": "PressStart2P-Regular.ttf" }
+  },
+
+
+  "com.badlogic.gdx.graphics.g2d.BitmapFont": {
+    "primary-font": {
+      "generator": "primary-generator", 
+      "size": 56,
+      "color": "white",
+      "borderColor": "black",
+      "borderWidth": 2
+    },
+    "pixel-font": {
+      "generator": "pixel-generator",  
+      "size": 48,
+      "color": "neon-cyan"
+     
+    }
+  },
+
+
+
+  "com.github.tommyettinger.textra.Styles$LabelStyle": {
+    "default": {
+      "font": "primary-font", 
+      "fontColor": "white"
+    }
+  }
+}
