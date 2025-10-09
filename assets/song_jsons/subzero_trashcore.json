@@ -1,0 +1,129 @@
+[ {
+  "startTime": 0.0,
+  "markup": "{FADE}{SPEED=0.5}Subzero Trashcore{WAIT=0.14} Tenxdev_art{NORMAL}"
+  },
+  {
+    "startTime": 14.22,
+    "markup": "{SPEED=4}Bigger than God,{WAIT=0.14} lit up the land{NORMAL}"
+  },
+  {
+    "startTime": 16.18,
+    "markup": "{SLOW}Missin' my granddaddy...{NORMAL}"
+  },
+  {
+    "startTime": 17.66,
+    "markup": "{SPEED=4}Smokin' the dope,{WAIT=0.16} open the can,{WAIT=0.22} eat up the Spam{NORMAL}"
+  },
+  {
+    "startTime": 20.30,
+    "markup": "{SPEED=4}I just got damn happy...{WAIT=0.4} Choke on the smoke{NORMAL}"
+  },
+  {
+    "startTime": 22.10,
+    "markup": "{SPEED=2}Put on the gloves, we throwin' {JUMP=1;2;1;0.4}hands...{ENDJUMP}{WAIT=0.24} shawty gon' tap out"
+  },
+  {
+    "startTime": 25.12,
+    "markup": "{SLOW}Woah, woah...{NORMAL}"
+  },
+  {
+    "startTime": 25.64,
+    "markup": "{SPEED=2}I hit her once, I'm in a trance{NORMAL}"
+  },
+  {
+    "startTime": 27.42,
+    "markup": "{SPEED=4}Feel like the man,{WAIT=0.4} don't need to act out...{WAIT=0.2} no, no{NORMAL}"
+  },
+  {
+    "startTime": 30.56,
+    "markup": "{SPEED=2}Back on the road, hand on the wheel  [+car-wheel]{WAIT=0.32}"
+  },
+  {
+    "startTime": 32.66,
+    "markup": "{SPEED=4}Me and my dogs still talkin' to {VAR=GHOST_WALK}ghosts{VAR=ENDGHOST_WALK}"
+  },
+  {
+    "startTime": 34.12,
+    "markup": "{SPEED=4}Back in the field, workin' my {VAR=GLOCK_HIT}steel{VAR=ENDGLOCK_HIT}"
+  },
+  {
+    "startTime": 36.04,
+    "markup": "{SPEED=3}If you wanna die, then come with a post  [+tombstone]"
+  },
+  {
+    "startTime": 37.76,
+    "markup": "{SPEED=4}It is what it is, and that is for real"
+  },
+  {
+    "startTime": 39.50,
+    "markup": "{SPEED=4}When you hear the gun, that's a {VAR=GLOCK_HIT}glock{VAR=ENDGLOCK_HIT} on my host"
+  },
+  {
+    "startTime": 41.52,
+    "markup": "{SPEED=4}Goin' to {VAR=HELLGATE}hell,{VAR=ENDHELLGATE} demons and shells  [+devil-mask] [+shotgun-rounds]"
+  },
+  {
+    "startTime": 43.06,
+    "markup": "{SPEED=2}Open up the gate and take me to home{NORMAL}"
+  },
+  {
+    "startTime": 48.08,
+    "markup": "{SPEED=4}Born into {VAR=HELLGATE}hell,{VAR=ENDHELLGATE} demons and shells  [+devil-mask] [+shotgun-rounds]"
+  },
+  {
+    "startTime": 50.00,
+    "markup": "{SPEED=2}Open up the gate and take me to home{NORMAL}"
+  },
+  {
+    "startTime": 54.72,
+    "markup": "Shawty wanna take me home{WAIT=0.24}"
+  },
+  {
+    "startTime": 56.88,
+    "markup": "Gotta watch for my {SHAKE}[red]enemies{ENDSHAKE}  [+eyeball]"
+  },
+  {
+    "startTime": 58.80,
+    "markup": "Lookin' for my {VAR=GHOST_WALK}soul...{VAR=ENDGHOST_WALK}{WAIT=0.42} Lookin' for my {VAR=ELECTRIFY}energy{VAR=ENDELECTRIFY}"
+  },
+  {
+    "startTime": 62.30,
+    "markup": "{VAR=SUBZERO}Subzero Trashcore, cold{VAR=ENDSUBZERO}"
+  },
+  {
+    "startTime": 64.74,
+    "markup": "Step out in my fatigues  [+t-shirt]"
+  },
+  {
+    "startTime": 66.28,
+    "markup": "{SPEED=2}{VAR=GHOST_WALK}Movin' like a ghost...{VAR=ENDGHOST_WALK}{WAIT=0.22} Movin' like a centipede   [+centipede]"
+  },
+  {
+    "startTime": 68.90,
+    "markup": "Shawty wanna take me home"
+  },
+  {
+    "startTime": 70.78,
+    "markup": "Gotta watch for my {SHAKE}[red]enemies{ENDSHAKE}  [+eyeball]"
+  },
+  {
+    "startTime": 72.94,
+    "markup": "Lookin' for my {VAR=GHOST_WALK}soul...{VAR=ENDGHOST_WALK}{WAIT=0.66} Lookin' for my {VAR=ELECTRIFY}energy{VAR=ENDELECTRIFY}"
+  },
+  {
+    "startTime": 76.42,
+    "markup": "{VAR=SUBZERO}Subzero Trashcore, cold{VAR=ENDSUBZERO}"
+  },
+  {
+    "startTime": 78.54,
+    "markup": "Step out in my fatigues  [+clothes]"
+  },
+  {
+    "startTime": 80.18,
+    "markup": "{VAR=GHOST_WALK}Movin' like a ghost...{VAR=ENDGHOST_WALK}{WAIT=0.44} Movin' like a centipede   [+centipede]"
+  },
+  {
+    "startTime": 85.38,
+    "markup": "{FADE}{VAR=GHOST_WALK}RIP Tou   [+run]{VAR=ENDGHOST_WALK}"
+  }
+]

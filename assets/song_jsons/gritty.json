@@ -1,0 +1,129 @@
+[ {
+  "startTime": 0.00,
+  "markup": "{FADE}The Way it Hurts - TenxDevArt"
+},
+  {
+    "startTime": 10.70,
+    "markup": "{VAR=DUST_FADE}The city is all dark,{WAIT=0.24} The flowers turn to dust[+modern-city]{VAR=ENDDUST_FADE}"
+  },
+  {
+    "startTime": 14.38,
+    "markup": "{SPEED=1}When you say my name,{WAIT=0.14} it doesn't mean much{NORMAL}"
+  },
+  {
+    "startTime": 17.18,
+    "markup": "{SPEED=1}The lovers that you found,{WAIT=0.14} they left you in the dust{NORMAL}"
+  },
+  {
+    "startTime": 20.56,
+    "markup": "It wasn't love...{WAIT=0.40}it wasn't lust{NORMAL}"
+  },
+  {
+    "startTime": 23.06,
+    "markup": "{SPEED=2}{VAR=VILLAIN_DREAM}I'm the villain of your dreams,{VAR=ENDVILLAIN_DREAM}"
+  },
+  {
+    "startTime": 24.36,
+    "markup": "{SPEED=1.25}You don't know what that means{NORMAL}"
+  },
+  {
+    "startTime": 26.00,
+    "markup": "{SPEED=1}You don't know what I mean{NORMAL}"
+  },
+  {
+    "startTime": 28.34,
+    "markup": "My world is {JOLT=2;2;0.7}split{ENDJOLT} at the seams  [+exploding-planet]"
+  },
+  {
+    "startTime": 30.18,
+    "markup": "{SPEED=2}{VAR=ETERNAL_CHASE}It's a chase with the devil [+devil-mask] in the depths of your hell{VAR=ENDETERNAL_CHASE}"
+  },
+  {
+    "startTime": 33.86,
+    "markup": "It's a new type of {SHAKE}[dark red]fear{ENDSHAKE} in the pit of your soul"
+  },
+  {
+    "startTime": 37.78,
+    "markup": "{VAR=PAIN_PULSE}I think you like the way it hurts  [+slavery-whip]{VAR=ENDPAIN_PULSE}"
+  },
+  {
+    "startTime": 40.68,
+    "markup": "[%125]You tell me that you want it more"
+  },
+  {
+    "startTime": 43.66,
+    "markup": "[%150]You tell me that you need it more"
+  },
+  {
+    "startTime": 49.60,
+    "markup": "It's the city of sin, the sun never shines"
+  },
+  {
+    "startTime": 52.64,
+    "markup": "I'm in love with your body, I wanna {SPIRAL=2;1;true}lose my mind{ENDSPIRAL}"
+  },
+  {
+    "startTime": 55.90,
+    "markup": "I've been addicted to the feeling, getting better every time"
+  },
+  {
+    "startTime": 58.82,
+    "markup": "It's a taste of {RAINBOW=1;1;1;0.6}forever...{ENDRAINBOW}{WAIT=0.07} that is the worst kind"
+  },
+  {
+    "startTime": 62.08,
+    "markup": "{VAR=VILLAIN_DREAM}I'm the villain how you hold me{VAR=ENDVILLAIN_DREAM}"
+  },
+  {
+    "startTime": 64.16,
+    "markup": "While you tell me I'm a problem"
+  },
+  {
+    "startTime": 65.74,
+    "markup": "{SPEED=2}You're addicted to my {CROWD=10;1.5}drama,{ENDCROWD}{WAIT=0.34} I'm addicted to your {CROWD=10;1.5}karma [+drama-masks]{ENDCROWD}"
+  },
+  {
+    "startTime": 68.32,
+    "markup": "{VAR=VILLAIN_DREAM}You're the villain of my dreams{VAR=ENDVILLAIN_DREAM}"
+  },
+  {
+    "startTime": 70.26,
+    "markup": "{SPEED=3}You don't know what that means,{WAIT=0.1} you don't know what that means{NORMAL}"
+  },
+  {
+    "startTime": 74.66,
+    "markup": "{SPEED=1}I like it better when you scream!  [+screaming]{NORMAL}"
+  },
+  {
+    "startTime": 76.50,
+    "markup": "{VAR=PAIN_PULSE}[%125]I think you like the way it hurts{VAR=ENDPAIN_PULSE}"
+  },
+  {
+    "startTime": 79.60,
+    "markup": "[%150]You tell me that you want it more"
+  },
+  {
+    "startTime": 82.70,
+    "markup": "[%175]You tell me that you need it more"
+  },
+  {
+    "startTime": 90.06,
+    "markup": "{SPEED=2}{VAR=VILLAIN_DREAM}I'm the villain of your dreams,{VAR=ENDVILLAIN_DREAM}"
+  },
+  {
+    "startTime": 91.16,
+    "markup": "{SPEED=1}You don't know what that means{NORMAL}"
+  },
+  {
+    "startTime": 93.00,
+    "markup": "{SPEED=3}You don't know what I mean{NORMAL}"
+  },
+  {
+    "startTime": 94.00,
+    "markup": "{SPEED=0.7}I like it better when you scream!{NORMAL}"
+  },
+  {
+    "startTime": 98.25,
+    "markup": "The Way it Hurts - TenxDevArt"
+  }
+]

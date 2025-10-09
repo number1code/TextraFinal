@@ -54,6 +54,7 @@ public class AutoProductionScreen extends ScreenAdapter {
     // We will slightly change this from an Array<String>
     private Array<LyricLine> timedLyrics;
     private int currentLyricIndex = 0;
+    private boolean isPaused = false;
     //* END NEW CODE for whisper AI based automatic timing *//
 
     // --- gdx-vfx Post-Processing Objects ---
@@ -104,7 +105,7 @@ public class AutoProductionScreen extends ScreenAdapter {
 
     @Override
     public void show() {
-        music = Gdx.audio.newMusic(Gdx.files.internal("music/ashes.wav"));
+        music = Gdx.audio.newMusic(Gdx.files.internal("music/Iron Howl.wav"));
         timedLyrics = parseLyricsAndTimestamps();
 
         videoPlayer = VideoPlayerCreator.createVideoPlayer();
@@ -113,7 +114,8 @@ public class AutoProductionScreen extends ScreenAdapter {
         //FileHandle file = Gdx.files.internal("2023_video-effectapp.webm");
         //FileHandle file = Gdx.files.internal("monotone-weapons-bg-video.webm");//too narrow video
         //FileHandle file = Gdx.files.internal("manic-throne-video.webm");
-        FileHandle file = Gdx.files.internal("aggro_video-effectapp.webm");
+        //FileHandle file = Gdx.files.internal("aggro_video-effectapp.webm");
+        FileHandle file = Gdx.files.internal("video/iron-howl-bg.webm");
         try {
             videoPlayer.load(file);
         }catch (Exception e){
@@ -141,7 +143,7 @@ public class AutoProductionScreen extends ScreenAdapter {
 
         Table table = new Table();
         table.setFillParent(true);
-        table.add(typingLabel).width(1000f);
+        table.add(typingLabel).width(900f);
         stage.addActor(table);
 
         stage.addActor(videoActor);
@@ -170,23 +172,23 @@ public class AutoProductionScreen extends ScreenAdapter {
         bloomEffect.setBloomIntensity(1.5f);
         //bloomEffect.setThreshold(0.5f);
         //
-        vignettingEffect.setIntensity(0.6f);
-        levelsEffect.setSaturation(0.85f);
-        levelsEffect.setHue(0.5f);
+        vignettingEffect.setIntensity(1f);
+        levelsEffect.setSaturation(0.55f);
+        levelsEffect.setHue(0.6f);
         //levelsEffect.setGamma(0.5f);
         // Add effects to the manager. The order matters.
-        vfxManager.addEffect(crtEffect);
-        isCrtEnabled = true;
+        //vfxManager.addEffect(crtEffect);
+        //isCrtEnabled = true;
         vfxManager.addEffect(bloomEffect);
         isBloomEnabled = true;
         vfxManager.addEffect(vignettingEffect);
         isVignetteEnabled = true;
 
-        //vfxManager.addEffect(oldTvEffect);
-        //isOldTvEnabled = true;
-//        vfxManager.addEffect(filmGrainEffect);
-//        isFilmGrainEnabled = true;
-//        filmGrainEffect.setNoiseAmount(0.2f);
+        vfxManager.addEffect(oldTvEffect);
+        isOldTvEnabled = true;
+        vfxManager.addEffect(filmGrainEffect);
+        isFilmGrainEnabled = true;
+        filmGrainEffect.setNoiseAmount(0.2f);
         vfxManager.addEffect(fisheyeEffect);
         isFisheyeEnabled = true;
         // --- 5. Input Processor Setup ---
@@ -206,7 +208,7 @@ public class AutoProductionScreen extends ScreenAdapter {
         JsonReader jsonReader = new JsonReader();
 
         // Point to the JSON file in your assets folder
-        FileHandle file = Gdx.files.internal("song_jsons/ashes.json"); // Make sure to name your file this!
+        FileHandle file = Gdx.files.internal("song_jsons/iron_howl.json"); // Make sure to name your file this!
 
         // Parse the entire file into a structured JSON object
         JsonValue base = jsonReader.parse(file);
@@ -234,6 +236,9 @@ public class AutoProductionScreen extends ScreenAdapter {
     @Override
     public void render(float delta) {
         // 1. Update our master timer
+        if (isPaused){
+            return;
+        }
         elapsedTime += delta;
 
         // --- 2. AUTOMATIC LYRIC ADVANCEMENT ---
@@ -263,8 +268,9 @@ public class AutoProductionScreen extends ScreenAdapter {
         //drawing video in the background
         Texture videoFrame = videoPlayer.getTexture();
         batch.begin();
-        batch.draw(videoFrame,180,0, videoWidth + 180, videoHeight);
+        batch.draw(videoFrame,0,0, videoWidth, videoHeight/2);//for 720p x=180, vw + 180
         batch.end();
+
         stage.draw(); // The FitViewport correctly scales the drawing here
 
         vfxManager.endInputCapture();
@@ -422,6 +428,17 @@ public class AutoProductionScreen extends ScreenAdapter {
                         Gdx.app.log("VFX_Toggle", "NFAA Effect: " + (isNfaaEnabled ? "On" : "Off"));
                         break;
 
+                    case Input.Keys.Q:
+                        isPaused = !isPaused;
+                        if (isPaused) {
+                            music.pause(); // Pause the music
+                            Gdx.app.log("PLAYER", "--- PAUSED ---");
+                        } else {
+                            music.play(); // Resume the music
+                            Gdx.app.log("PLAYER", "--- RESUMED ---");
+                        }
+                        break;
+
                     default:
                         return false; // The input was not handled.
                 }
@@ -434,42 +451,53 @@ public class AutoProductionScreen extends ScreenAdapter {
      * Initializes and configures all fonts and adds them to the skin.
      */
     private void setupFontsAndSkin() {
-        //FreeTypeFontGenerator generator1 = new FreeTypeFontGenerator(Gdx.files.internal("BitcountInk-VariableFont_CRSV,ELSH,ELXP,SZP1,SZP2,XPN1,XPN2,YPN1,YPN2,slnt,wght.ttf"));
-        //FreeTypeFontGenerator generator1 = new FreeTypeFontGenerator(Gdx.files.internal("Philophobia-0p8d.ttf"));
-        //FreeTypeFontGenerator generator1 = new FreeTypeFontGenerator(Gdx.files.internal("CinzelDecorative-Regular.ttf"));
-        //FreeTypeFontGenerator generator1 = new FreeTypeFontGenerator(Gdx.files.internal("Bleeding_Cowboys.ttf"));
-        //FreeTypeFontGenerator generator1 = new FreeTypeFontGenerator(Gdx.files.internal("Balthazar-Regular.ttf"));
-        //FreeTypeFontGenerator generator1 = new FreeTypeFontGenerator(Gdx.files.internal("Shooting_Star.ttf"));
-        //FreeTypeFontGenerator generator1 = new FreeTypeFontGenerator(Gdx.files.internal("manic-depressive.ttf"));
-        FreeTypeFontGenerator generator1 = new FreeTypeFontGenerator(Gdx.files.internal("Staatliches-Regular.ttf"));
+        // --- 1. Generate BitmapFonts (The Raw Ingredients) ---
+        // The primary font is used for most text.
+        FreeTypeFontGenerator generator1 = new FreeTypeFontGenerator(Gdx.files.internal("fonts/BOMBORA.otf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter1 = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        parameter1.size = 106;//78
-        parameter1.color = Color.ORANGE;
+        parameter1.size = 96;
+        parameter1.color = Color.WHITE;
         parameter1.borderColor = Color.BLACK;
-        parameter1.borderWidth = 1f;
-        parameter1.magFilter = Texture.TextureFilter.Linear;
-        parameter1.minFilter = Texture.TextureFilter.Linear;
+        parameter1.borderWidth = 5f;
+        BitmapFont primaryBmp = generator1.generateFont(parameter1);
 
-        BitmapFont bitmapFont1 = generator1.generateFont(parameter1);
+        // The secondary font is used for special emphasis via markup.
+        FreeTypeFontGenerator generator2 = new FreeTypeFontGenerator(Gdx.files.internal("ShareTech-Regular.ttf"));
+        FreeTypeFontGenerator.FreeTypeFontParameter parameter2 = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        parameter2.size = 96;
+        parameter2.color = Color.WHITE; // Example color for the pixel font
+        parameter2.borderColor = Color.BLACK;
+        parameter2.borderWidth = 5f;
+        BitmapFont pixelBmp = generator2.generateFont(parameter2);
+
         generator1.dispose();
+        generator2.dispose();
 
-        Font primaryTextraFont = new Font(bitmapFont1);
-        Font pixelTextraFont = KnownFonts.getIBM8x16();
+        // --- 2. Wrap them in TextraTypist's Font objects (The Specialized Tools) ---
+        Font primaryFont = new Font(primaryBmp);
+        Font pixelFont = new Font(pixelBmp);
 
-        skin.add("primary", primaryTextraFont);
-        skin.add("pixel", pixelTextraFont);
+        // --- 3. Create a FontFamily to group them (The Toolbox) ---
+        // This constructor takes arrays of names and the corresponding Font objects.
+        String[] names = {"regular", "pixel"}; // These are the names used in the markup.
+        Font[] fonts = {primaryFont, pixelFont};
+        Font.FontFamily mainFamily = new Font.FontFamily(names, fonts);
 
+        // --- 4. Assign the FontFamily to the primary Font ---
+        // This is the critical link. The primary font now knows about all other fonts in its family.
+        primaryFont.family = mainFamily;
+
+        // --- 5. Define the default LabelStyle ---
+        // The style only needs to reference the primary font. TextraTypist will automatically
+        // find other fonts in the family when it sees the [@Name] markup.
         Styles.LabelStyle defaultLabelStyle = new Styles.LabelStyle();
-        defaultLabelStyle.font = skin.get("primary", Font.class);
+        defaultLabelStyle.font = primaryFont;
         skin.add("default", defaultLabelStyle);
 
-        //KnownFonts.addEmoji(primaryTextraFont);//disabling this allows some from GameIcons to work, this does seem to work with noto?
-        KnownFonts.addGameIcons(primaryTextraFont);//disabling this allows some from OpenMoji to work. Doesn't work with some noto.
-        KnownFonts.addNotoEmoji(primaryTextraFont);
-        KnownFonts.addMaterialDesignIcons(primaryTextraFont);
-        KnownFonts.addOpenMoji(primaryTextraFont, true);
-
-        KnownFonts.getStandardFamily();
+        // --- 6. Add Emoji Support ---
+        // Add any desired emoji packs to your primary font.
+        KnownFonts.addGameIcons(primaryFont);
+        KnownFonts.addNotoEmoji(primaryFont);
     }
 
     /**
@@ -478,59 +506,11 @@ public class AutoProductionScreen extends ScreenAdapter {
      */
     private Array<String> createLyrics() {
         Array<String> lyrics = new Array<>();
-        lyrics.add("[%?SHINY][%150]Aggression, 10xdev_art[%][%]");
+        //lyrics.add("[%?SHINY][%150]Aggression, 10xdev_art[%][%]");
+        for (LyricLine lyricLine : timedLyrics){
+            lyrics.add(lyricLine.text);
+        }
 
-// [Verse]
-        lyrics.add("{SPEED=1.1}This is my {VAR=AGGRESSION_HIT}aggression,{VAR=ENDAGGRESSION_HIT}{WAIT=0.24}{NORMAL} I'm back,{WAIT=0.26} {SPEED=4}I can't give you a break{NORMAL}{WAIT=0.52}");
-        lyrics.add("{SPEED=1}I let the {SQUASH=1.5;2;false}pressure{ENDSQUASH} pile up,{NORMAL}{WAIT=0.32} and it's my {JOLT=2;2;0.5}mistake{ENDJOLT}{WAIT=0.62}");
-        lyrics.add("{SPEED=0.9}I got my mind made up,{NORMAL}{WAIT=0.22} {SPEED=1}I don't need a debate{NORMAL}{WAIT=0.5}");
-        lyrics.add("{SPEED=1}This is my {VAR=AGGRESSION_HIT}aggression,{VAR=ENDAGGRESSION_HIT}{WAIT=0.14}{NORMAL} my confession,{WAIT=0.26} you better {SHAKE=2;2}[%175]pray[%]{ENDSHAKE}");
-        lyrics.add("{SPEED=1}This is my {VAR=AGGRESSION_HIT}aggression,{VAR=ENDAGGRESSION_HIT}{WAIT=0.2}{NORMAL} I'm back,{WAIT=0.16} {SPEED=1}I can't give you a break{NORMAL}{WAIT=0.52}");
-        lyrics.add("{SPEED=1}I let the {SQUASH=1.5;2;false}pressure{ENDSQUASH} pile up,{NORMAL}{WAIT=0.14} and it's my {JOLT=2;2;0.5}mistake{ENDJOLT}{WAIT=0.64}");
-        lyrics.add("{SPEED=1}I got my mind made up,{NORMAL}{WAIT=0.26} {SPEED=1}I don't need a debate{NORMAL}{WAIT=0.52}");
-        lyrics.add("{SPEED=1.1}This is my {VAR=AGGRESSION_HIT}aggression,{VAR=ENDAGGRESSION_HIT}{WAIT=0.18}{NORMAL} my confession,{WAIT=0.2} you better {SHAKE=2;2}[%175]pray[%]{ENDSHAKE}");
-
-// [Chorus]
-        lyrics.add("{SPEED=1.5}{VAR=REAPER_FADE}It's the reaper,{VAR=ENDREAPER_FADE}{WAIT=0.5} the trigger squeezer{WAIT=0.18}  [+reaper-scythe]");
-        lyrics.add("{SPEED=1.1}{VAR=REAPER_FADE}You feel the ether,{VAR=ENDREAPER_FADE}{WAIT=0.32} leave your soul deeper  [+sly]");
-        lyrics.add("{JUMP=1;2;1;0.5}You better pray{ENDJUMP}   [+prayer]");
-        lyrics.add("{JUMP=1;2;1;0.5}[%125]You better pray[%]{ENDJUMP}   [+angel-wings]");
-        lyrics.add("{JUMP=1;2;1;0.5}[%150]You better pray[%]{ENDJUMP}   [+prayer]");
-        lyrics.add("{JOLT=2;2;0.6}[%175]You better pray[%]{ENDJOLT}   [+prayer-beads]");
-
-// [Verse 2]
-        lyrics.add("{SPEED=2}[rich green]Chase a couple of bands,{WAIT=0.08} make a couple of flips{NORMAL}   [+cash]");
-        lyrics.add("{SPEED=2}I pop a couple of {JUMP=0.8;1;1;0.3}pills,{ENDJUMP}{WAIT=0.1} I let it numb my lips{NORMAL}   [+pill]");
-        lyrics.add("{SPEED=3}I'm in a couple of rips,{WAIT=0.06} I'm making couple of trips{NORMAL}   [+tripwire]");
-        lyrics.add("{SPEED=3}I'm on some {VAR=DEMON_TIME}demon time,{VAR=ENDDEMON_TIME}{WAIT=0.04} I got a couple of clips  [+bat-blade]");
-        lyrics.add("{SPEED=2}I'm moving militant{WAIT=0.28} with a couple of men{NORMAL}   [+team-upgrade]");
-        lyrics.add("{SPEED=2}IYou thinking, {SHAKE=1;1}\"Man, oh, man{ENDSHAKE}{WAIT=0.12} here we go again\"");
-        lyrics.add("{SPEED=4}I'm with a couple of bitches and they want me to win{NORMAL}   [+cherish]");
-        lyrics.add("{SPEED=1.5}We on some {VAR=TOXIC_GLOW}toxic love,{VAR=ENDTOXIC_GLOW} I'm 'bout to {SPIN=1;1;false}spin again{ENDSPIN}");
-
-// [Chorus] - Repeated with slight variations for intensity
-        lyrics.add("{SPEED=1.5}{VAR=REAPER_FADE}It's the reaper,{VAR=ENDREAPER_FADE}{WAIT=0.5} the trigger squeezer{WAIT=0.18} [+pistol-gun]");
-        lyrics.add("{SPEED=1.1}{VAR=REAPER_FADE}You feel the ether,{VAR=ENDREAPER_FADE}{WAIT=0.32} leave your soul deeper [+sly]");
-        lyrics.add("{JUMP=1;2;1;0.5}You better pray{ENDJUMP}   [+jerusalem-cross]");
-        lyrics.add("{JUMP=1;2;1;0.5}[%125]You better pray[%]{ENDJUMP}   [+angel-wings]");
-        lyrics.add("{JUMP=1;2;1;0.5}[%150]You better pray[%]{ENDJUMP} [+prayer]");
-        lyrics.add("{JOLT=2;2;0.6}[%175]You better pray[%]{ENDJOLT}   [+prayer-beads]");
-
-// [Verse 3] - Repeats Verse 1, so we use the same synchronized markup
-        lyrics.add("{SPEED=1.1}This is my {VAR=AGGRESSION_HIT}aggression,{VAR=ENDAGGRESSION_HIT}{WAIT=0.24}{NORMAL} I'm back,{WAIT=0.16} {SPEED=1.5}I can't give you a break{NORMAL}{WAIT=0.56}");
-        lyrics.add("{SPEED=1}I let the {SQUASH=1.5;2;false}pressure{ENDSQUASH} pile up{NORMAL} {JOLT=2;2;0.5}I got my mind made up,{ENDJOLT}{WAIT=0.24}");
-        lyrics.add("{SPEED=1}I don't need a debate{NORMAL}{WAIT=0.54}");
-        lyrics.add("{SPEED=2}This is my {VAR=AGGRESSION_HIT}aggression,{VAR=ENDAGGRESSION_HIT}{WAIT=0.22}{NORMAL} my confession {WAIT=0.56}you better {SHAKE=2;2}[%175]pray[%]{ENDSHAKE}");
-        lyrics.add("{SPEED=2}This is my {VAR=AGGRESSION_HIT}aggression,{VAR=ENDAGGRESSION_HIT}{WAIT=0.36}{NORMAL} I'm back,{WAIT=0.14} {SPEED=1.5}I can't give you a break{NORMAL}{WAIT=0.58}");
-        lyrics.add("{SPEED=2}I let the {SQUASH=1.5;2;false}pressure{ENDSQUASH} pile up,{NORMAL}{WAIT=0.34} and it's my {JOLT=2;2;0.5}mistake{ENDJOLT}{WAIT=0.68}");
-        lyrics.add("{SPEED=2}I got my mind made up,{NORMAL}{WAIT=0.24} {SPEED=1.5}I don't need a debate{NORMAL}{WAIT=0.52}");
-        lyrics.add("{SPEED=2}This is my {VAR=AGGRESSION_HIT}aggression,{VAR=ENDAGGRESSION_HIT}{WAIT=0.2}{NORMAL} my confession {WAIT=0.6}you better {SHAKE=2;2}[%175]pray[%]{ENDSHAKE}");
-
-// [Chorus] - Final and most intense repeat
-        lyrics.add("{SPEED=1.1}{VAR=REAPER_FADE}It's the reaper,{VAR=ENDREAPER_FADE}{WAIT=0.36} The trigger squeezer{WAIT=0.18}  [+reaper-scythe]");
-        lyrics.add("{SPEED=1.1}{VAR=REAPER_FADE}You feel the ether,{VAR=ENDREAPER_FADE}{WAIT=0.26} leave your soul deeper [+sly]");
-        lyrics.add("{VAR=MANIC_SCREAM}You better pray{ENDMANIC_SCREAM} [+prayer]");
-        lyrics.add("{VAR=MANIC_SCREAM}You better pray{ENDMANIC_SCREAM} [+jerusalem-cross]");
 
 
         return lyrics;

@@ -1,0 +1,125 @@
+[ {
+  "startTime": 0.00,
+  "markup": "{VAR=IRON_HOWL}Iron Howl{VAR=ENDIRON_HOWL}{WAIT=0.14} {VAR=GHOST_ECHO}{STYLE=@pixel}10xDevArt{STYLE=@}{VAR=ENDGHOST_ECHO} [+wolf-howl]"
+  },
+  {
+    "startTime": 23.74,
+    "markup": "{VAR=WAR_DRUM}Drums hit like war chants,{VAR=ENDWAR_DRUM}{WAIT=0.14} {VAR=GHOST_ECHO}spirits in the ether{VAR=ENDGHOST_ECHO}"
+  },
+  {
+    "startTime": 27.02,
+    "markup": "{VAR=GHOST_ECHO}Echoes in the canyon,{WAIT=0.16} shadows pull me deeper [+two-shadows]{VAR=ENDGHOST_ECHO}"
+  },
+  {
+    "startTime": 30.08,
+    "markup": "[dark gray]Grimy 808 growl,{CLEARCOLOR} {SHAKE=1;1}wolves howl{ENDSHAKE} in the speakers [+werewolf][+speaker]"
+  },
+  {
+    "startTime": 33.12,
+    "markup": "{SPEED=1.25}Steel-tipped tongue, my words cut like {VAR=CLEAVER_CUT}cleavers{VAR=ENDCLEAVER_CUT} [+meat-cleaver]"
+  },
+  {
+    "startTime": 36.20,
+    "markup": "{SPEED=1.45}Cityscape's a graveyard,{WAIT=0.15} [_][rich dark red][*]bones[*]{CLEARCOLOR}[_] paved in [%125][@pixel]asphalt[@][+dinosaur-bones]"
+  },
+  {
+    "startTime": 39.24,
+    "markup": "Monotone sniper[+winchester-rifle] headshots {WAIT=0.11}with the rap [/]vault[/]"
+  },
+  {
+    "startTime": 42.30,
+    "markup": "Razor-wire syllables, {WAIT=0.10}my cadence a [_][rich dark red][*]catapult[*]{CLEARCOLOR}[_][+catapult]"
+  },
+  {
+    "startTime": 45.36,
+    "markup": "{SPEED=1.15}Bury 'em with verses, six feet {WAIT=0.10}where the facts halt [+grave-flowers]"
+  },
+  {
+    "startTime": 48.38,
+    "markup": "{SPEED=1.25}{VAR=FROST_BREATH}Cold sweat dripping,{WAIT=0.12}{VAR=ENDFROST_BREATH} veins pumping {VAR=BLACK_TAR}black tar{VAR=ENDBLACK_TAR}"
+  },
+  {
+    "startTime": 51.44,
+    "markup": "Heart like a drum, {VAR=WAR_DRUM}steady pounding{VAR=ENDWAR_DRUM}, never that far[+heart-organ]"
+  },
+  {
+    "startTime": 54.44,
+    "markup": "{VAR=ELECTRIFY}Glitch in the matrix,{VAR=ENDELECTRIFY} [rich dark red][*]rage[*]{CLEARCOLOR} tearing through the [@pixel]radar[@]      [+radar-sweep]"
+  },
+  {
+    "startTime": 57.44,
+    "markup": "{SPEED=1.15}Precision like an arrowhead,{WAIT=0.13} sharper than a clay bar [+spotted-arrowhead]"
+  },
+  {
+    "startTime": 60.60,
+    "markup": "{SPEED=1.15}{VAR=IRON_HOWL}Iron howl,{VAR=ENDIRON_HOWL} break the silence, make 'em [_]cower[_]"
+  },
+  {
+    "startTime": 63.34,
+    "markup": "Weaponized words, spitting [/][dull green]venom[/]{CLEARCOLOR} every hour [+biohazard]"
+  },
+  {
+    "startTime": 66.36,
+    "markup": "[dark gray]Grimy like the 808, heavy like a [_][@pixel][*]TOWER[*][@][_]"
+  },
+  {
+    "startTime": 69.56,
+    "markup": "{VAR=IRON_HOWL}Iron howl, iron howl,{VAR=ENDIRON_HOWL}{WAIT=0.20} [@pixel][*]CHANNELING THE POWER[*][@]"
+  },
+  {
+    "startTime": 72.90,
+    "markup": "{SPEED=1.15}{VAR=IRON_HOWL}Iron howl,{VAR=ENDIRON_HOWL} break the silence, make 'em [_]cower[_]"
+  },
+  {
+    "startTime": 75.25,
+    "markup": "Weaponized words, spitting [/][dull green]venom[/]{CLEARCOLOR} every hour [+biohazard]"
+  },
+  {
+    "startTime": 78.74,
+    "markup": "[dark gray]Grimy like the 808, heavy like a [_][@pixel][*]TOWER[*][@][_]"
+  },
+  {
+    "startTime": 81.45,
+    "markup": "{VAR=IRON_HOWL}Iron howl, iron howl,{VAR=ENDIRON_HOWL} {WAIT=0.25}[@pixel][*]CHANNELING THE POWER[*][@]"
+  },
+  {
+    "startTime": 85.59,
+    "markup": "{VAR=IRON_HOWL}[+musical-notes]{WAIT=8.0}[+sound-on]{VAR=ENDIRON_HOWL}"
+  },
+  {
+    "startTime": 96.76,
+    "markup": "{VAR=GHOST_ECHO}Native flutes cry, ghosts dance on the skyline{VAR=ENDGHOST_ECHO} [+pan-flute]"
+  },
+  {
+    "startTime": 100.12,
+    "markup": "Smoke signal metaphors, message in the pipeline[+smoke-bomb]"
+  },
+  {
+    "startTime": 103.08,
+    "markup": "Bassline's a landslide, [_][rich dark red]thunder[*]{CLEARCOLOR}[_] in the fault line [+mountain-road]"
+  },
+  {
+    "startTime": 106.06,
+    "markup": "{VAR=FROST_BREATH}Flow colder than a frostbite,{VAR=ENDFROST_BREATH} every word an alpine[+pine-tree]"
+  },
+  {
+    "startTime": 109.36,
+    "markup": "Fingers on the pulse, industrial [/][dull green]venom[/]{CLEARCOLOR} seeps [+hazard-sign]"
+  },
+  {
+    "startTime": 111.98,
+    "markup": "Rage in the wires, {VAR=ELECTRIFY}static chaos{VAR=ENDELECTRIFY} never sleeps"
+  },
+  {
+    "startTime": 114.92,
+    "markup": "Vocal scratches {SQUASH=2;2;false}whip{ENDSQUASH} like wind through the steeps [+whip]"
+  },
+  {
+    "startTime": 118.04,
+    "markup": "[%125]Trashcore fury,[%] [@pixel]silence[@] buried six [_]deep[_] [+grave-flowers]"
+  },
+  {
+    "startTime": 121.00,
+    "markup": "{VAR=IRON_HOWL}Iron Howl{VAR=ENDIRON_HOWL}{WAIT=0.14} {VAR=GHOST_ECHO}{STYLE=@pixel}10xDevArt{STYLE=@}{VAR=ENDGHOST_ECHO}  [+wolf-howl]"
+  }
+]
