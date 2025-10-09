@@ -1,0 +1,89 @@
+[ {
+  "startTime": 0.00,
+  "markup": "{FADE}[light metallic silver]Efficient Machine{WAIT=0.34} TenXDevArt"
+  },
+  {
+    "startTime": 10.60,
+    "markup": "{FADE}[light metallic silver]Steel lungs breathe,{WAIT=0.34} iron veins flow crude"
+  },
+  {
+    "startTime": 14.00,
+    "markup": "Clock hands spinning, got no time for a mood  [+pocket-watch]"
+  },
+  {
+    "startTime": 16.74,
+    "markup": "Sharp jaw clenched, chewing [_][rich fiery orange]bolts[*]{CLEARCOLOR}[_] for food"
+  },
+  {
+    "startTime": 18.96,
+    "markup": "Programmed to move, no choice but to [_][rich fiery orange]feud[*]{CLEARCOLOR}[_]"
+  },
+  {
+    "startTime": 22.18,
+    "markup": "Digits on the dash, I don't crash, I [_][rich fiery orange]compute[*]{CLEARCOLOR}[_]  [+speedometer]"
+  },
+  {
+    "startTime": 25.00,
+    "markup": "{SPEED=2}{VAR=BLUEPRINT_SCAN}Blueprint brain, every step [*]absolute[*]{VAR=ENDBLUEPRINT_SCAN}"
+  },
+  {
+    "startTime": 27.80,
+    "markup": "{SPEED=4}{SLAM}Stomp{ENDSLAM} through the city, hear the {VAR=GEAR_GRIND}gears grind{VAR=ENDGEAR_GRIND}"
+  },
+  {
+    "startTime": 29.80,
+    "markup": "{SPEED=1.3}Soul on the shelf, leave the [/][rich fiery orange]empathy[/]{CLEARCOLOR} behind"
+  },
+  {
+    "startTime": 32.02,
+    "markup": "[%150]Efficient [*]machine,[*] run clean, no pause  [+cpu]"
+  },
+  {
+    "startTime": 34.90,
+    "markup": "Dripping that grease, I’m the king of [_][rich fiery orange]flaws[*]{CLEARCOLOR}[_]"
+  },
+  {
+    "startTime": 38.16,
+    "markup": "[%150]Efficient [*]machine,[*] can’t stop, no brakes [+gears]"
+  },
+  {
+    "startTime": 40.34,
+    "markup": "Swagger too careless, let the whole {VAR=EARTHQUAKE}earth quake{VAR=ENDEARTHQUAKE}  [+earth-africa-europe]"
+  },
+  {
+    "startTime": 45.48,
+    "markup": "{FADE}{WAVE}[+musical-notes]"
+  },
+  {
+    "startTime": 48.92,
+    "markup": "{SPEED=2}Metallic heart pumping, {VAR=GEAR_GRIND}chrome blood{VAR=ENDGEAR_GRIND} in the streams [+beating-heart]"
+  },
+  {
+    "startTime": 52.10,
+    "markup": "[/]Dreams[/] die quick when you’re built for the [_]scheme[_]"
+  },
+  {
+    "startTime": 55.02,
+    "markup": "{VAR=NEON_GLINT}Neon lights glint,{VAR=ENDNEON_GLINT} reflection of the [_][rich fiery orange]beast[*]{CLEARCOLOR}[_]"
+  },
+  {
+    "startTime": 57.80,
+    "markup": "{SPEED=1.35}I’m the predator {SICK=1;1}feasting,{ENDSICK} no prayers for the [_]deceased[_] [+skull]"
+  },
+  {
+    "startTime": 60.26,
+    "markup": "Fingers made of wrenches, wrenching up the [_][rich fiery orange]stakes[*]{CLEARCOLOR}[_] [+wrench]"
+  },
+  {
+    "startTime": 63.26,
+    "markup": "No regrets in my code, only [_][rich fiery orange]wins[*]{CLEARCOLOR}[_] in my wake [+trophy]"
+  },
+  {
+    "startTime": 66.02,
+    "markup": "Rust in my grin,{WAIT=0.24} laugh with a {VAR=GEAR_GRIND}clank{VAR=ENDGEAR_GRIND}"
+  },
+  {
+    "startTime": 68.64,
+    "markup": "{VAR=ELECTRIFY}Energy infinite,{VAR=ENDELECTRIFY}{WAIT=0.29} pockets never sank"
+  }
+]
