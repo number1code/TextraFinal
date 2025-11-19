@@ -1,0 +1,117 @@
+[ {
+  "startTime": 0.00,
+  "markup": "{VAR=VAPOR_DREAM}[@pixel]Dream[@] in the Vapor - 10xDevArt\n[200%][+sparkles][%]{VAR=ENDVAPOR_DREAM}"
+},
+  {
+    "startTime": 5.46,
+    "markup": "{SLOW}{VAR=VAPOR_DREAM}[+heraldic-sun]Woke up in the [@pixel]daydream[@] haze... no sound{VAR=ENDVAPOR_DREAM}"
+  },
+  {
+    "startTime": 11.28,
+    "markup": "{SLOW}Soft guitar's whisper... {SPIN}[@pixel]{COLOR=light cyan}spinning{CLEARCOLOR}[@]{ENDSPIN} all around [+guitar]"
+  },
+  {
+    "startTime": 16.94,
+    "markup": "Stepping over {STYLE=SHADOW}shadows, {WAIT=0.28}[rich magenta][@pixel]skipping[@]{CLEARCOLOR} {SLOW}through the {COLOR=light cyan}rain{STYLE=DEFAULT} [+heavy-rain]"
+  },
+  {
+    "startTime": 22.42,
+    "markup": "{SLOWER}{VAR=GHOST_ECHO}Chasing echoes in a loop again and again [+cycle]{VAR=ENDGHOST_ECHO}"
+  },
+  {
+    "startTime": 28.16,
+    "markup": "{SLOW}Feel the {VAR=SKANK_RHYTHM}[rich magenta]skank rhythm{CLEARCOLOR}{VAR=ENDSKANK_RHYTHM}{WAIT=0.38} slow yet tight"
+  },
+  {
+    "startTime": 33.52,
+    "markup": "{SLOW}{VAR=SKANK_RHYTHM}Bassline bouncing, [%150][@pixel][rich cyan]cozy{CLEARCOLOR}[@][%] through the night {COLOR=rich magenta}[+audio-cassette]{CLEARCOLOR}{VAR=ENDSKANK_RHYTHM}"
+  },
+  {
+    "startTime": 39.35,
+    "markup": "High hats sizzle,{WAIT=1.29}{SLOWER} [*][rich magenta][@pixel]sparkle[@][*]{CLEARCOLOR} in the dark \n[200%]{VAR=VAPOR_DREAM}[+sparkles]{VAR=ENDVAPOR_DREAM}[%]"
+  },
+  {
+    "startTime": 44.64,
+    "markup": "{SLOWER}{VAR=VAPOR_DREAM}[@pixel]Dream in the vapor, leave your mark[@] [+spray]{VAR=ENDVAPOR_DREAM}"
+  },
+  {
+    "startTime": 50.92,
+    "markup": "City lights reflecting,{WAIT=0.18} {VAR=VAPOR_DREAM}[@pixel]ripples[@] [+echo-ripples]{WAIT=0.58}{VAR=ENDVAPOR_DREAM} {SLOW}under my feet"
+  },
+  {
+    "startTime": 56.32,
+    "markup": "Catching warmth where the {VAR=VAPOR_DREAM}[@pixel]vibe[@]{VAR=ENDVAPOR_DREAM} and the [rich magenta][@pixel]pulse[@][*]{CLEARCOLOR} meet  {HEARTBEAT=1.2;0.8}[+heart-beats]{ENDHEARTBEAT}"
+  },
+  {
+    "startTime": 62.22,
+    "markup": "{SLOW}[+musical-score] Deep chords strum heavy in this endless {WAIT=0.15}{FADE} [/]drift[/]"
+  },
+  {
+    "startTime": 67.18,
+    "markup": "{SLOWER}A {VAR=VAPOR_DREAM}[@pixel]timeless[@]{VAR=ENDVAPOR_DREAM} rush, a heart-shifting gift [+gift-trap]"
+  },
+  {
+    "startTime": 73.82,
+    "markup": "[*]Muted[*] streets{WAIT=1.20} {SLOW}hum their [/]mellow[/] tune"
+  },
+  {
+    "startTime": 78.76,
+    "markup": "{SLOWER}Underneath the {VAR=VAPOR_DREAM}[@pixel]glow[@]{VAR=ENDVAPOR_DREAM} of another {VAR=NEON_MOON}neon moon{VAR=ENDNEON_MOON}  {VAR=VAPOR_DREAM}[+moon]{VAR=ENDVAPOR_DREAM}"
+  },
+  {
+    "startTime": 84.64,
+    "markup": "The {VAR=VAPOR_DREAM}[@pixel]pulse[@]{VAR=ENDVAPOR_DREAM} cuts deeper where the {VAR=SKANK_RHYTHM}rhythm collides{VAR=ENDSKANK_RHYTHM}"
+  },
+  {
+    "startTime": 90.12,
+    "markup": "{SLOW}Holding me {VAR=VAPOR_DREAM}[@pixel]closer[@]{VAR=ENDVAPOR_DREAM} as the [*]vastness[*] divides"
+  },
+  {
+    "startTime": 96.00,
+    "markup": "[*]Muted[*] streets{WAIT=0.95} {SLOW}hum their [/]mellow[/] tune"
+  },
+  {
+    "startTime": 101.16,
+    "markup": "{SLOWER}Underneath the {VAR=VAPOR_DREAM}[@pixel]glow[@]{VAR=ENDVAPOR_DREAM} of another {VAR=NEON_MOON}neon moon{VAR=ENDNEON_MOON}  {VAR=VAPOR_DREAM}[+moon]{VAR=ENDVAPOR_DREAM}"
+  },
+  {
+    "startTime": 107.00,
+    "markup": "{SLOWER}The {VAR=VAPOR_DREAM}[@pixel]pulse[@]{VAR=ENDVAPOR_DREAM} cuts deeper where the {VAR=SKANK_RHYTHM}rhythm collides{VAR=ENDSKANK_RHYTHM}"
+  },
+  {
+    "startTime": 112.25,
+    "markup": "{SLOWER}Holding me {VAR=VAPOR_DREAM}[@pixel]closer[@]{VAR=ENDVAPOR_DREAM} as the [*]vastness[*] divides"
+  },
+  {
+    "startTime": 118.36,
+    "markup": "{SLOW}Feel the {VAR=SKANK_RHYTHM}[rich magenta]skank [@pixel]rhythm[@]{CLEARCOLOR}{VAR=ENDSKANK_RHYTHM}{WAIT=0.60} slow yet tight"
+  },
+  {
+    "startTime": 123.92,
+    "markup": "{SLOW}{VAR=SKANK_RHYTHM}Bassline bouncing, {COLOR=rich magenta}[@pixel]cozy[@]{CLEARCOLOR} through the night [+guitar-bass-head]{VAR=ENDSKANK_RHYTHM}"
+  },
+  {
+    "startTime": 129.70,
+    "markup": "High hats sizzle,{WAIT=1.65} {VAR=VAPOR_DREAM}[@pixel]sparkle[@][*]{VAR=ENDVAPOR_DREAM} in the [light black]dark {JOLT=1.0;1.0;inf;0.8;000000ff;f8f500ff}[+sparkles]{ENDJOLT}"
+  },
+  {
+    "startTime": 135.18,
+    "markup": "{SLOWER}{VAR=VAPOR_DREAM}[@pixel]Dream[@] in the vapor, leave your [@pixel]mark[@]{VAR=ENDVAPOR_DREAM}"
+  },
+  {
+    "startTime": 152.76,
+    "markup": "{SLOW}{FADE=0;1;2}Skies fold soft as the morning peeks in"
+  },
+  {
+    "startTime": 158.50,
+    "markup": "{SLOW}{VAR=GHOST_ECHO}Echoes fade soft but still linger within{VAR=ENDGHOST_ECHO}"
+  },
+  {
+    "startTime": 163.34,
+    "markup": "{SLOWER}This journey’s a prism{WAIT=0.65} of deep and low sound"
+  },
+  {
+    "startTime": 168.78,
+    "markup": "{SLOWER}{VAR=VAPOR_DREAM}[@pixel]Dream[@] in the vapor...{WAIT=0.20} lost yet [@pixel]found[@]{VAR=ENDVAPOR_DREAM}"
+  }
+]
