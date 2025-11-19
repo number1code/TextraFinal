@@ -116,8 +116,8 @@ public class AutoProductionScreen extends ScreenAdapter {
         //FileHandle file = Gdx.files.internal("manic-throne-video.webm");
         //FileHandle file = Gdx.files.internal("aggro_video-effectapp.webm");
 //        FileHandle file = Gdx.files.internal("video/Vapor-vid-effectapp.webm");
-//        FileHandle file = Gdx.files.internal("video/mrlizardsongtimelapse.webm");
-        FileHandle file = Gdx.files.internal("video/sloppylizard.webm");
+        FileHandle file = Gdx.files.internal("video/mrlizardsongtimelapse.webm");
+//        FileHandle file = Gdx.files.internal("video/sloppylizard.webm");
         try {
 //            videoPlayer.load(file);
             videoPlayer.load(file);
