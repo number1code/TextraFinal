@@ -49,13 +49,46 @@ public class MyGame extends Game {
 
         TypingConfig.GLOBAL_VARS.put("WAR_DRUM", "{HEARTBEAT=1.2;0.8}{COLOR=rich dark red}");
         TypingConfig.GLOBAL_VARS.put("ENDWAR_DRUM", "{CLEARCOLOR}{ENDHEARTBEAT}");
-
         // NEW (Corrected and Thematic):
 //        TypingConfig.GLOBAL_VARS.put("WAR_DRUM", "{SHAKE=1.5;1.5;0.5}{SQUASH=1.5;2;false}[%125][dark red]");
 //        TypingConfig.GLOBAL_VARS.put("ENDWAR_DRUM", "[%]{ENDSQUASH}{ENDSHAKE}{CLEARCOLOR}");
-
         TypingConfig.GLOBAL_VARS.put("FROST_BREATH", "{VAR=SHIVERINGBLIZZARD}");
         TypingConfig.GLOBAL_VARS.put("ENDFROST_BREATH", "{VAR=ENDSHIVERINGBLIZZARD}");
+
+        //Dream in the Vapor
+        TypingConfig.GLOBAL_VARS.put("VAPOR_DREAM", "{FADE}{WAVE=0.05;3;0.5}{GRADIENT=light cyan;light magenta;1;1}");
+        TypingConfig.GLOBAL_VARS.put("ENDVAPOR_DREAM", "{ENDGRADIENT}{ENDWAVE}{ENDFADE}");
+
+        TypingConfig.GLOBAL_VARS.put("SKANK_RHYTHM", "{JUMP=0.7;0.05;1.0}");
+        TypingConfig.GLOBAL_VARS.put("ENDSKANK_RHYTHM", "{ENDJUMP}");
+
+        TypingConfig.GLOBAL_VARS.put("GHOST_ECHO", "{FADE}{WAVE=0.05;3;0.5}{COLOR=pale weak gray}");
+        TypingConfig.GLOBAL_VARS.put("ENDGHOST_ECHO", "{CLEARCOLOR}{ENDWAVE}{ENDFADE}");
+
+        TypingConfig.GLOBAL_VARS.put("NEON_MOON", "{STYLE=NEON}{COLOR=light magenta}");
+        TypingConfig.GLOBAL_VARS.put("ENDNEON_MOON", "{CLEARCOLOR}{STYLE=DEFAULT}");
+
+        // MR. LIZARD - GLOBAL STYLES
+
+// The Main Brand: Friendly, confident green gradient with a slight bounce
+        TypingConfig.GLOBAL_VARS.put("LIZARD_BRAND", "{JUMP=0.5;1;1}{GRADIENT=lime;forest green;1;1}[@pixel]");
+        TypingConfig.GLOBAL_VARS.put("ENDLIZARD_BRAND", "[@]{ENDGRADIENT}{ENDJUMP}");
+
+// Construction Impacts: For "Fixed", "Build", "Mend" - metallic and heavy
+        TypingConfig.GLOBAL_VARS.put("FIX_HIT", "{SLAM}[%135][metallic silver]");
+        TypingConfig.GLOBAL_VARS.put("ENDFIX_HIT", "[%]{CLEARCOLOR}{ENDSLAM}");
+
+// Water/Leaks: Wobbly, blue effect
+        TypingConfig.GLOBAL_VARS.put("WATER_WOBBLE", "{SICK=1;0.5;inf}{COLOR=sky blue}");
+        TypingConfig.GLOBAL_VARS.put("ENDWATER_WOBBLE", "{CLEARCOLOR}{ENDSICK}");
+
+// Warmth/Light: For "Sun", "Shine", "Flow" - Warm glow
+        TypingConfig.GLOBAL_VARS.put("SUN_GLOW", "{WAVE=0.05;2;0.5}{STYLE=NEON}{COLOR=gold}");
+        TypingConfig.GLOBAL_VARS.put("ENDSUN_GLOW", "{CLEARCOLOR}{STYLE=DEFAULT}{ENDWAVE}");
+
+// The "Squeak": A high frequency shake
+        TypingConfig.GLOBAL_VARS.put("SQUEAK", "{SHAKE=0.5;3;3}[orange]");
+        TypingConfig.GLOBAL_VARS.put("ENDSQUEAK", "{CLEARCOLOR}{ENDSHAKE}");
         //setScreen(new VfxProductionSquareScreen(this));
         //setScreen(new VfxProductionScreen(this));
         setScreen(new AutoProductionScreen(this));

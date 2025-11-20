@@ -105,7 +105,7 @@ public class AutoProductionScreen extends ScreenAdapter {
 
     @Override
     public void show() {
-        music = Gdx.audio.newMusic(Gdx.files.internal("music/Iron Howl.wav"));
+        music = Gdx.audio.newMusic(Gdx.files.internal("music/mr_lizard.wav"));
         timedLyrics = parseLyricsAndTimestamps();
 
         videoPlayer = VideoPlayerCreator.createVideoPlayer();
@@ -115,8 +115,11 @@ public class AutoProductionScreen extends ScreenAdapter {
         //FileHandle file = Gdx.files.internal("monotone-weapons-bg-video.webm");//too narrow video
         //FileHandle file = Gdx.files.internal("manic-throne-video.webm");
         //FileHandle file = Gdx.files.internal("aggro_video-effectapp.webm");
-        FileHandle file = Gdx.files.internal("video/iron-howl-bg.webm");
+//        FileHandle file = Gdx.files.internal("video/Vapor-vid-effectapp.webm");
+        FileHandle file = Gdx.files.internal("video/mrlizardsongtimelapse.webm");
+//        FileHandle file = Gdx.files.internal("video/sloppylizard.webm");
         try {
+//            videoPlayer.load(file);
             videoPlayer.load(file);
         }catch (Exception e){
             Gdx.app.log("loading video", "error: " + e.toString());
@@ -150,6 +153,7 @@ public class AutoProductionScreen extends ScreenAdapter {
 
         // --- 4. GDX-VFX SETUP ---
         vfxManager = new VfxManager(Pixmap.Format.RGBA8888);
+        vfxManager.setBlendingEnabled(true);//WHAT?
         crtEffect = new CrtEffect();
         bloomEffect = new BloomEffect();
         vignettingEffect = new VignettingEffect(false);//
@@ -169,7 +173,7 @@ public class AutoProductionScreen extends ScreenAdapter {
 
         // Configure the effects for the desired look
         //bloomEffect.setBaseIntensity(1.0f);
-        bloomEffect.setBloomIntensity(1.5f);
+        bloomEffect.setBloomIntensity(1.0f);
         //bloomEffect.setThreshold(0.5f);
         //
         vignettingEffect.setIntensity(1f);
@@ -177,8 +181,8 @@ public class AutoProductionScreen extends ScreenAdapter {
         levelsEffect.setHue(0.6f);
         //levelsEffect.setGamma(0.5f);
         // Add effects to the manager. The order matters.
-        //vfxManager.addEffect(crtEffect);
-        //isCrtEnabled = true;
+        vfxManager.addEffect(crtEffect);
+        isCrtEnabled = true;
         vfxManager.addEffect(bloomEffect);
         isBloomEnabled = true;
         vfxManager.addEffect(vignettingEffect);
@@ -208,7 +212,7 @@ public class AutoProductionScreen extends ScreenAdapter {
         JsonReader jsonReader = new JsonReader();
 
         // Point to the JSON file in your assets folder
-        FileHandle file = Gdx.files.internal("song_jsons/iron_howl.json"); // Make sure to name your file this!
+        FileHandle file = Gdx.files.internal("song_jsons/mr_lizard.json"); // Make sure to name your file this!
 
         // Parse the entire file into a structured JSON object
         JsonValue base = jsonReader.parse(file);
@@ -453,7 +457,8 @@ public class AutoProductionScreen extends ScreenAdapter {
     private void setupFontsAndSkin() {
         // --- 1. Generate BitmapFonts (The Raw Ingredients) ---
         // The primary font is used for most text.
-        FreeTypeFontGenerator generator1 = new FreeTypeFontGenerator(Gdx.files.internal("fonts/BOMBORA.otf"));
+//        FreeTypeFontGenerator generator1 = new FreeTypeFontGenerator(Gdx.files.internal("fonts/RetroSide-MV0mY.otf"));
+        FreeTypeFontGenerator generator1 = new FreeTypeFontGenerator(Gdx.files.internal("fonts/TitanOne-Regular.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter1 = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter1.size = 96;
         parameter1.color = Color.WHITE;
@@ -462,7 +467,8 @@ public class AutoProductionScreen extends ScreenAdapter {
         BitmapFont primaryBmp = generator1.generateFont(parameter1);
 
         // The secondary font is used for special emphasis via markup.
-        FreeTypeFontGenerator generator2 = new FreeTypeFontGenerator(Gdx.files.internal("ShareTech-Regular.ttf"));
+//        FreeTypeFontGenerator generator2 = new FreeTypeFontGenerator(Gdx.files.internal("fonts/Teko-VariableFont_wght.ttf"));
+        FreeTypeFontGenerator generator2 = new FreeTypeFontGenerator(Gdx.files.internal("fonts/RetroSide-MV0mY.otf"));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter2 = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter2.size = 96;
         parameter2.color = Color.WHITE; // Example color for the pixel font
