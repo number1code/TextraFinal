@@ -1,0 +1,8 @@
+{
+  "songName": "This an Attempt at Life",
+  "musicPath": "music/A_Life_Without_Law.wav",
+  "videoPath": "video/mrlizardsongtimelapse.webm",
+  "jsonPath": "song_jsons/ThisanAttemptatLife.json",
+  "primaryFont": "fonts/SpecialElite-Regular.ttf",
+  "secondaryFont": "fonts/CrimsonText-Regular.ttf"
+}

@@ -1,90 +1,90 @@
 [
   {
-    "startTime": 0.00,
-    "markup": "A {VAR=WATER_WOBBLE}leaky{VAR=ENDWATER_WOBBLE} roof, {WAIT=0.3}a {VAR=SQUEAK}squeaky{VAR=ENDSQUEAK} door [+water-drop]"
+    "startTime": 0.50,
+    "markup": "A {VAR=WATER_WOBBLE}leaky{VAR=ENDWATER_WOBBLE} roof, {WAIT=0.3}a {VAR=SQUEAK}squeaky{VAR=ENDSQUEAK} door {VAR=WATER_WOBBLE}[+water-drop]{VAR=ENDWATER_WOBBLE}"
   },
   {
     "startTime": 2.90,
-    "markup": "We’ve seen it {WAIT=0.1}all, {WAIT=0.2}we’ve {VAR=FIX_HIT}fixed{VAR=ENDFIX_HIT} it {WAIT=0.1}more [+hammer]"
+    "markup": "We've seen it {WAIT=0.1}all, {WAIT=0.2}we've {VAR=FIX_HIT}fixed{VAR=ENDFIX_HIT} it {WAIT=0.1}more [+hammer]"
   },
   {
-    "startTime": 5.36,
-    "markup": "{SLOWER}From the {STYLE=SHADOW}attic{STYLE=DEFAULT} {WAIT=0.2}to the {VAR=FIX_HIT}floor{VAR=ENDFIX_HIT} [+wooden-sign]"
+    "startTime": 5.66,
+    "markup": "{SLOWER}From the {STYLE=SHADOW}attic{STYLE=DEFAULT} {WAIT=0.2}to the {VAR=FIX_HIT}floor{VAR=ENDFIX_HIT}"
   },
   {
-    "startTime": 10.30,
+    "startTime": 10.80,
     "markup": "Your {VAR=SUN_GLOW}lights will shine{VAR=ENDSUN_GLOW}, {WAIT=0.2}your pipes will {VAR=WATER_WOBBLE}flow{VAR=ENDWATER_WOBBLE} [+tap]"
   },
   {
     "startTime": 13.36,
-    "markup": "We bring the {VAR=FIX_HIT}skill{VAR=ENDFIX_HIT} {WAIT=0.2}you need to know"
+    "markup": "{SLOW}We bring the {VAR=FIX_HIT}skill{VAR=ENDFIX_HIT} {WAIT=0.2}you need to know"
   },
   {
-    "startTime": 16.20,
-    "markup": "{SLOW}Turning {COLOR=brown}houses{CLEARCOLOR} {WAIT=0.5}into {VAR=SUN_GLOW}homes{VAR=ENDSUN_GLOW} [+house]"
+    "startTime": 16.40,
+    "markup": "{SLOW}Turning {COLOR=brown}houses{CLEARCOLOR} {WAIT=0.55}{SLOWER}into {VAR=SUN_GLOW}homes{VAR=ENDSUN_GLOW} [+house]"
   },
   {
-    "startTime": 22.28,
-    "markup": "We’re the ones who’ll {VAR=FIX_HIT}get it done{VAR=ENDFIX_HIT}"
+    "startTime": 22.38,
+    "markup": "We're the ones who'll {VAR=FIX_HIT}get it done{VAR=ENDFIX_HIT}"
   },
   {
-    "startTime": 24.90,
-    "markup": "You {VAR=SQUEAK}[@pixel]relax[@]{VAR=ENDSQUEAK}, {WAIT=0.14}we’ll bring the {VAR=SUN_GLOW}sun{VAR=ENDSUN_GLOW} [+sun]"
+    "startTime": 25.15,
+    "markup": "{SLOWER}You {VAR=SQUEAK}[@pixel]relax[@]{VAR=ENDSQUEAK}, {WAIT=0.14}we'll bring the {VAR=SUN_GLOW}sun{VAR=ENDSUN_GLOW} {VAR=SUN_GLOW} [+sun]{VAR=ENDSUN_GLOW}"
   },
   {
-    "startTime": 29.98,
-    "markup": "{VAR=LIZARD_BRAND}[%150]Mr. Lizard[%]{VAR=ENDLIZARD_BRAND} {WAIT=0.4}your home's best friend [+lizard]"
+    "startTime": 30.68,
+    "markup": "{VAR=LIZARD_BRAND}[%150]Mr. Lizard[%]{VAR=ENDLIZARD_BRAND} {WAIT=1.8}{SLOWER}your home's best friend"
   },
   {
-    "startTime": 35.26,
-    "markup": "We’re here for you {WAIT=0.7}right to the {VAR=FIX_HIT}end{VAR=ENDFIX_HIT}"
+    "startTime": 35.76,
+    "markup": "{SLOWER}We're here for you {WAIT=0.75}right to the {VAR=FIX_HIT}end{VAR=ENDFIX_HIT}"
   },
   {
     "startTime": 41.74,
-    "markup": "{VAR=FIX_HIT}Fix it{VAR=ENDFIX_HIT}, {WAIT=0.1}{VAR=FIX_HIT}build it{VAR=ENDFIX_HIT}, {WAIT=0.08}{VAR=FIX_HIT}mend{VAR=ENDFIX_HIT} {WAIT=0.3}{VAR=FIX_HIT}mend{VAR=ENDFIX_HIT} {WAIT=0.02}{VAR=FIX_HIT}[*]mend[*]{VAR=ENDFIX_HIT} [+tools]"
+    "markup": "{SLOWER}{VAR=FIX_HIT}Fix it{VAR=ENDFIX_HIT}, {WAIT=0.1}{VAR=FIX_HIT}build it{VAR=ENDFIX_HIT}, {WAIT=0.08}{VAR=FIX_HIT}mend{VAR=ENDFIX_HIT} {WAIT=0.3}{VAR=FIX_HIT}mend{VAR=ENDFIX_HIT} {WAIT=0.02}{VAR=FIX_HIT}[*]mend[*]{VAR=ENDFIX_HIT} [+hammer]"
   },
   {
-    "startTime": 46.42,
-    "markup": "{VAR=LIZARD_BRAND}[%150]Mr. Lizard[%]{VAR=ENDLIZARD_BRAND} {WAIT=0.2}your home's best friend"
+    "startTime": 46.82,
+    "markup": "{SLOWER}{VAR=LIZARD_BRAND}[%150]Mr. Lizard[%]{VAR=ENDLIZARD_BRAND} {WAIT=1.2}your home's{WAIT=1.0} best friend"
   },
   {
-    "startTime": 53.48,
+    "startTime": 53.98,
     "markup": "A broken tile, {WAIT=0.34}a {FADE}faded wall{ENDFADE}"
   },
   {
     "startTime": 56.56,
-    "markup": "No job {VAR=FIX_HIT}too big{VAR=ENDFIX_HIT}, {WAIT=0.14}no job {SIZE=75%}too small{SIZE=100%}"
+    "markup": "No job {VAR=FIX_HIT}too big{VAR=ENDFIX_HIT}, {WAIT=0.64}no job {SIZE=75%}too small{SIZE=100%}"
   },
   {
-    "startTime": 59.40,
-    "markup": "We’re the ones {WAIT=0.7}to {VAR=SQUEAK}[@pixel]call[@]{VAR=ENDSQUEAK} [+phone]"
+    "startTime": 59.60,
+    "markup": "We're the ones {WAIT=1.7}{SLOWER}to {WAIT=1.0}{VAR=SQUEAK}[@pixel]call[@]{VAR=ENDSQUEAK}  [+phone]"
   },
   {
-    "startTime": 63.52,
-    "markup": "Your {VAR=SUN_GLOW}garden blooms{VAR=ENDSUN_GLOW}, {WAIT=0.12}your fence stands tall [+tree]"
+    "startTime": 64.82,
+    "markup": "Your {VAR=SUN_GLOW}garden blooms{VAR=ENDSUN_GLOW}, {WAIT=0.25}{SLOW}your fence stands tall [+deciduous_tree]"
   },
   {
-    "startTime": 67.42,
-    "markup": "We’ve got the {VAR=FIX_HIT}tools{VAR=ENDFIX_HIT} {WAIT=0.3}to do it all"
+    "startTime": 67.50,
+    "markup": "We've got the {VAR=FIX_HIT}tools{VAR=ENDFIX_HIT} {WAIT=0.6}{SLOWER}to do it all"
   },
   {
-    "startTime": 70.22,
-    "markup": "{SLOW}We’re here to {VAR=FIX_HIT}make it right{VAR=ENDFIX_HIT}"
+    "startTime": 70.82,
+    "markup": "{SLOWER}We're here{WAIT=0.4} to {VAR=FIX_HIT}make it{WAIT=0.4} right{VAR=ENDFIX_HIT}"
   },
   {
-    "startTime": 86.42,
-    "markup": "{VAR=LIZARD_BRAND}[%150]Mr. Lizard[%]{VAR=ENDLIZARD_BRAND} {WAIT=0.3}your home's best friend [+shaking-hands]"
+    "startTime": 87.50,
+    "markup": "{VAR=LIZARD_BRAND}[%150]Mr. Lizard[%]{VAR=ENDLIZARD_BRAND} {WAIT=1.8}{SLOWER}your home's best friend"
   },
   {
-    "startTime": 92.00,
-    "markup": "We’re here for you {WAIT=0.56}right to the {VAR=FIX_HIT}end{VAR=ENDFIX_HIT}"
+    "startTime": 92.50,
+    "markup": "{SLOWER}We're here for you {WAIT=0.90}right to the {VAR=FIX_HIT}end{VAR=ENDFIX_HIT}"
   },
   {
-    "startTime": 97.78,
-    "markup": "{VAR=FIX_HIT}Fix it{VAR=ENDFIX_HIT}, {WAIT=0.04}{VAR=FIX_HIT}build it{VAR=ENDFIX_HIT}, {WAIT=0.06}{VAR=FIX_HIT}mend{VAR=ENDFIX_HIT} {WAIT=0.8}{VAR=FIX_HIT}mend{VAR=ENDFIX_HIT} {WAIT=0.1}{VAR=FIX_HIT}[*]mend[*]{VAR=ENDFIX_HIT} [+hammer]"
+    "startTime": 98.78,
+    "markup": "{SLOWER}{VAR=FIX_HIT}Fix it{VAR=ENDFIX_HIT}, {WAIT=0.1}{VAR=FIX_HIT}build it{VAR=ENDFIX_HIT}, {WAIT=0.08}{VAR=FIX_HIT}mend{VAR=ENDFIX_HIT} {WAIT=0.3}{VAR=FIX_HIT}mend{VAR=ENDFIX_HIT} {WAIT=0.02}{VAR=FIX_HIT}[*]mend[*]{VAR=ENDFIX_HIT} [+hammer]"
   },
   {
-    "startTime": 103.10,
-    "markup": "{VAR=LIZARD_BRAND}[%150]Mr. Lizard[%]{VAR=ENDLIZARD_BRAND} {WAIT=0.56}your home's best friend... [+house]"
+    "startTime": 103.60,
+    "markup": "{SLOWER}{VAR=LIZARD_BRAND}[%150]Mr. Lizard[%]{VAR=ENDLIZARD_BRAND} {WAIT=1.2}your home's{WAIT=1.0} best friend [+house]"
   }
 ]
