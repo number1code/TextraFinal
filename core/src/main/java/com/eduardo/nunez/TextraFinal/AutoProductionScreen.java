@@ -1,6 +1,7 @@
 package com.eduardo.nunez.TextraFinal;
 
-import com.badlogic.gdx.Game;
+//run with .\gradlew lwjgl3:run
+//import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
@@ -29,16 +30,14 @@ public class AutoProductionScreen extends ScreenAdapter {
 
     private SpriteBatch batch;
     // --- Core LibGDX and UI Objects ---
-    private final Game game;
+    // private final Game game;
     private Stage stage;
     private Skin skin;
-    private Skin testSkin;
     private TypingLabel typingLabel;
     // --- Lyrics Data and State ---
     private Array<String> lyrics;
-    //private int currentLyricIndex = 0;
 
-    //* NEW CODE for whisper AI based automatic timing *//
+    // * NEW CODE for whisper AI based automatic timing *//
     // A simple helper class to store a lyric and its start time together
     private static class LyricLine {
         float startTime;
@@ -48,14 +47,39 @@ public class AutoProductionScreen extends ScreenAdapter {
             this.startTime = startTime;
             this.text = text;
         }
+
+        // Helper for equality check during hot-reload
+        @Override
+        public boolean equals(Object o) {
+            if (this == o)
+                return true;
+            if (o == null || getClass() != o.getClass())
+                return false;
+            LyricLine lyricLine = (LyricLine) o;
+            return Float.compare(lyricLine.startTime, startTime) == 0 && text.equals(lyricLine.text);
+        }
     }
+
     private Music music; // LibGDX class for handling streaming music
-    private float elapsedTime = 0f; // Our authoritative timer
-    // We will slightly change this from an Array<String>
+
+    // Precise Timing Variables
+    private long startTimeNanos;
+    private long pauseTimeNanos;
+    private float elapsedTime = 0f;
+
     private Array<LyricLine> timedLyrics;
     private int currentLyricIndex = 0;
     private boolean isPaused = false;
-    //* END NEW CODE for whisper AI based automatic timing *//
+    // * END NEW CODE for whisper AI based automatic timing *//
+
+    // --- Hot Reloading State ---
+    private long lastModifiedTime = 0;
+    private float reloadCheckTimer = 0f;
+    private static final float RELOAD_CHECK_INTERVAL = 1.0f; // Check every 1 second
+    private String currentJsonPath;
+
+    // --- Configuration ---
+    private JsonValue config;
 
     // --- gdx-vfx Post-Processing Objects ---
     private VfxManager vfxManager;
@@ -66,16 +90,14 @@ public class AutoProductionScreen extends ScreenAdapter {
     private ChromaticAberrationEffect chromaticAberrationEffect;
     private FilmGrainEffect filmGrainEffect;
     private GaussianBlurEffect gaussianBlurEffect;
-    private MotionBlurEffect    motionBlurEffect;
-    private  RadialBlurEffect radialBlurEffect;
+    private RadialBlurEffect radialBlurEffect;
     private LensFlareEffect lensFlareEffect;
     private FisheyeEffect fisheyeEffect;
-    private  LevelsEffect levelsEffect;
+    private LevelsEffect levelsEffect;
     private ZoomEffect zoomEffect;
     private FxaaEffect fxaaEffect;
     private NfaaEffect nfaaEffect;
     // === Effect State Flags ===
-    // These are initialized to 'true' because they are added to the VfxManager in the show() method by default.
     private boolean isCrtEnabled = false;
     private boolean isBloomEnabled = false;
     private boolean isVignetteEnabled = false;
@@ -83,7 +105,6 @@ public class AutoProductionScreen extends ScreenAdapter {
     private boolean isFilmGrainEnabled = false;
     private boolean isFisheyeEnabled = false;
 
-    // These are initialized to 'false' because they are not added by default.
     private boolean isChromaticAberrationEnabled = false;
     private boolean isGaussianBlurEnabled = false;
     private boolean isRadialBlurEnabled = false;
@@ -98,48 +119,51 @@ public class AutoProductionScreen extends ScreenAdapter {
     private int videoWidth;
     private int videoHeight;
 
+    // private final Game game; // Removed unused field
 
-    public AutoProductionScreen(Game game) {
-        this.game = game;
+    public AutoProductionScreen() {
+        // this.game = game;
     }
 
     @Override
     public void show() {
-        music = Gdx.audio.newMusic(Gdx.files.internal("music/mr_lizard.wav"));
-        timedLyrics = parseLyricsAndTimestamps();
+        // 1. Load Configuration
+        loadConfig();
+
+        // 2. Load Assets based on Config
+        String musicPath = config.getString("musicPath", "music/mr_lizard.wav");
+        String videoPath = config.getString("videoPath", "video/mrlizardsongtimelapse.webm");
+        currentJsonPath = config.getString("jsonPath", "song_jsons/mr_lizard.json");
+
+        music = Gdx.audio.newMusic(Gdx.files.internal(musicPath));
+
+        // Initial Lyric Load
+        timedLyrics = parseLyricsAndTimestamps(currentJsonPath);
+        FileHandle jsonFile = Gdx.files.internal(currentJsonPath);
+        lastModifiedTime = jsonFile.lastModified();
 
         videoPlayer = VideoPlayerCreator.createVideoPlayer();
-        //FileHandle file = Gdx.files.internal("test_video.webm");
-        //FileHandle file = Gdx.files.internal("warpath.webm");
-        //FileHandle file = Gdx.files.internal("2023_video-effectapp.webm");
-        //FileHandle file = Gdx.files.internal("monotone-weapons-bg-video.webm");//too narrow video
-        //FileHandle file = Gdx.files.internal("manic-throne-video.webm");
-        //FileHandle file = Gdx.files.internal("aggro_video-effectapp.webm");
-//        FileHandle file = Gdx.files.internal("video/Vapor-vid-effectapp.webm");
-        FileHandle file = Gdx.files.internal("video/mrlizardsongtimelapse.webm");
-//        FileHandle file = Gdx.files.internal("video/sloppylizard.webm");
+        FileHandle file = Gdx.files.internal(videoPath);
         try {
-//            videoPlayer.load(file);
             videoPlayer.load(file);
-        }catch (Exception e){
+        } catch (Exception e) {
             Gdx.app.log("loading video", "error: " + e.toString());
         }
         videoPlayer.play();
         videoPlayer.setLooping(true);
         videoActor = new VideoActor(videoPlayer);
+
         // --- 1. Data and Asset Setup ---
-        lyrics = createLyrics(); // <-- Refactored: Lyrics are now loaded from a clean, separate method.
+        lyrics = createLyrics();
         skin = new Skin();
-        //Skin skin = new Skin(Gdx.files.internal("assets/skin.json")); //Error reading file
         batch = new SpriteBatch();
+
         // --- 2. Font and Skin Initialization ---
-        // This could also be moved to a separate method if it grows larger.
         setupFontsAndSkin();
 
         // --- 3. Scene2D Setup ---
-        stage = new Stage(new FitViewport(1080, 1920));//1080x1920 for non fisheye-videos
+        stage = new Stage(new FitViewport(1080, 1920));
 
-        //typingLabel = new TypingLabel(lyrics.get(currentLyricIndex), skin);
         typingLabel = new TypingLabel("", skin); // Start with an empty label
         typingLabel.setAlignment(Align.center);
         typingLabel.setWrap(true);
@@ -153,312 +177,357 @@ public class AutoProductionScreen extends ScreenAdapter {
 
         // --- 4. GDX-VFX SETUP ---
         vfxManager = new VfxManager(Pixmap.Format.RGBA8888);
-        vfxManager.setBlendingEnabled(true);//WHAT?
+        vfxManager.setBlendingEnabled(true);
         crtEffect = new CrtEffect();
         bloomEffect = new BloomEffect();
-        vignettingEffect = new VignettingEffect(false);//
+        vignettingEffect = new VignettingEffect(false);
         oldTvEffect = new OldTvEffect();
-        chromaticAberrationEffect = new ChromaticAberrationEffect(2);//
+        chromaticAberrationEffect = new ChromaticAberrationEffect(2);
         filmGrainEffect = new FilmGrainEffect();
         gaussianBlurEffect = new GaussianBlurEffect();
-        //motionBlurEffect = new MotionBlurEffect(Pixmap.Format.RGBA8888,1.0);
         radialBlurEffect = new RadialBlurEffect(2);
         lensFlareEffect = new LensFlareEffect();
         fisheyeEffect = new FisheyeEffect();
         levelsEffect = new LevelsEffect();
         zoomEffect = new ZoomEffect();
-        fxaaEffect = new FxaaEffect(0.15f,1,1,true);
+        fxaaEffect = new FxaaEffect(0.15f, 1, 1, true);
         nfaaEffect = new NfaaEffect(true);
 
-
         // Configure the effects for the desired look
-        //bloomEffect.setBaseIntensity(1.0f);
         bloomEffect.setBloomIntensity(1.0f);
-        //bloomEffect.setThreshold(0.5f);
-        //
         vignettingEffect.setIntensity(1f);
         levelsEffect.setSaturation(0.55f);
         levelsEffect.setHue(0.6f);
-        //levelsEffect.setGamma(0.5f);
-        // Add effects to the manager. The order matters.
-        vfxManager.addEffect(crtEffect);
-        isCrtEnabled = true;
-        vfxManager.addEffect(bloomEffect);
-        isBloomEnabled = true;
-        vfxManager.addEffect(vignettingEffect);
-        isVignetteEnabled = true;
 
-        vfxManager.addEffect(oldTvEffect);
-        isOldTvEnabled = true;
-        vfxManager.addEffect(filmGrainEffect);
-        isFilmGrainEnabled = true;
-        filmGrainEffect.setNoiseAmount(0.2f);
-        vfxManager.addEffect(fisheyeEffect);
-        isFisheyeEnabled = true;
+        // Add effects to the manager. The order matters.
+        // vfxManager.addEffect(crtEffect);
+        // isCrtEnabled = true;
+        // vfxManager.addEffect(bloomEffect);
+        // isBloomEnabled = true;
+        // vfxManager.addEffect(vignettingEffect);
+        // isVignetteEnabled = true;
+
+        // vfxManager.addEffect(oldTvEffect);
+        // isOldTvEnabled = true;
+        // vfxManager.addEffect(filmGrainEffect);
+        // isFilmGrainEnabled = true;
+        // filmGrainEffect.setNoiseAmount(0.2f);
+        // vfxManager.addEffect(fisheyeEffect);
+        // isFisheyeEnabled = true;
+
         // --- 5. Input Processor Setup ---
-        setupInput(); // <-- Refactored: Input handling is now in its own method.
+        setupInput();
 
         // 5. Start the Music
         music.play();
-        elapsedTime = 0f; // Reset our timer
+        startTimeNanos = TimeUtils.nanoTime(); // Initialize precise timer
+        elapsedTime = 0f;
         currentLyricIndex = 0;
     }
 
-    private Array<LyricLine> parseLyricsAndTimestamps() {
-        // Create an array to hold our final, structured lyric lines
+    private void loadConfig() {
+        JsonReader reader = new JsonReader();
+        FileHandle configFile = Gdx.files.internal("config.json");
+        if (configFile.exists()) {
+            config = reader.parse(configFile);
+        } else {
+            // Fallback default config if file is missing
+            Gdx.app.error("Config", "config.json not found! Using defaults.");
+            config = new JsonValue(JsonValue.ValueType.object);
+            config.addChild("musicPath", new JsonValue("music/mr_lizard.wav"));
+            config.addChild("videoPath", new JsonValue("video/mrlizardsongtimelapse.webm"));
+            config.addChild("jsonPath", new JsonValue("song_jsons/mr_lizard.json"));
+            config.addChild("primaryFont", new JsonValue("fonts/TitanOne-Regular.ttf"));
+            config.addChild("secondaryFont", new JsonValue("fonts/RetroSide-MV0mY.otf"));
+        }
+    }
+
+    private Array<LyricLine> parseLyricsAndTimestamps(String jsonPath) {
         Array<LyricLine> timedLyrics = new Array<>();
-
-        // Create a JSON reader
         JsonReader jsonReader = new JsonReader();
+        FileHandle file = Gdx.files.internal(jsonPath);
 
-        // Point to the JSON file in your assets folder
-        FileHandle file = Gdx.files.internal("song_jsons/mr_lizard.json"); // Make sure to name your file this!
+        if (!file.exists()) {
+            Gdx.app.error("Lyrics", "JSON file not found: " + jsonPath);
+            return timedLyrics;
+        }
 
-        // Parse the entire file into a structured JSON object
         JsonValue base = jsonReader.parse(file);
 
-        // The JSON file is an array of objects, so we iterate through it
         for (JsonValue lineJson : base) {
-            // Get the "startTime" value as a float from the JSON object
             float startTime = lineJson.getFloat("startTime");
-
-            // Get the "markup" value as a string from the JSON object
             String markupText = lineJson.getString("markup");
-
-            // Create a new LyricLine object with the data and add it to our array
             LyricLine lyricLine = new LyricLine(startTime, markupText);
             timedLyrics.add(lyricLine);
         }
-
-        // Return the fully populated array, ready for rendering
         return timedLyrics;
     }
 
-    /**
-     * The main game loop, now cleaned up to focus only on rendering.
-     */
     @Override
     public void render(float delta) {
-        // 1. Update our master timer
-        if (isPaused){
+        // 1. Hot-Reload Check
+        reloadCheckTimer += delta;
+        if (reloadCheckTimer >= RELOAD_CHECK_INTERVAL) {
+            reloadCheckTimer = 0;
+            checkForJsonUpdates();
+        }
+
+        // 2. Update Timer
+        if (isPaused) {
+            // When paused, we don't advance time.
+            // We might want to update startTimeNanos so that when we unpause,
+            // the elapsed time calculation remains correct relative to the pause duration.
+            // However, simpler logic is:
             return;
         }
-        elapsedTime += delta;
 
-        // --- 2. AUTOMATIC LYRIC ADVANCEMENT ---
-        // Check if there are more lyrics left to display
+        // Calculate elapsed time using TimeUtils for precision
+        long currentNanos = TimeUtils.nanoTime();
+        elapsedTime = (currentNanos - startTimeNanos) / 1_000_000_000f;
+
+        // Sync music if it drifts too much (optional, but good practice)
+        // if (Math.abs(music.getPosition() - elapsedTime) > 0.1f) { ... }
+
+        // --- 3. AUTOMATIC LYRIC ADVANCEMENT ---
         if (currentLyricIndex < timedLyrics.size) {
-            // Get the next lyric line we're waiting for
             LyricLine nextLine = timedLyrics.get(currentLyricIndex);
-
-            // If our music playhead has passed the start time of this lyric...
             if (elapsedTime >= nextLine.startTime) {
-                // ...display it on the screen!
                 typingLabel.restart(nextLine.text);
-
-                // And advance our index so we're ready for the *next* line
                 currentLyricIndex++;
             }
         }
 
-        // 1. Update your scene's logic
+        // 4. Update scene logic
         stage.act(delta);
 
-        // 2. Draw your scene into the VfxManager's framebuffer
+        // 5. Draw scene
         vfxManager.cleanUpBuffers();
         vfxManager.beginInputCapture();
-        //ScreenUtils.clear(0.15f, 0.15f, 0.2f, 1f);
         ScreenUtils.clear(0, 0, 0, 1f);
-        //drawing video in the background
+
         Texture videoFrame = videoPlayer.getTexture();
-        batch.begin();
-        batch.draw(videoFrame,0,0, videoWidth, videoHeight/2);//for 720p x=180, vw + 180
-        batch.end();
+        if (videoFrame != null) {
+            batch.begin();
+            // batch.draw(videoFrame, 0, 0, videoWidth, videoHeight / 2);
+            batch.draw(videoFrame, 0, 0, videoWidth, videoHeight);
+            batch.end();
+        }
 
-        stage.draw(); // The FitViewport correctly scales the drawing here
-
+        stage.draw();
         vfxManager.endInputCapture();
 
-        // 3. Apply the effects
+        // 6. Apply effects and render
         vfxManager.applyEffects();
-
-        // 4. Clear the actual screen
-        //ScreenUtils.clear(0, 0, 0, 1f);
-
-        // 5. Render the final result to the specific screen area calculated by the viewport.
-        // This is the key to solving the scaling and positioning problem.
         vfxManager.renderToScreen(
-            stage.getViewport().getScreenX(),      // The x-coordinate of the letterbox/pillarbox
-            stage.getViewport().getScreenY(),      // The y-coordinate of the letterbox/pillarbox
-            stage.getViewport().getScreenWidth(),  // The pixel width of the scaled viewport
-            stage.getViewport().getScreenHeight()  // The pixel height of the scaled viewport
-        );
+                stage.getViewport().getScreenX(),
+                stage.getViewport().getScreenY(),
+                stage.getViewport().getScreenWidth(),
+                stage.getViewport().getScreenHeight());
     }
 
-    /**
-     * Correctly handles resizing for both the Stage's viewport and the VfxManager's buffers.
-     */
+    private void checkForJsonUpdates() {
+        FileHandle jsonFile = Gdx.files.internal(currentJsonPath);
+        if (jsonFile.exists()) {
+            long modified = jsonFile.lastModified();
+            if (modified > lastModifiedTime) {
+                Gdx.app.log("HotReload", "Changes detected in " + currentJsonPath + ". Reloading...");
+                lastModifiedTime = modified;
+                performHotReload(jsonFile);
+            }
+        }
+    }
+
+    private void performHotReload(FileHandle jsonFile) {
+        Array<LyricLine> newLyrics = parseLyricsAndTimestamps(currentJsonPath);
+
+        // Smart Rewind Logic: Find the first difference
+        float rewindTime = -1f;
+
+        int limit = Math.min(timedLyrics.size, newLyrics.size);
+        for (int i = 0; i < limit; i++) {
+            LyricLine oldLine = timedLyrics.get(i);
+            LyricLine newLine = newLyrics.get(i);
+
+            if (!oldLine.equals(newLine)) {
+                // Found a change!
+                rewindTime = newLine.startTime;
+                Gdx.app.log("HotReload", "Change found at index " + i + " time: " + rewindTime);
+                break;
+            }
+        }
+
+        // If no change found in the overlapping part, maybe a line was added at the
+        // end?
+        if (rewindTime == -1f && newLyrics.size != timedLyrics.size) {
+            if (newLyrics.size > timedLyrics.size) {
+                rewindTime = newLyrics.get(timedLyrics.size).startTime;
+            } else {
+                // Lines removed? Rewind to the start of the cut or just stay put?
+                // Let's rewind to the last valid line of the new file.
+                if (newLyrics.size > 0)
+                    rewindTime = newLyrics.get(newLyrics.size - 1).startTime;
+            }
+        }
+
+        // Update the data
+        this.timedLyrics = newLyrics;
+        this.lyrics = createLyrics(); // Update the simple string array too if needed
+
+        // Apply Rewind
+        if (rewindTime != -1f) {
+            float targetTime = Math.max(0, rewindTime - 2.5f);
+            Gdx.app.log("HotReload", "Rewinding to " + targetTime + "s");
+
+            music.setPosition(targetTime);
+
+            // Reset our precise timer to match the new music position
+            elapsedTime = targetTime;
+            startTimeNanos = TimeUtils.nanoTime() - (long) (targetTime * 1_000_000_000L);
+
+            // Reset lyric index to match the new time
+            currentLyricIndex = 0;
+            for (int i = 0; i < timedLyrics.size; i++) {
+                if (timedLyrics.get(i).startTime < targetTime) {
+                    currentLyricIndex = i + 1;
+                } else {
+                    break;
+                }
+            }
+
+            // Clear current text so it doesn't linger if we rewound before it
+            typingLabel.setText("");
+            // Or better, find the active lyric at this time?
+            // For simplicity, we'll let the loop catch up or just clear it.
+            // If we are in the middle of a lyric, we might want to show it.
+            if (currentLyricIndex > 0 && currentLyricIndex <= timedLyrics.size) {
+                // This is a bit tricky because we only store start times.
+                // We don't know duration.
+                // But usually we just wait for the next one.
+            }
+        }
+    }
+
     @Override
     public void resize(int width, int height) {
         stage.getViewport().update(width, height, true);
-        vfxManager.resize(width, height); // <-- CRITICAL: This was missing before.
-        videoWidth = videoPlayer.getVideoWidth();
-        videoHeight = videoPlayer.getVideoHeight();
-        Gdx.app.log("video dimensions: " ,"width: " + videoWidth + " height: " + videoHeight);
+        vfxManager.resize(width, height);
+        if (videoPlayer != null) {
+            videoWidth = videoPlayer.getVideoWidth();
+            videoHeight = videoPlayer.getVideoHeight();
+        }
     }
 
-    /**
-     * Disposes of all managed resources to prevent memory leaks.
-     */
     @Override
     public void dispose() {
         stage.dispose();
         skin.dispose();
         batch.dispose();
-        // --- PROPER DISPOSAL OF VFX RESOURCES ---
         vfxManager.dispose();
-        crtEffect.dispose();      // <-- CRITICAL: Effects must be disposed manually.
-        bloomEffect.dispose();    // <-- CRITICAL: Effects must be disposed manually.
+        crtEffect.dispose();
+        bloomEffect.dispose();
         oldTvEffect.dispose();
         fisheyeEffect.dispose();
         filmGrainEffect.dispose();
         fxaaEffect.dispose();
+        if (videoPlayer != null) {
+            videoPlayer.dispose();
+        }
     }
 
-    // ===================================================================================
-    // Refactored Helper Methods
-    // ===================================================================================
-
-    /**
-     * Sets up an InputAdapter to handle user input in an event-driven way.
-     * This version uses boolean flags to correctly add/remove effects for toggling.
-     */
     private void setupInput() {
         Gdx.input.setInputProcessor(new InputAdapter() {
             @Override
             public boolean keyUp(int keycode) {
                 switch (keycode) {
-                    // --- Lyric Cycling ---
+                    case Input.Keys.ESCAPE:
+                        Gdx.app.exit();
+                        break;
                     case Input.Keys.SPACE:
+                        // Manual advance (legacy/debug)
                         currentLyricIndex++;
-                        if (currentLyricIndex >= lyrics.size) {
+                        if (currentLyricIndex >= lyrics.size)
                             currentLyricIndex = 0;
-                        }
                         typingLabel.restart(lyrics.get(currentLyricIndex));
                         break;
-
-                    // --- VFX Toggles ---
                     case Input.Keys.C:
-                        if (isCrtEnabled) vfxManager.removeEffect(crtEffect); else vfxManager.addEffect(crtEffect);
-                        isCrtEnabled = !isCrtEnabled;
-                        Gdx.app.log("VFX_Toggle", "CRT Effect: " + (isCrtEnabled ? "On" : "Off"));
+                        toggleEffect(crtEffect, isCrtEnabled = !isCrtEnabled, "CRT");
                         break;
-
                     case Input.Keys.B:
-                        if (isBloomEnabled) vfxManager.removeEffect(bloomEffect); else vfxManager.addEffect(bloomEffect);
-                        isBloomEnabled = !isBloomEnabled;
-                        Gdx.app.log("VFX_Toggle", "Bloom Effect: " + (isBloomEnabled ? "On" : "Off"));
+                        toggleEffect(bloomEffect, isBloomEnabled = !isBloomEnabled, "Bloom");
                         break;
-
                     case Input.Keys.V:
-                        if (isVignetteEnabled) vfxManager.removeEffect(vignettingEffect); else vfxManager.addEffect(vignettingEffect);
-                        isVignetteEnabled = !isVignetteEnabled;
-                        Gdx.app.log("VFX_Toggle", "Vignette Effect: " + (isVignetteEnabled ? "On" : "Off"));
+                        toggleEffect(vignettingEffect, isVignetteEnabled = !isVignetteEnabled, "Vignette");
                         break;
-
                     case Input.Keys.O:
-                        if (isOldTvEnabled) vfxManager.removeEffect(oldTvEffect); else vfxManager.addEffect(oldTvEffect);
-                        isOldTvEnabled = !isOldTvEnabled;
-                        Gdx.app.log("VFX_Toggle", "Old TV Effect: " + (isOldTvEnabled ? "On" : "Off"));
+                        toggleEffect(oldTvEffect, isOldTvEnabled = !isOldTvEnabled, "Old TV");
                         break;
-
                     case Input.Keys.A:
-                        if (isChromaticAberrationEnabled) vfxManager.removeEffect(chromaticAberrationEffect); else vfxManager.addEffect(chromaticAberrationEffect);
-                        isChromaticAberrationEnabled = !isChromaticAberrationEnabled;
-                        Gdx.app.log("VFX_Toggle", "Chromatic Aberration: " + (isChromaticAberrationEnabled ? "On" : "Off"));
+                        toggleEffect(chromaticAberrationEffect,
+                                isChromaticAberrationEnabled = !isChromaticAberrationEnabled, "Chromatic Aberration");
                         break;
-
                     case Input.Keys.F:
-                        if (isFilmGrainEnabled) vfxManager.removeEffect(filmGrainEffect); else vfxManager.addEffect(filmGrainEffect);
-                        isFilmGrainEnabled = !isFilmGrainEnabled;
-                        Gdx.app.log("VFX_Toggle", "Film Grain Effect: " + (isFilmGrainEnabled ? "On" : "Off"));
+                        toggleEffect(filmGrainEffect, isFilmGrainEnabled = !isFilmGrainEnabled, "Film Grain");
                         break;
-
                     case Input.Keys.G:
-                        if (isGaussianBlurEnabled) vfxManager.removeEffect(gaussianBlurEffect); else vfxManager.addEffect(gaussianBlurEffect);
-                        isGaussianBlurEnabled = !isGaussianBlurEnabled;
-                        Gdx.app.log("VFX_Toggle", "Gaussian Blur: " + (isGaussianBlurEnabled ? "On" : "Off"));
+                        toggleEffect(gaussianBlurEffect, isGaussianBlurEnabled = !isGaussianBlurEnabled,
+                                "Gaussian Blur");
                         break;
-
                     case Input.Keys.R:
-                        if (isRadialBlurEnabled) vfxManager.removeEffect(radialBlurEffect); else vfxManager.addEffect(radialBlurEffect);
-                        isRadialBlurEnabled = !isRadialBlurEnabled;
-                        Gdx.app.log("VFX_Toggle", "Radial Blur: " + (isRadialBlurEnabled ? "On" : "Off"));
+                        toggleEffect(radialBlurEffect, isRadialBlurEnabled = !isRadialBlurEnabled, "Radial Blur");
                         break;
-
                     case Input.Keys.L:
-                        if (isLensFlareEnabled) vfxManager.removeEffect(lensFlareEffect); else vfxManager.addEffect(lensFlareEffect);
-                        isLensFlareEnabled = !isLensFlareEnabled;
-                        Gdx.app.log("VFX_Toggle", "Lens Flare: " + (isLensFlareEnabled ? "On" : "Off"));
+                        toggleEffect(lensFlareEffect, isLensFlareEnabled = !isLensFlareEnabled, "Lens Flare");
                         break;
-
                     case Input.Keys.E:
-                        if (isFisheyeEnabled) vfxManager.removeEffect(fisheyeEffect); else vfxManager.addEffect(fisheyeEffect);
-                        isFisheyeEnabled = !isFisheyeEnabled;
-                        Gdx.app.log("VFX_Toggle", "Fisheye Effect: " + (isFisheyeEnabled ? "On" : "Off"));
+                        toggleEffect(fisheyeEffect, isFisheyeEnabled = !isFisheyeEnabled, "Fisheye");
                         break;
-
                     case Input.Keys.S:
-                        if (isLevelsEnabled) vfxManager.removeEffect(levelsEffect); else vfxManager.addEffect(levelsEffect);
-                        isLevelsEnabled = !isLevelsEnabled;
-                        Gdx.app.log("VFX_Toggle", "Levels Effect: " + (isLevelsEnabled ? "On" : "Off"));
+                        toggleEffect(levelsEffect, isLevelsEnabled = !isLevelsEnabled, "Levels");
                         break;
-
                     case Input.Keys.Z:
-                        if (isZoomEnabled) vfxManager.removeEffect(zoomEffect); else vfxManager.addEffect(zoomEffect);
-                        isZoomEnabled = !isZoomEnabled;
-                        Gdx.app.log("VFX_Toggle", "Zoom Effect: " + (isZoomEnabled ? "On" : "Off"));
+                        toggleEffect(zoomEffect, isZoomEnabled = !isZoomEnabled, "Zoom");
                         break;
-
                     case Input.Keys.X:
-                        if (isFxaaEnabled) vfxManager.removeEffect(fxaaEffect); else vfxManager.addEffect(fxaaEffect);
-                        isFxaaEnabled = !isFxaaEnabled;
-                        Gdx.app.log("VFX_Toggle", "FXAA Effect: " + (isFxaaEnabled ? "On" : "Off"));
+                        toggleEffect(fxaaEffect, isFxaaEnabled = !isFxaaEnabled, "FXAA");
                         break;
-
                     case Input.Keys.N:
-                        if (isNfaaEnabled) vfxManager.removeEffect(nfaaEffect); else vfxManager.addEffect(nfaaEffect);
-                        isNfaaEnabled = !isNfaaEnabled;
-                        Gdx.app.log("VFX_Toggle", "NFAA Effect: " + (isNfaaEnabled ? "On" : "Off"));
+                        toggleEffect(nfaaEffect, isNfaaEnabled = !isNfaaEnabled, "NFAA");
                         break;
-
                     case Input.Keys.Q:
                         isPaused = !isPaused;
                         if (isPaused) {
-                            music.pause(); // Pause the music
+                            music.pause();
+                            pauseTimeNanos = TimeUtils.nanoTime();
                             Gdx.app.log("PLAYER", "--- PAUSED ---");
                         } else {
-                            music.play(); // Resume the music
+                            music.play();
+                            // Adjust start time to account for the pause duration
+                            long pauseDuration = TimeUtils.nanoTime() - pauseTimeNanos;
+                            startTimeNanos += pauseDuration;
                             Gdx.app.log("PLAYER", "--- RESUMED ---");
                         }
                         break;
-
                     default:
-                        return false; // The input was not handled.
+                        return false;
                 }
-                return true; // The input was handled.
+                return true;
             }
         });
     }
 
-    /**
-     * Initializes and configures all fonts and adds them to the skin.
-     */
+    private void toggleEffect(ChainVfxEffect effect, boolean enabled, String name) {
+        if (enabled)
+            vfxManager.addEffect(effect);
+        else
+            vfxManager.removeEffect(effect);
+        Gdx.app.log("VFX_Toggle", name + ": " + (enabled ? "On" : "Off"));
+    }
+
     private void setupFontsAndSkin() {
-        // --- 1. Generate BitmapFonts (The Raw Ingredients) ---
-        // The primary font is used for most text.
-//        FreeTypeFontGenerator generator1 = new FreeTypeFontGenerator(Gdx.files.internal("fonts/RetroSide-MV0mY.otf"));
-        FreeTypeFontGenerator generator1 = new FreeTypeFontGenerator(Gdx.files.internal("fonts/TitanOne-Regular.ttf"));
+        String primaryFontPath = config.getString("primaryFont", "fonts/TitanOne-Regular.ttf");
+        String secondaryFontPath = config.getString("secondaryFont", "fonts/RetroSide-MV0mY.otf");
+
+        FreeTypeFontGenerator generator1 = new FreeTypeFontGenerator(Gdx.files.internal(primaryFontPath));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter1 = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter1.size = 96;
         parameter1.color = Color.WHITE;
@@ -466,12 +535,10 @@ public class AutoProductionScreen extends ScreenAdapter {
         parameter1.borderWidth = 5f;
         BitmapFont primaryBmp = generator1.generateFont(parameter1);
 
-        // The secondary font is used for special emphasis via markup.
-//        FreeTypeFontGenerator generator2 = new FreeTypeFontGenerator(Gdx.files.internal("fonts/Teko-VariableFont_wght.ttf"));
-        FreeTypeFontGenerator generator2 = new FreeTypeFontGenerator(Gdx.files.internal("fonts/RetroSide-MV0mY.otf"));
+        FreeTypeFontGenerator generator2 = new FreeTypeFontGenerator(Gdx.files.internal(secondaryFontPath));
         FreeTypeFontGenerator.FreeTypeFontParameter parameter2 = new FreeTypeFontGenerator.FreeTypeFontParameter();
         parameter2.size = 96;
-        parameter2.color = Color.WHITE; // Example color for the pixel font
+        parameter2.color = Color.WHITE;
         parameter2.borderColor = Color.BLACK;
         parameter2.borderWidth = 5f;
         BitmapFont pixelBmp = generator2.generateFont(parameter2);
@@ -479,47 +546,28 @@ public class AutoProductionScreen extends ScreenAdapter {
         generator1.dispose();
         generator2.dispose();
 
-        // --- 2. Wrap them in TextraTypist's Font objects (The Specialized Tools) ---
         Font primaryFont = new Font(primaryBmp);
         Font pixelFont = new Font(pixelBmp);
 
-        // --- 3. Create a FontFamily to group them (The Toolbox) ---
-        // This constructor takes arrays of names and the corresponding Font objects.
-        String[] names = {"regular", "pixel"}; // These are the names used in the markup.
-        Font[] fonts = {primaryFont, pixelFont};
+        String[] names = { "regular", "pixel" };
+        Font[] fonts = { primaryFont, pixelFont };
         Font.FontFamily mainFamily = new Font.FontFamily(names, fonts);
 
-        // --- 4. Assign the FontFamily to the primary Font ---
-        // This is the critical link. The primary font now knows about all other fonts in its family.
         primaryFont.family = mainFamily;
 
-        // --- 5. Define the default LabelStyle ---
-        // The style only needs to reference the primary font. TextraTypist will automatically
-        // find other fonts in the family when it sees the [@Name] markup.
         Styles.LabelStyle defaultLabelStyle = new Styles.LabelStyle();
         defaultLabelStyle.font = primaryFont;
         skin.add("default", defaultLabelStyle);
 
-        // --- 6. Add Emoji Support ---
-        // Add any desired emoji packs to your primary font.
         KnownFonts.addGameIcons(primaryFont);
         KnownFonts.addNotoEmoji(primaryFont);
     }
 
-    /**
-     * Creates and returns the array of lyrics.
-     * This keeps the massive block of text out of the main setup logic in show().
-     */
     private Array<String> createLyrics() {
         Array<String> lyrics = new Array<>();
-        //lyrics.add("[%?SHINY][%150]Aggression, 10xdev_art[%][%]");
-        for (LyricLine lyricLine : timedLyrics){
+        for (LyricLine lyricLine : timedLyrics) {
             lyrics.add(lyricLine.text);
         }
-
-
-
         return lyrics;
     }
 }
-
