@@ -15,6 +15,8 @@ dependencies {
   api "com.github.tommyettinger:textratypist:$textratypistVersion"
   api "org.mini2Dx:universal-tween-engine:$universalTweenVersion"
   api "com.badlogicgames.gdx-video:gdx-video:1.3.4-SNAPSHOT"
+  api "com.github.bonenaut7.gdx-psx:gdx-psx-core:$gdxPsxVersion"
+  api "com.github.bonenaut7.gdx-psx:gdx-psx-vfx-integration:$gdxPsxVersion"
 
   if(enableGraalNative == 'true') {
     implementation "io.github.berstanio:gdx-svmhelper-annotations:$graalHelperVersion"

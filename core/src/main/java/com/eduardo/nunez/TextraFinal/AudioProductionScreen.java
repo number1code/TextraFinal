@@ -17,6 +17,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.*;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.video.VideoPlayer;
@@ -25,8 +26,11 @@ import com.badlogic.gdx.video.scenes.scene2d.VideoActor;
 import com.crashinvaders.vfx.VfxManager;
 import com.crashinvaders.vfx.effects.*;
 import com.github.tommyettinger.textra.*;
+import by.bonenaut7.gdxpsx.vfxintegration.PSXPostProcessingEffect;
+import by.bonenaut7.gdxpsx.postprocessing.PSXPostProcessingShader;
+import by.bonenaut7.gdxpsx.postprocessing.DitheringMatrix;
 
-public class AutoProductionScreen extends ScreenAdapter {
+public class AudioProductionScreen extends ScreenAdapter {
 
     private SpriteBatch batch;
     // --- Core LibGDX and UI Objects ---
@@ -36,6 +40,8 @@ public class AutoProductionScreen extends ScreenAdapter {
     private TypingLabel typingLabel;
     // --- Lyrics Data and State ---
     private Array<String> lyrics;
+
+    private AudioFeatureManager audioFeatureManager;
 
     // * NEW CODE for whisper AI based automatic timing *//
     // A simple helper class to store a lyric and its start time together
@@ -113,6 +119,9 @@ public class AutoProductionScreen extends ScreenAdapter {
     private boolean isZoomEnabled = false;
     private boolean isFxaaEnabled = false;
     private boolean isNfaaEnabled = false;
+    private boolean isPsxEnabled = false;
+
+    private PSXPostProcessingEffect psxEffect;
 
     private VideoPlayer videoPlayer;
     private VideoActor videoActor;
@@ -121,7 +130,7 @@ public class AutoProductionScreen extends ScreenAdapter {
 
     // private final Game game; // Removed unused field
 
-    public AutoProductionScreen() {
+    public AudioProductionScreen() {
         // this.game = game;
     }
 
@@ -141,6 +150,11 @@ public class AutoProductionScreen extends ScreenAdapter {
         timedLyrics = parseLyricsAndTimestamps(currentJsonPath);
         FileHandle jsonFile = Gdx.files.internal(currentJsonPath);
         lastModifiedTime = jsonFile.lastModified();
+
+        // --- AUDIO FEATURE SETUP ---
+        audioFeatureManager = new AudioFeatureManager();
+        String audioDataPath = config.getString("audioDataPath");
+        audioFeatureManager.load(audioDataPath);
 
         videoPlayer = VideoPlayerCreator.createVideoPlayer();
         FileHandle file = Gdx.files.internal(videoPath);
@@ -193,6 +207,22 @@ public class AutoProductionScreen extends ScreenAdapter {
         fxaaEffect = new FxaaEffect(0.15f, 1, 1, true);
         nfaaEffect = new NfaaEffect(true);
 
+        // PSX Effect
+        psxEffect = new PSXPostProcessingEffect();
+        // Configure PSX Effect
+        PSXPostProcessingShader psxShader = psxEffect.getConfiguration();
+
+        psxShader.setDownscalingEnabled(true);
+        psxShader.setDownscalingFromScale(4f); // Downscale by 4x (e.g. 1080p -> ~270p)
+
+        psxShader.setDitheringEnabled(true);
+        psxShader.setDitheringScale(4f); // Match downscale
+        psxShader.setDitheringIntensity(0f); // Hidden by default
+        psxShader.setDitheringMatrix(DitheringMatrix.BAYER_8x8);
+
+        psxShader.setColorReductionEnabled(true);
+        psxShader.setColorReduction(32f); // Low color depth
+
         // Configure the effects for the desired look
         bloomEffect.setBloomIntensity(1.0f);
         vignettingEffect.setIntensity(1f);
@@ -202,18 +232,18 @@ public class AutoProductionScreen extends ScreenAdapter {
         // Add effects to the manager. The order matters.
         // vfxManager.addEffect(crtEffect);
         // isCrtEnabled = true;
-        // vfxManager.addEffect(bloomEffect);
-        // isBloomEnabled = true;
-        // vfxManager.addEffect(vignettingEffect);
-        // isVignetteEnabled = true;
+        vfxManager.addEffect(bloomEffect);
+        isBloomEnabled = true;
+        vfxManager.addEffect(vignettingEffect);
+        isVignetteEnabled = true;
 
         // vfxManager.addEffect(oldTvEffect);
         // isOldTvEnabled = true;
         // vfxManager.addEffect(filmGrainEffect);
         // isFilmGrainEnabled = true;
         // filmGrainEffect.setNoiseAmount(0.2f);
-        // vfxManager.addEffect(fisheyeEffect);
-        // isFisheyeEnabled = true;
+        vfxManager.addEffect(fisheyeEffect);
+        isFisheyeEnabled = true;
 
         // --- 5. Input Processor Setup ---
         setupInput();
@@ -239,6 +269,7 @@ public class AutoProductionScreen extends ScreenAdapter {
             config.addChild("jsonPath", new JsonValue("song_jsons/mr_lizard.json"));
             config.addChild("primaryFont", new JsonValue("fonts/TitanOne-Regular.ttf"));
             config.addChild("secondaryFont", new JsonValue("fonts/RetroSide-MV0mY.otf"));
+            config.addChild("audioDataPath", new JsonValue("audio_data/A_Life_Without_Law_data.json"));
         }
     }
 
@@ -299,6 +330,70 @@ public class AutoProductionScreen extends ScreenAdapter {
 
         // 4. Update scene logic
         stage.act(delta);
+
+        // --- AUDIO REACTIVE UPDATE ---
+        AudioFeatureManager.AudioFrame frame = audioFeatureManager.getFrameAtTime(elapsedTime);
+
+        // 1. Bloom (Harmonic - Smooth)
+        // Scaled up as analyzed (RMS ~0.01 -> * 20 -> 0.2)
+        if (isBloomEnabled) {
+            float bloomInt = frame.rmsHarmonic * 25.0f;// 35
+            bloomEffect.setBloomIntensity(bloomInt);
+        }
+
+        // 2. Chromatic Aberration (Percussive - Glitch)
+        if (isChromaticAberrationEnabled) {
+            float distortion = 0f;
+            // Threshold for impact
+            if (frame.rmsPercussive > 0.003f) {
+                // Scale heavily for visibility
+                distortion = (frame.rmsPercussive - 0.003f) * 40.0f;// 80
+            }
+            chromaticAberrationEffect.setMaxDistortion(distortion);
+        }
+
+        // 3. Vignette (Beats + High Centroid)
+        if (isVignetteEnabled) {
+            // Pulse on beats if high frequency content (snare/hats) -> Centroid > 2000
+            boolean isBeat = audioFeatureManager.isBeat(elapsedTime, 0.025f); // 50ms window
+            float targetVignette = 0.4f; // Base
+
+            if (isBeat && frame.centroid > 2000) {
+                targetVignette = 0.85f; // 1.0f = Snap shut
+            }
+
+            // Smooth decay could be handled by a persistent float state,
+            // but for now let's try direct mapping or simple frame decay if I had a state
+            // var.
+            // Simplified: If beat, high intensity, else base.
+            // To make it look good without state, we rely on the beat "window" being short.
+            // Better: use interpolation or just precise mapping if beat_times aligned well.
+            vignettingEffect.setIntensity(targetVignette);
+        }
+
+        // 4. Fisheye (General Volume)
+        // 4. PSX Dither (Beat Reactive)
+        if (isPsxEnabled) {
+            boolean isBeat = audioFeatureManager.isBeat(elapsedTime, 0.05f); // Slightly wider window to catch the hit
+            float ditherIntensity = 0f;
+            if (isBeat) {
+                // Use Percussive RMS for cleaner beat isolation
+                // Scale heavily because we want it visible
+                ditherIntensity = MathUtils.clamp(frame.rmsPercussive * 100.0f, 0.2f, 1.0f);
+            }
+            psxEffect.getConfiguration().setDitheringIntensity(ditherIntensity);
+            psxEffect.getConfiguration().update();
+        }
+
+        // 5. Color Shift (Centroid)
+        if (isLevelsEnabled) {
+            // Map 1000 - 3000 to 0.0 - 1.0 for Hue?
+            // Hue shift usually 0-1.
+            float norm = MathUtils.clamp((frame.centroid - 1000f) / 2000f, 0f, 1f);
+            // Shift mostly in a subtle range or full spectrum?
+            // Let's try mapping to hue shift.
+            levelsEffect.setHue(norm);
+        }
 
         // 5. Draw scene
         vfxManager.cleanUpBuffers();
@@ -432,6 +527,9 @@ public class AutoProductionScreen extends ScreenAdapter {
         if (videoPlayer != null) {
             videoPlayer.dispose();
         }
+        if (psxEffect != null) {
+            psxEffect.dispose();
+        }
     }
 
     private void setupInput() {
@@ -439,6 +537,9 @@ public class AutoProductionScreen extends ScreenAdapter {
             @Override
             public boolean keyUp(int keycode) {
                 switch (keycode) {
+                    case Input.Keys.NUM_1:
+                        toggleEffect(psxEffect, isPsxEnabled = !isPsxEnabled, "PSX Effect");
+                        break;
                     case Input.Keys.ESCAPE:
                         Gdx.app.exit();
                         break;
