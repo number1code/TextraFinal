@@ -1,74 +1,74 @@
 [
     {
-        "startTime": 32.24,
-        "markup": "{VAR=BLOOD_DRIP}Body's{VAR=ENDBLOOD_DRIP} a wreck, {WAIT=0.2}but the {VAR=STEEL_SLAM}fight's locked in{VAR=ENDSTEEL_SLAM} [+fist]"
+        "startTime": 32.54,
+        "markup": "{SLOWER}{VAR=BLOOD_DRIP}Body's{VAR=ENDBLOOD_DRIP} a wreck, but the {VAR=STEEL_SLAM}fight's locked in{VAR=ENDSTEEL_SLAM} [+raised-fist]"
     },
     {
-        "startTime": 35.74,
-        "markup": "Thought I'd {SQUASH}collapse{ENDSQUASH}, {WAIT=0.18}but I'm {JUMP}back for a win{ENDJUMP} [+trophy]"
+        "startTime": 36.74,
+        "markup": "Thought I'd {SQUASH}collapse{ENDSQUASH}, {WAIT=0.18}but I'm {JUMP}back for a win{ENDJUMP} [+trophy-cup]"
     },
     {
-        "startTime": 39.82,
-        "markup": "I'm out the {VAR=STEEL_SLAM}gate{VAR=ENDSTEEL_SLAM} {WAIT=0.3}with the {VAR=BLOOD_DRIP}beast of my kin{VAR=ENDBLOOD_DRIP} [+wolf-head]"
+        "startTime": 40.82,
+        "markup": "{SLOW}I'm out the {VAR=STEEL_SLAM}gate{VAR=ENDSTEEL_SLAM} {WAIT=0.3}with the {VAR=BLOOD_DRIP}beast of my kin{VAR=ENDBLOOD_DRIP} [+bear-face]"
     },
     {
-        "startTime": 43.96,
+        "startTime": 44.96,
         "markup": "{SLOW}Eyes roll back {WAIT=0.36}as the curtains get {VAR=STEEL_SLAM}pinned{VAR=ENDSTEEL_SLAM}"
     },
     {
-        "startTime": 48.26,
-        "markup": "This an attempt {WAIT=0.4}at {VAR=BLOOD_DRIP}life{VAR=ENDBLOOD_DRIP}"
+        "startTime": 49.26,
+        "markup": "This an attempt {WAIT=0.8}at {VAR=BLOOD_DRIP}{WAIT=0.8}life{VAR=ENDBLOOD_DRIP}"
     },
     {
-        "startTime": 51.74,
-        "markup": "My mind {WAIT=0.3}in a test of the {VAR=STEEL_SLAM}might{VAR=ENDSTEEL_SLAM} [+muscle-up]"
+        "startTime": 52.84,
+        "markup": "{SLOWER}My mind {WAIT=0.3}in a test of the {VAR=STEEL_SLAM}{WAIT=0.3}might{VAR=ENDSTEEL_SLAM} [+muscle-up]"
     },
     {
-        "startTime": 55.92,
-        "markup": "Lips tucked in, {WAIT=0.1}I'm {VAR=BLOOD_DRIP}chomping my bite{VAR=ENDBLOOD_DRIP} [+fangs]"
+        "startTime": 56.92,
+        "markup": "{SLOWER}Lips tucked in, {WAIT=0.1}I'm {VAR=BLOOD_DRIP}{WAIT=0.1}chomping my bite{VAR=ENDBLOOD_DRIP}  [+fangs]"
     },
     {
-        "startTime": 60.04,
-        "markup": "Gods {VAR=GHOST_MIST}don't care{VAR=ENDGHOST_MIST}, {WAIT=0.26}so I'm serving my {VAR=STEEL_SLAM}rights{VAR=ENDSTEEL_SLAM} [+scale]"
+        "startTime": 61.04,
+        "markup": "{SLOW}Gods {VAR=GHOST_MIST}{WAIT=0.26}don't care{VAR=ENDGHOST_MIST}, {WAIT=0.26}so I'm serving my {VAR=STEEL_SLAM}{WAIT=0.26}rights{VAR=ENDSTEEL_SLAM} [+scales]"
     },
     {
-        "startTime": 65.34,
-        "markup": "We were born for {VAR=WAR_SCREAM}WAR{VAR=ENDWAR_SCREAM} [+explosion]"
+        "startTime": 65.64,
+        "markup": "{SLOW}We were born for {VAR=WAR_SCREAM}{WAIT=0.26}WAR{VAR=ENDWAR_SCREAM} [+great-war-tank] [+minefield]"
     },
     {
         "startTime": 69.36,
-        "markup": "A life {WAIT=0.3}without {VAR=STEEL_SLAM}LAW{VAR=ENDSTEEL_SLAM} [+broken-shield]"
+        "markup": "{SLOW}A life {WAIT=0.3}without {VAR=STEEL_SLAM}LAW{VAR=ENDSTEEL_SLAM} [+broken-shield]"
     },
     {
-        "startTime": 72.68,
-        "markup": "We're the {VAR=GHOST_MIST}ghosts that haunt{VAR=ENDGHOST_MIST} [+ghost]"
+        "startTime": 73.38,
+        "markup": "{SLOW}We're the {VAR=GHOST_MIST}ghosts that haunt{VAR=ENDGHOST_MIST} [+ghost]"
     },
     {
         "startTime": 77.88,
-        "markup": "{SLOW}We're the {VAR=BLOOD_DRIP}devil's sport{VAR=ENDBLOOD_DRIP} [+diablo-skull]"
-    },
-    {
-        "startTime": 81.48,
-        "markup": "We were born for {VAR=WAR_SCREAM}WAR{VAR=ENDWAR_SCREAM}"
-    },
-    {
-        "startTime": 85.56,
-        "markup": "A life {WAIT=0.2}without {VAR=STEEL_SLAM}LAW{VAR=ENDSTEEL_SLAM}"
-    },
-    {
-        "startTime": 89.64,
-        "markup": "We're the {VAR=GHOST_MIST}ghosts that haunt{VAR=ENDGHOST_MIST}"
-    },
-    {
-        "startTime": 93.78,
         "markup": "{SLOW}We're the {VAR=BLOOD_DRIP}devil's sport{VAR=ENDBLOOD_DRIP}"
     },
     {
-        "startTime": 98.34,
-        "markup": "Okay, the mic just opened up, {WAIT=0.2}I'm waltzing on in [+microphone]"
+        "startTime": 81.98,
+        "markup": "{SLOW}We were born for {VAR=WAR_SCREAM}{WAIT=0.26}WAR{VAR=ENDWAR_SCREAM}"
     },
     {
-        "startTime": 102.42,
+        "startTime": 86.26,
+        "markup": "A life {WAIT=0.2}without {VAR=STEEL_SLAM}{WAIT=0.2}LAW{VAR=ENDSTEEL_SLAM}"
+    },
+    {
+        "startTime": 89.94,
+        "markup": "We're the {VAR=GHOST_MIST}ghosts that haunt{VAR=ENDGHOST_MIST}"
+    },
+    {
+        "startTime": 94.18,
+        "markup": "{SLOWER}We're the {VAR=BLOOD_DRIP}devil's sport{VAR=ENDBLOOD_DRIP}"
+    },
+    {
+        "startTime": 98.84,
+        "markup": "Okay, the mic just opened up, {SLOWER}{WAIT=0.4}I'm waltzing on in [+microphone]"
+    },
+    {
+        "startTime": 102.82,
         "markup": "Brought a {VAR=STEEL_SLAM}trench{VAR=ENDSTEEL_SLAM} full of {VAR=STEEL_SLAM}tools{VAR=ENDSTEEL_SLAM}"
     },
     {
@@ -76,32 +76,32 @@
         "markup": "for a {VAR=THIN_LINE}line that's so thin{VAR=ENDTHIN_LINE}"
     },
     {
-        "startTime": 106.52,
-        "markup": "Prayers for your men {WAIT=0.4}if you dare me to {VAR=BLOOD_DRIP}sin{VAR=ENDBLOOD_DRIP}"
+        "startTime": 107.52,
+        "markup": "Prayers for your men {WAIT=0.4}{SLOWER}if you dare me to {VAR=BLOOD_DRIP}sin{VAR=ENDBLOOD_DRIP}"
     },
     {
-        "startTime": 110.70,
-        "markup": "When the water's filled with {VAR=BLOOD_DRIP}blood{VAR=ENDBLOOD_DRIP}, {WAIT=0.3}it's a {SHAKE}frenzy{ENDSHAKE} [+shark-fin]"
+        "startTime": 111.10,
+        "markup": "When the water's filled with {VAR=BLOOD_DRIP}blood{VAR=ENDBLOOD_DRIP}, {WAIT=0.3}{SLOWER}it's a {SHAKE}frenzy{ENDSHAKE} [+shark-fin]"
     },
     {
-        "startTime": 114.32,
-        "markup": "The {VAR=STEEL_SLAM}sharks{VAR=ENDSTEEL_SLAM} are all about"
+        "startTime": 115.25,
+        "markup": "{SLOW}The {VAR=STEEL_SLAM}sharks{VAR=ENDSTEEL_SLAM} are all about"
     },
     {
-        "startTime": 116.86,
+        "startTime": 117.16,
         "markup": "I've been {VAR=GHOST_MIST}lost in the chaos{VAR=ENDGHOST_MIST}"
     },
     {
-        "startTime": 119.58,
+        "startTime": 119.08,
         "markup": "Of the past, {WAIT=0.4}for the {VAR=BLOOD_DRIP}pain{VAR=ENDBLOOD_DRIP}"
     },
     {
         "startTime": 121.64,
-        "markup": "but the {VAR=WAR_SCREAM}passion{VAR=ENDWAR_SCREAM} is passed"
+        "markup": "{SLOW}but the {VAR=WAR_SCREAM}passion{VAR=ENDWAR_SCREAM} is passed"
     },
     {
         "startTime": 123.30,
-        "markup": "As a {VAR=STEEL_SLAM}god among gods{VAR=ENDSTEEL_SLAM}, {WAIT=0.3}I've been king for so long [+crown]"
+        "markup": "{SLOW}As a {VAR=STEEL_SLAM}god among gods{VAR=ENDSTEEL_SLAM}, {WAIT=0.3}I've been king for so long [+crown]"
     },
     {
         "startTime": 127.40,
@@ -109,38 +109,38 @@
     },
     {
         "startTime": 129.98,
-        "markup": "And I just don't {WAIT=0.3}give a..."
+        "markup": "{SLOW}And I just don't {WAIT=0.3}give a..."
     },
     {
         "startTime": 132.46,
-        "markup": "We were born for {VAR=WAR_SCREAM}WAR{VAR=ENDWAR_SCREAM} [+explosion]"
+        "markup": "{SLOW}We were born for {VAR=WAR_SCREAM}WAR{VAR=ENDWAR_SCREAM}"
     },
     {
-        "startTime": 135.64,
-        "markup": "A life {WAIT=0.3}without {VAR=STEEL_SLAM}LAW{VAR=ENDSTEEL_SLAM}"
+        "startTime": 136.14,
+        "markup": "{SLOW}A life {WAIT=0.3}without {VAR=STEEL_SLAM}LAW{VAR=ENDSTEEL_SLAM}"
     },
     {
-        "startTime": 139.30,
-        "markup": "We're the {VAR=GHOST_MIST}ghosts that haunt{VAR=ENDGHOST_MIST}"
+        "startTime": 140.30,
+        "markup": "{SLOW}We're the {VAR=GHOST_MIST}ghosts that haunt{VAR=ENDGHOST_MIST}"
     },
     {
-        "startTime": 143.48,
-        "markup": "We're the {VAR=BLOOD_DRIP}devil's sport{VAR=ENDBLOOD_DRIP}"
+        "startTime": 144.48,
+        "markup": "{SLOW}We're the {VAR=BLOOD_DRIP}devil's sport{VAR=ENDBLOOD_DRIP}"
     },
     {
-        "startTime": 148.14,
-        "markup": "We were born for {VAR=WAR_SCREAM}WAR{VAR=ENDWAR_SCREAM}"
+        "startTime": 149.14,
+        "markup": "{SLOW}We were born for {VAR=WAR_SCREAM}WAR{VAR=ENDWAR_SCREAM}"
     },
     {
-        "startTime": 151.64,
-        "markup": "A life {WAIT=0.3}without {VAR=STEEL_SLAM}LAW{VAR=ENDSTEEL_SLAM}"
+        "startTime": 153.24,
+        "markup": "{SLOW}A life {WAIT=0.3}without {VAR=STEEL_SLAM}LAW{VAR=ENDSTEEL_SLAM}"
     },
     {
-        "startTime": 156.02,
-        "markup": "We're the {VAR=GHOST_MIST}ghosts that haunt{VAR=ENDGHOST_MIST}"
+        "startTime": 157.00,
+        "markup": "{SLOW}We're the {VAR=GHOST_MIST}ghosts that haunt{VAR=ENDGHOST_MIST}"
     },
     {
-        "startTime": 160.72,
-        "markup": "We're the {VAR=BLOOD_DRIP}devil's sport{VAR=ENDBLOOD_DRIP} [+diablo-skull]"
+        "startTime": 161.50,
+        "markup": "{SLOW}We're the {VAR=BLOOD_DRIP}devil's sport{VAR=ENDBLOOD_DRIP}"
     }
 ]

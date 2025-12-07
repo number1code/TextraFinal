@@ -120,8 +120,8 @@ public class MyGame extends Game {
                 TypingConfig.GLOBAL_VARS.put("ENDTHIN_LINE", "{ENDGRADIENT}{ENDSLIDE}");
                 // setScreen(new VfxProductionSquareScreen(this));
                 // setScreen(new VfxProductionScreen(this));
-                setScreen(new AutoProductionScreen());
-                // setScreen(new TwoFontScreen(this));
+                // setScreen(new AutoProductionScreen());
+                setScreen(new AudioProductionScreen());
         }
 
 }
