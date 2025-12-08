@@ -127,6 +127,7 @@ public class AudioProductionScreen extends ScreenAdapter {
     private VideoActor videoActor;
     private int videoWidth;
     private int videoHeight;
+    private VideoRecorder videoRecorder;
 
     // private final Game game; // Removed unused field
 
@@ -145,6 +146,9 @@ public class AudioProductionScreen extends ScreenAdapter {
         currentJsonPath = config.getString("jsonPath", "song_jsons/mr_lizard.json");
 
         music = Gdx.audio.newMusic(Gdx.files.internal(musicPath));
+
+        // --- RECORDER SETUP ---
+        videoRecorder = new VideoRecorder();
 
         // Initial Lyric Load
         timedLyrics = parseLyricsAndTimestamps(currentJsonPath);
@@ -418,6 +422,11 @@ public class AudioProductionScreen extends ScreenAdapter {
                 stage.getViewport().getScreenY(),
                 stage.getViewport().getScreenWidth(),
                 stage.getViewport().getScreenHeight());
+
+        // 7. Record Frame
+        if (videoRecorder.isRecording()) {
+            videoRecorder.captureFrame();
+        }
     }
 
     private void checkForJsonUpdates() {
@@ -530,6 +539,9 @@ public class AudioProductionScreen extends ScreenAdapter {
         if (psxEffect != null) {
             psxEffect.dispose();
         }
+        if (videoRecorder != null && videoRecorder.isRecording()) {
+            videoRecorder.stopRecording();
+        }
     }
 
     private void setupInput() {
@@ -608,12 +620,16 @@ public class AudioProductionScreen extends ScreenAdapter {
                             Gdx.app.log("PLAYER", "--- RESUMED ---");
                         }
                         break;
+                    case Input.Keys.F12:
+                        toggleRecording();
+                        break;
                     default:
                         return false;
                 }
                 return true;
             }
         });
+
     }
 
     private void toggleEffect(ChainVfxEffect effect, boolean enabled, String name) {
@@ -622,6 +638,24 @@ public class AudioProductionScreen extends ScreenAdapter {
         else
             vfxManager.removeEffect(effect);
         Gdx.app.log("VFX_Toggle", name + ": " + (enabled ? "On" : "Off"));
+    }
+
+    private void toggleRecording() {
+        if (videoRecorder.isRecording()) {
+            videoRecorder.stopRecording();
+        } else {
+            String timestamp = new java.text.SimpleDateFormat("yyyyMMdd_HHmmss").format(new java.util.Date());
+            String outputPath = "recording_" + timestamp + ".mp4";
+            String musicPath = config.getString("musicPath", "music/mr_lizard.wav"); // Use configured music
+            // Absolute path might be safer for FFmpeg
+            FileHandle audioFile = Gdx.files.internal(musicPath);
+            // We need a real file path. If it's internal in a jar this won't work, but for
+            // desktop dev it usually works if file exists.
+            String absoluteAudioPath = audioFile.file().getAbsolutePath();
+
+            videoRecorder.startRecording(outputPath, absoluteAudioPath, Gdx.graphics.getWidth(),
+                    Gdx.graphics.getHeight());
+        }
     }
 
     private void setupFontsAndSkin() {
