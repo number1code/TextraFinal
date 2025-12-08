@@ -1,10 +1,14 @@
 [
     {
-        "startTime": 32.54,
-        "markup": "{SLOWER}{VAR=BLOOD_DRIP}Body's{VAR=ENDBLOOD_DRIP} a wreck, but the {VAR=STEEL_SLAM}fight's locked in{VAR=ENDSTEEL_SLAM} [+raised-fist]"
+        "startTime": 1.25,
+        "markup": "{VAR=THIN_LINE}{VAR=BLOOD_DRIP}[/]10xDevArt[/]{VAR=ENDBLOOD_DRIP}{VAR=ENDTHIN_LINE}"
     },
     {
-        "startTime": 36.74,
+        "startTime": 32.54,
+        "markup": "{SLOWER}{VAR=BLOOD_DRIP}Body's{VAR=ENDBLOOD_DRIP} a wreck, but the {VAR=STEEL_SLAM}fight's [/]locked in[/]{VAR=ENDSTEEL_SLAM} [+raised-fist]"
+    },
+    {
+        "startTime": 36.84,
         "markup": "Thought I'd {SQUASH}collapse{ENDSQUASH}, {WAIT=0.18}but I'm {JUMP}back for a win{ENDJUMP} [+trophy-cup]"
     },
     {
@@ -17,7 +21,7 @@
     },
     {
         "startTime": 49.26,
-        "markup": "This an attempt {WAIT=0.8}at {VAR=BLOOD_DRIP}{WAIT=0.8}life{VAR=ENDBLOOD_DRIP}"
+        "markup": "This an [/]attempt[/] {WAIT=0.8}at {VAR=BLOOD_DRIP}{WAIT=0.8}life{VAR=ENDBLOOD_DRIP}"
     },
     {
         "startTime": 52.84,
@@ -29,11 +33,11 @@
     },
     {
         "startTime": 61.04,
-        "markup": "{SLOW}Gods {VAR=GHOST_MIST}{WAIT=0.26}don't care{VAR=ENDGHOST_MIST}, {WAIT=0.26}so I'm serving my {VAR=STEEL_SLAM}{WAIT=0.26}rights{VAR=ENDSTEEL_SLAM} [+scales]"
+        "markup": "{SLOW}Gods {VAR=GHOST_MIST}{WAIT=0.26}don't care{VAR=ENDGHOST_MIST}, {WAIT=0.26}so I'm serving my {VAR=STEEL_SLAM}{WAIT=0.26}[/]rights[/]{VAR=ENDSTEEL_SLAM} [+scales]"
     },
     {
         "startTime": 65.64,
-        "markup": "{SLOW}We were born for {VAR=WAR_SCREAM}{WAIT=0.26}WAR{VAR=ENDWAR_SCREAM} [+great-war-tank] [+minefield]"
+        "markup": "{SLOW}We were born for {VAR=WAR_SCREAM}{WAIT=0.26}WAR{VAR=ENDWAR_SCREAM} {COLOR=grey}[+great-war-tank][+minefield]"
     },
     {
         "startTime": 69.36,
@@ -73,7 +77,7 @@
     },
     {
         "startTime": 104.90,
-        "markup": "for a {VAR=THIN_LINE}line that's so thin{VAR=ENDTHIN_LINE}"
+        "markup": "for a {VAR=THIN_LINE}line that's so [/]thin[/]{VAR=ENDTHIN_LINE}"
     },
     {
         "startTime": 107.52,
@@ -100,12 +104,12 @@
         "markup": "{SLOW}but the {VAR=WAR_SCREAM}passion{VAR=ENDWAR_SCREAM} is passed"
     },
     {
-        "startTime": 123.30,
-        "markup": "{SLOW}As a {VAR=STEEL_SLAM}god among gods{VAR=ENDSTEEL_SLAM}, {WAIT=0.3}I've been king for so long [+crown]"
+        "startTime": 123.60,
+        "markup": "{SLOWER}As a {VAR=STEEL_SLAM}god among gods{VAR=ENDSTEEL_SLAM}, I've been king for so long [+crown]"
     },
     {
-        "startTime": 127.40,
-        "markup": "{SLOW}But the {VAR=STEEL_SLAM}crown{VAR=ENDSTEEL_SLAM} don't weigh a thing"
+        "startTime": 127.60,
+        "markup": "{SLOW}But the {VAR=STEEL_SLAM}crown{VAR=ENDSTEEL_SLAM} don't weigh a [/]thing[/]"
     },
     {
         "startTime": 129.98,
@@ -142,5 +146,9 @@
     {
         "startTime": 161.50,
         "markup": "{SLOW}We're the {VAR=BLOOD_DRIP}devil's sport{VAR=ENDBLOOD_DRIP}"
+    },
+    {
+        "startTime": 168.50,
+        "markup": "{VAR=THIN_LINE}[/]10xDevArt[/]{VAR=ENDTHIN_LINE}"
     }
 ]
