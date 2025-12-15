@@ -276,11 +276,11 @@ public class AudioReactiveShadersScreen extends ScreenAdapter {
         // --- 5. Input Processor Setup ---
         setupInput();
 
-        // 5. Start the Music
-        music.play();
-        startTimeNanos = TimeUtils.nanoTime(); // Initialize precise timer
-        elapsedTime = 0f;
-        currentLyricIndex = 0;
+        // Auto-start recording if configured
+        if (config.getBoolean("recordOnStart", false)) {
+            toggleRecording();
+        }
+
     }
 
     private void loadConfig() {
@@ -298,6 +298,8 @@ public class AudioReactiveShadersScreen extends ScreenAdapter {
             config.addChild("primaryFont", new JsonValue("fonts/TitanOne-Regular.ttf"));
             config.addChild("secondaryFont", new JsonValue("fonts/RetroSide-MV0mY.otf"));
             config.addChild("audioDataPath", new JsonValue("audio_data/A_Life_Without_Law_data.json"));
+            config.addChild("recordOnStart", new JsonValue(false));
+            config.addChild("audioOffset", new JsonValue(0.0f));
         }
     }
 
@@ -322,8 +324,18 @@ public class AudioReactiveShadersScreen extends ScreenAdapter {
         return timedLyrics;
     }
 
+    private boolean hasStartedPlayback = false;
+
     @Override
     public void render(float delta) {
+        // 0. Start Music on First Frame (Fixes recording sync/startup lag)
+        if (!hasStartedPlayback) {
+            music.play();
+            startTimeNanos = TimeUtils.nanoTime();
+            currentLyricIndex = 0;
+            hasStartedPlayback = true;
+        }
+
         // 1. Hot-Reload Check
         reloadCheckTimer += delta;
         if (reloadCheckTimer >= RELOAD_CHECK_INTERVAL) {
@@ -334,15 +346,14 @@ public class AudioReactiveShadersScreen extends ScreenAdapter {
         // 2. Update Timer
         if (isPaused) {
             // When paused, we don't advance time.
-            // We might want to update startTimeNanos so that when we unpause,
-            // the elapsed time calculation remains correct relative to the pause duration.
-            // However, simpler logic is:
             return;
         }
 
         // Calculate elapsed time using TimeUtils for precision
+        // Subtract audioOffset to compensate for driver latency (delays visuals)
+        float audioOffset = config.getFloat("audioOffset", 0.0f);
         long currentNanos = TimeUtils.nanoTime();
-        elapsedTime = (currentNanos - startTimeNanos) / 1_000_000_000f;
+        elapsedTime = ((currentNanos - startTimeNanos) / 1_000_000_000f) - audioOffset;
 
         // Sync music if it drifts too much (optional, but good practice)
         // if (Math.abs(music.getPosition() - elapsedTime) > 0.1f) { ... }

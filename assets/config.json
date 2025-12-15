@@ -5,5 +5,6 @@
   "jsonPath": "song_jsons/front_seat.json",
   "primaryFont": "fonts/Cybertruck-RegularTTF.ttf",
   "secondaryFont": "fonts/Orbitron.ttf",
-  "audioDataPath": "audio_data/Front_Seat_data.json"
+  "audioDataPath": "audio_data/Front_Seat_data.json",
+  "recordOnStart": true
 }
