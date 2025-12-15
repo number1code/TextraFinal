@@ -118,10 +118,33 @@ public class MyGame extends Game {
                 // The "Thin Line": A sliding gradient
                 TypingConfig.GLOBAL_VARS.put("THIN_LINE", "{SLIDE=2;1;false}{GRADIENT=white;dark gray;1;1}");
                 TypingConfig.GLOBAL_VARS.put("ENDTHIN_LINE", "{ENDGRADIENT}{ENDSLIDE}");
+
+                // METAVERSE INTERCONTINENTAL - GLOBAL STYLES
+
+                // The "New" Flex: A shifting gold/platinum gradient
+                TypingConfig.GLOBAL_VARS.put("LUX_CHROME", "{GRADIENT=gold;cyan;0.5;0.5}{JUMP=0.3;1;inf}");
+                TypingConfig.GLOBAL_VARS.put("ENDLUX_CHROME", "{ENDJUMP}{ENDGRADIENT}");
+
+                // Mental Glitch: For "War," "Mental," "Threat"
+                TypingConfig.GLOBAL_VARS.put("MIND_GLITCH", "{SICK=1;0.5;inf}[@pixel][#FF0055]");
+                TypingConfig.GLOBAL_VARS.put("ENDMIND_GLITCH", "[@]{CLEARCOLOR}{ENDSICK}");
+
+                // Cold/Ice: For "Chill," "Fridge," "Fade"
+                TypingConfig.GLOBAL_VARS.put("ZERO_KELVIN", "{WAVE=0.1;2;0.5}{COLOR=cyan}");
+                TypingConfig.GLOBAL_VARS.put("ENDZERO_KELVIN", "{CLEARCOLOR}{ENDWAVE}");
+
+                // Speed/Jet: Fast sliding effect
+                TypingConfig.GLOBAL_VARS.put("JET_STREAM", "{SLIDE=2;1;false}[/]");
+                TypingConfig.GLOBAL_VARS.put("ENDJET_STREAM", "[/]{ENDSLIDE}");
+
+                // The "Switch": Rapid color inversion or distinctive pop
+                TypingConfig.GLOBAL_VARS.put("SWITCH_UP", "{JOLT=1;1.2;1;0.3;white;yellow}");
+                TypingConfig.GLOBAL_VARS.put("ENDSWITCH_UP", "{ENDJOLT}");
                 // setScreen(new VfxProductionSquareScreen(this));
                 // setScreen(new VfxProductionScreen(this));
                 // setScreen(new AutoProductionScreen());
-                setScreen(new AudioProductionScreen());
+                // setScreen(new AudioProductionScreen());
+                setScreen(new AudioReactiveShadersScreen());
         }
 
 }
