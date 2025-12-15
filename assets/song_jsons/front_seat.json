@@ -17,7 +17,7 @@
     },
     {
         "startTime": 19.16,
-        "markup": "I'm in a {VAR=LUX_CHROME}[%125]new plane[%]{VAR=ENDLUX_CHROME} [%125] [+airplane]"
+        "markup": "I'm in a {VAR=LUX_CHROME}[%125]new plane[%]{VAR=ENDLUX_CHROME} [%125] [+commercial-airplane]"
     },
     {
         "startTime": 20.58,
