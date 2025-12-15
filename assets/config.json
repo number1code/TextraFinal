@@ -1,9 +1,9 @@
 {
-  "songName": "This an Attempt at Life",
-  "musicPath": "music/A_Life_Without_Law.wav",
+  "songName": "Front Seat",
+  "musicPath": "music/Front_Seat.wav",
   "videoPath": "video/attempt_at_vid.webm",
-  "jsonPath": "song_jsons/ThisanAttemptatLife.json",
-  "primaryFont": "fonts/SpecialElite-Regular.ttf",
-  "secondaryFont": "fonts/CrimsonText-Regular.ttf",
-  "audioDataPath": "audio_data/A_Life_Without_Law_data.json"
+  "jsonPath": "song_jsons/front_seat.json",
+  "primaryFont": "fonts/Cybertruck-RegularTTF.ttf",
+  "secondaryFont": "fonts/Orbitron.ttf",
+  "audioDataPath": "audio_data/Front_Seat_data.json"
 }

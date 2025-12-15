@@ -645,7 +645,8 @@ public class AudioProductionScreen extends ScreenAdapter {
             videoRecorder.stopRecording();
         } else {
             String timestamp = new java.text.SimpleDateFormat("yyyyMMdd_HHmmss").format(new java.util.Date());
-            String outputPath = "recording_" + timestamp + ".mp4";
+            String songName = config.getString("songName", "UnknownSong").replaceAll("[^a-zA-Z0-9.-]", "_");
+            String outputPath = "recording_" + songName + "_" + timestamp + ".mp4";
             String musicPath = config.getString("musicPath", "music/mr_lizard.wav"); // Use configured music
             // Absolute path might be safer for FFmpeg
             FileHandle audioFile = Gdx.files.internal(musicPath);

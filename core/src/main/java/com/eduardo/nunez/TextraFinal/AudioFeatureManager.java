@@ -6,6 +6,18 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.math.MathUtils;
+/*1. What data are we extracting?
+Your 
+AudioFeatureManager.java
+ (lines 12-28) defines the structure of each "frame" of audio data we have:
+
+rmsTotal (Root Mean Square): This is the overall volume/loudness of the track at that moment. It's a general "energy" level. High values mean the song is loud; low values mean it's quiet.
+rmsHarmonic: This isolates the melodic/tonal parts of the sound (vocals, guitars, synths). It ignores the "thump" of drums.
+rmsPercussive: This isolates the rhythmic/impact parts (drums, sudden hits).
+centroid (Spectral Centroid): This measures the brightness or "pitch center" of the sound.
+Low values (~500-1000): Bass, deep kicks, muffled sounds.
+High values (~3000+): Hi-hats, snares, screeches, sibilance (vocals like "ss" or "t").
+beatTimes: Specific timestamps where the algorithm detected a musical beat. */
 
 public class AudioFeatureManager {
 
